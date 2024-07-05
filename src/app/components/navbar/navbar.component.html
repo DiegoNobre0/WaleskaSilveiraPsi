@@ -1,0 +1,65 @@
+<mat-toolbar id="nav">
+    <!-- NavBar mobile -->
+    <mat-accordion class="display-mobile-accordion">
+        <mat-expansion-panel
+         hideToggle
+         style="background: white;"
+         (opened)="panelOpenState = true"
+         (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                <div class="div-logo display-mobile-menu">
+                    <img class="img-logo" src="../../../assets/logo-png-ws.png" (click)="home()">
+                </div>
+                <button mat-icon-button >
+                    <mat-icon>{{panelOpenState? "close" : "menu"}}</mat-icon>
+                </button>
+            </mat-panel-title>
+            <mat-panel-description style="display: contents;">
+               
+            </mat-panel-description>
+          </mat-expansion-panel-header >
+            <div style="display: grid;">
+                <button mat-button (click)="home()">
+                    <span class="span-toolbar">HOME</span>
+                </button>  
+                <button mat-button (click)="about()">
+                    <span class="span-toolbar">SOBRE</span>
+                </button> 
+                <button mat-button (click)="service()">
+                    <span class="span-toolbar">SERVIÇOS</span>
+                </button> 
+                <button mat-button (click)="blog()">
+                    <span class="span-toolbar">BLOG</span>
+                </button> 
+                <button mat-button (click)="home()">
+                    <span class="span-toolbar">CONTATO</span>
+                </button>    
+            </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    <!-- NavBar desktop -->
+    <div class="div-logo display-mobile-menu">
+        <img class="img-logo" src="../../../assets/logo-png-ws.png" (click)="home()">
+    </div>
+    <span class="toolbar-spacer display-mobile-menu"></span>
+    <div class="display-mobile-menu">
+        <button mat-button (click)="home()">
+            <span class="span-toolbar">HOME</span>
+        </button>  
+        <button mat-button (click)="about()">
+            <span class="span-toolbar">SOBRE</span>
+        </button> 
+        <button mat-button (click)="service()">
+            <span class="span-toolbar">SERVIÇOS</span>
+        </button> 
+        <button mat-button (click)="blog()">
+            <span class="span-toolbar">BLOG</span>
+        </button> 
+        <button mat-button (click)="home()">
+            <span class="span-toolbar">CONTATO</span>
+        </button>    
+     
+    </div>
+</mat-toolbar>

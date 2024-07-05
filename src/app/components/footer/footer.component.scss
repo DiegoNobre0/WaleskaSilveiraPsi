@@ -1,0 +1,50 @@
+.div-logo{
+    width: 57%;
+}
+
+.img-logo{
+    height: 10rem;
+    width: 10rem;
+    
+}
+
+.div-footer{    
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    padding-left: 3rem;
+    @media (max-width: 990px){
+       display: flex;
+       flex-direction: column;
+     }
+}
+
+.div-grid{
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+    @media (max-width: 990px){
+        padding-left: 0rem;
+      }
+}
+
+.spam-flex-justify{
+    display: flex;
+    justify-content: center;
+}
+
+.div-pb{
+    padding-bottom: 1rem;
+}
+
+.icon-calculo{
+    font-size: 24px;
+    width: 40px;
+    height: 30px;
+}
+
+.icon-calculo-2{
+    font-size: 30px;
+    width: 40px;
+    height: 30px;
+}

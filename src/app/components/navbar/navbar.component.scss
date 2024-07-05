@@ -1,0 +1,84 @@
+.div-logo{
+    width: 57%;
+}
+
+.img-logo{
+    height: 6.5rem;
+    width: 6.5rem;
+    padding-left: 4rem;
+    padding-top: 1rem;
+}
+
+.display-mobile-menu{
+    @media (max-width: 990px){
+        display: none;
+    }
+}
+
+.display-mobile-accordion{
+    display: none;
+    @media (max-width: 990px){
+        display: contents;
+    }
+}
+
+.toolbar-spacer {
+    flex : 1  1 auto;
+}
+
+.span-toolbar{
+    color: #744972;
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+
+}
+
+.span-toolbar:hover {
+    color:#007bff;
+    
+}
+
+.mat-toolbar{
+    transition: all 0.3s ease-out;
+    padding: 1rem 0rem 0rem 0rem;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 9;
+    height: 7rem;
+    margin-top: -1rem;
+    @media (max-width: 990px){
+        display: block;
+        background:#fff;
+    }
+}
+
+
+::ng-deep .custom-dialog-container-login {
+    mat-dialog-container {
+      position: fixed;
+      display: block;
+      z-index: 11;
+      width: 30rem;
+      height: 25rem;
+      left: 36%;
+      top: 4%;
+      background-color: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3px);
+
+      @media (max-width: 990px){
+        position: fixed;
+        display: block;
+        z-index: 11;
+        width: 100%;
+        height: 35rem;
+        left: 10%;
+        top: 10%;
+        padding: 1rem 1rem 7rem 1rem;
+        }
+    }
+}
+
+
