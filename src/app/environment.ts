@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    instagramAccessToken: 'IGQWROSHR5MmRuQy1hQk5wd1IzTERKMEM3OHRHNFhMSnVlRC04YWhQWmYwRGpNLUdFVGswWnZAFekJ6LTAweGR5Q1VCTlcyY25TUXBadk9RZAkpKdEdaWC1TLWdfU1BILVVzOXRPS0F2UFRaMFBhdFRPOE5oNnQ1MFUZD'
+    instagramAccessToken: 'IGQWRQYzZA5RTVzd3NXa3RoSkVqanNCcE4za1JtZAHhncmxXOVRQd09iQ3ppWEZABVzRWN18ySW85ejVKczFPWTcxNHlGNVlkdDF2YjhQX1pDNTNuUVBMaFhmbk1nelE2QmtaQXJSV1BpMlNKU1NIS0tNSGUtWi1PR2MZD'
   };
 
   export const environmentBlogger = {
