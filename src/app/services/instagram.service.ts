@@ -6,18 +6,19 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { environment } from '../environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class instagramService {
+
+private accessToken = environment.instagramAccessToken;
+
 CAMPOS: string = 'media_type,media_url,thumbnail_url,permalink'
 LIMITE: string = '20'
-TOKEN:string = 'IGQWRPS0pTWW9aTmMzWUJ4YzZAyWkJfYXJxZAEtfcHNHaGViRUdIQjhHSWU4VjZAYM3hPbkJfU3M0N0VIMndLQVRjd2x3akdfMkpmN3l2aW1QZA2V6ZAVhxMVRwbXVPdzdSZAi0wQ0gxSEo1OC1vdnZAXUUxUcE5ocjQtZAGMZD'
-REST_API: string = `https://graph.instagram.com/me/media?fields=${this.CAMPOS}&access_token=${this.TOKEN}&limit=${this.LIMITE}`
-// REST_API: string = 'https://graph.instagram.com/me/media?fields=media_type,media_url&access_token=IGQWRPS0pTWW9aTmMzWUJ4YzZAyWkJfYXJxZAEtfcHNHaGViRUdIQjhHSWU4VjZAYM3hPbkJfU3M0N0VIMndLQVRjd2x3akdfMkpmN3l2aW1QZA2V6ZAVhxMVRwbXVPdzdSZAi0wQ0gxSEo1OC1vdnZAXUUxUcE5ocjQtZAGMZD'
-// KEY: string = '?key=AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'
+REST_API: string = `https://graph.instagram.com/me/media?fields=${this.CAMPOS}&access_token=${this.accessToken}&limit=${this.LIMITE}`
 httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 constructor(private httpClient: HttpClient) {}
 
@@ -34,7 +35,7 @@ GetAll() {
 
 
 GetMediaDetails(mediaId: string) {
-    return this.httpClient.get(`https://graph.instagram.com/${mediaId}?fields=id,media_type,media_url,permalink,shortcode&access_token=${this.TOKEN}`);
+    return this.httpClient.get(`https://graph.instagram.com/${mediaId}?fields=id,media_type,media_url,permalink,shortcode&access_token=${this.accessToken}`);
   }
 
 Get(id: any): Observable<any> {

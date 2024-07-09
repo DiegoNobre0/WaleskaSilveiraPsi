@@ -39,7 +39,7 @@ export class BloggerComponent {
   }
 
   ngOnInit(){   
-    this.getPosts();
+    // this.getPosts();
     this.getPostInstagram()
   }
 
@@ -62,7 +62,7 @@ export class BloggerComponent {
   getPostInstagram() {
     // debugger
     this.instagramService.GetAll().subscribe((response: any) => {
-      // debugger
+      debugger
       this.instagramPosts= response.data
       console.log(this.instagramPosts)
     });
