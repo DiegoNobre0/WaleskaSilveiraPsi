@@ -1,10 +1,4 @@
 export const environment = {
-    production: false,
+    production: true,
     instagramAccessToken: 'IGQWRQcGZAhakpwaThHTVNiUVEzNEZAaMHBBU3MwTFJObmp6WEdNNmFMUlNlbU1sZAUJlaDdvUEc2aWl4ZAW84dkdBYi1BU1gtZAzVkcVdzbVZACLWxxZAVozeVBiNDlkUC1DMXhuamMzdEZAMVW1ackJnUHhWWEVSa1ZAEcjgZD'
   };
-
-  export const environmentBlogger = {
-    production: false,
-    instagramAccessToken: 'key=AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'
-  };  
-  
