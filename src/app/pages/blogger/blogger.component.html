@@ -15,60 +15,32 @@
 
     <div class="div-sobre div-curva">
         <div class="text-container div-info" style="color: #744972;">
-            <div style="padding-bottom: 1rem;">
-                <p class="name-home no-margin" style="font-size: 25px;">SOBRE WALESKA SILVEIRA</p>
-                <hr class="style-hr" style="margin-top: 0; margin-left: 0;">
+            <div style="padding-bottom: 1rem; display: flex;">
+                <div>
+                    <p class="name-home no-margin" style="font-size: 25px;">@waleskasilveirapsi</p>
+                    <hr class="style-hr" style="margin-top: 0; margin-left: 0;">
+                </div>
+                <div class="div-flex-center marg-text-wpp">
+                    <p class="div-calculo-dose-cards text-wpp" style="font-size: 12px;color: #744972; padding-left: 15px;">SEGUIR</p>
+                </div>
             </div>
-            <div class="p-text-info">
-                <p class="no-margin pb"><b>Apresentação pessoal</b></p>
-                <p>
-                    Sou Waleska Silveira, psicanalista e hipnoterapeuta, especialista em sexualidade e neurociência, com
-                    vasta experiência em atendimento clínico.
-                    Minha paixão é guiar pessoas em suas jornadas de autoconhecimento e transformação pessoal.
-                    Meu trabalho é focado em promover a saúde mental e o bem-estar emocional. Utilizo técnicas
-                    inovadoras e eficazes para tratar uma ampla gama de questões
-                    psicológicas e emocionais.
-                </p>
-            </div>
-            <div class="p-text-info">
-                <p class="no-margin pb"><b>Explorando o inconsciente com a Psicanálise</b></p>
-                <p>
-                    A psicanálise é uma jornada fascinante ao inconsciente, onde estão nossas verdadeiras motivações,
-                    desejos e medos.
-                    Por meio dessa abordagem terapêutica, ajudamos a trazer à tona esses elementos ocultos que
-                    influenciam nossos comportamentos e emoções.
-                    Esse processo de descoberta e compreensão promove mudanças profundas e duradouras.
-                </p>
-            </div>
-            <div class="p-text-info">
-                <p class="no-margin pb"><b>Sua Jornada de Autoconhecimento</b></p>
-                <p>
-                    A psicanálise é uma jornada fascinante ao inconsciente, onde estão nossas verdadeiras motivações,
-                    desejos e medos.
-                    Por meio dessa abordagem terapêutica, ajudamos a trazer à tona esses elementos ocultos que
-                    influenciam nossos comportamentos e emoções.
-                    Esse processo de descoberta e compreensão promove mudanças profundas e duradouras.
-                </p>
-                <p>
-                    Esse processo de descoberta e compreensão promove mudanças profundas e duradouras.
-                </p>
-            </div>
-            <div class="p-text-info">
-                <p class="no-margin pb"><b>Minha missão como Psicanalista</b></p>
-                <p>
-                    Minha missão é promover seu bem-estar emocional e mental, criando um espaço acolhedor e seguro
-                    para que você possa explorar seu interior e descobrir suas verdadeiras capacidades.
-                    Ao embarcar nessa jornada de autoconhecimento, quero que você sinta confiança e curiosidade.
-                    Juntos, podemos identificar e superar os obstáculos que impedem seu crescimento, utilizando
-                    as melhores ferramentas terapêuticas disponíveis.
-                    Seja através da psicanálise ou da hipnose clínica, minha abordagem é sempre personalizada para
-                    atender às suas necessidades específicas, ajudando você a alcançar uma vida mais plena, equilibrada
-                    e satisfatória.
-                    Deseja iniciar sua jornada de autoconhecimento e transformação pessoal? Marque sua consulta agora
-                    mesmo e dê o primeiro
-                    passo para uma vida mais plena e equilibrada.
-                </p>
-            </div>
+            <div class="instagram-grid">
+                <div *ngFor="let post of instagramPosts" class="instagram-card" (click)="openInstagramPost(post.permalink)">
+                
+                  <div *ngIf="post.media_type === 'VIDEO'" class="card-content">
+                    <video class="card-insta" controls>
+                      <source [src]="post.media_url" type="video/mp4" controlsList="nodownload" controls="false" muted preload="auto">                     
+                    </video>
+                  </div>
+                  <div *ngIf="post.media_type === 'IMAGE'" class="card-content">
+                    <img [src]="post.media_url" alt="Instagram Image" class="card-insta">
+                  </div>
+                  <div *ngIf="post.media_type === 'CAROUSEL_ALBUM'" class="card-content">
+                    <img [src]="post.media_url" alt="Instagram Carousel" class="card-insta">
+                  </div>
+                </div>
+              </div>
+        
             <!-- <div class="div-button" style="width: 100%;">
                 <div class="card-button "
                     style="display: flex; background-color: #744972;justify-content: space-evenly; height: 4rem;">

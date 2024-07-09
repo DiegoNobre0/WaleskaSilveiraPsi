@@ -98,6 +98,64 @@
     }
 }
 
+.card-insta{
+    width: 10rem;
+    height: 10rem;
+}
+
+.instagram-card {
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    position: relative;
+    z-index: 1; /* Define o z-index inicial */
+    cursor: pointer;
+  }
+  
+
+  .instagram-card:focus {
+    transform: scale(1.2) rotate(45deg);
+    z-index: 10;
+  }
+  
+  .instagram-card .card-content {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .instagram-card:hover .card-content {
+    transform: scale(1.2);    
+  }
+  
+  .instagram-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+    gap: 18px; /* Espaço entre os itens */
+    @media (max-width: 1024px) {        
+          grid-template-columns: repeat(2, 1fr);
+        
+      }
+      
+      @media (max-width: 768px) {
+        
+          grid-template-columns: 1fr;
+        
+    }
+  }
+  
+  .instagram-grid div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 .div-puericultura {
     padding: 4rem;
     display: flex;
@@ -391,7 +449,7 @@
 
     @media (max-width: 960px) {
         justify-content: none;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 }
 

@@ -1,7 +1,8 @@
 import { FormBuilder } from '@angular/forms';
-import { Component, HostListener, ElementRef, OnInit } from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { MatExpansionPanel } from '@angular/material/expansion';
 // import { PopupCadastroMedicamentoComponent } from '../popup-cadastro-medicamento/popup-cadastro-medicamento.component';
 // import { MatDialog } from '@angular/material/dialog';
 // import { MedicamentosService } from 'src/app/services/medicamentos.service';
@@ -39,6 +40,12 @@ export class NavbarComponent implements OnInit {
       // this.confirmToken();
   }
 
+  @ViewChild(MatExpansionPanel) panel!: MatExpansionPanel;
+
+  closePanel() {
+    this.panel.close();
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll(){    
     const nav = this.elementRef.nativeElement.querySelector('#nav');
@@ -62,18 +69,23 @@ export class NavbarComponent implements OnInit {
 
   home(): void{
     this.router.navigate(['/'], { relativeTo: this.route });
+     this.closePanel();
   }
 
   about(): void{
+    // debugger
     this.router.navigate(['/sobre'], { relativeTo: this.route });
+     this.closePanel();
   }
  
   service(): void{
     this.router.navigate(['/servicos'], { relativeTo: this.route });
+     this.closePanel();
   }
 
   blog(): void{
     this.router.navigate(['/blog'], { relativeTo: this.route });
+     this.closePanel();
   }
 
   // openDialogLogin(): void {
