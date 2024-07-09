@@ -6,6 +6,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { environmentBlogger } from '../environment';
 
 
 @Injectable({
@@ -13,8 +14,8 @@ import {
 })
 export class bloggerService {
 
+private accessToken = environmentBlogger.instagramAccessToken;
 REST_API: string = 'https://www.googleapis.com/blogger/v3/blogs/7973829152381710727';
-KEY: string = '?key=AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'
 httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 constructor(private httpClient: HttpClient) {}
 
@@ -26,7 +27,7 @@ Add(data: any): Observable<any> {
 }
 
 GetAll() {
-  return this.httpClient.get(`${this.REST_API}/posts${this.KEY}`);
+  return this.httpClient.get(`${this.REST_API}/posts?${this.accessToken}`);
 }
 
 Get(id: any): Observable<any> {
