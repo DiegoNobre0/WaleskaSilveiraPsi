@@ -1,0 +1,48 @@
+<div class="div-body">
+    <!-- <div class="display-mobile">
+        <div style="width: 100%;">
+            <span>
+                <img class="image-container" src="../../../assets/Butterfly.jpg">
+            </span>
+        </div>
+    </div> -->
+    <div class="text-name" style="padding-top: 7rem;">
+        <div class="div-calculo-dose-2">
+            <span class="spam-flex-justify name-home">BLOG</span>
+            <hr class="style-hr">
+        </div>
+    </div>
+
+    <div class="div-sobre div-curva" >
+        <div class="text-container div-info" style="color: #744972;" >
+            <div style="padding-bottom: 1rem; display: flex; flex-direction: column;">
+                <div>
+                    <p class="name-home no-margin" style="font-size: 25px;">{{extractTitle(bloggerPost?.title) }}</p>                    
+                </div> 
+                <div class="div-flex-center">
+                    <p class="div-calculo-dose-cards">Por</p>
+                    <p class="div-calculo-dose-cards" style="margin-left: 5px" ><b>{{ bloggerPost.author.displayName }}</b></p>
+                    <p style="margin-left: 5px"> - {{ formatDate(bloggerPost.published) }}</p>
+                </div>
+                <div class="image-container2">
+                    <img [src]="extractImageUrl(bloggerPost.content)">
+                </div>
+                <div class="div-flex-center" style="flex-direction: column;">
+                    <p class="div-calculo-dose-cards" style="flex-direction: column;" [innerHTML]="extractSummary(bloggerPost.content)"></p>
+                </div>
+            </div>
+            <div *ngIf="blogPosts.length > 0" style="display: flex;">
+                <div style="display: flex; flex-direction: column;">
+                    <p *ngIf="titlePrevious">Artigo anterior</p>
+                    <p (click)="PreviousPage()">{{titlePrevious }}</p>
+                    <!-- Mostrará o título do post anterior se existir -->
+                </div>
+               
+                <div style="display: flex; flex-direction: column;" >
+                    <p *ngIf="titleNext">próximo artigo</p>
+                    <p (click)="nextPage()">{{ titleNext }}</p>           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

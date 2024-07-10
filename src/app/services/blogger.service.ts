@@ -30,9 +30,9 @@ GetAll() {
   return this.httpClient.get(`${this.REST_API}/posts?${this.accessToken}`);
 }
 
-Get(id: any): Observable<any> {
-  
-  let API_URL = `${this.REST_API}/Medicamentos/${id}`;
+
+Get(id: any): Observable<any> {  
+  let API_URL = `${this.REST_API}/posts/${id}?${this.accessToken}`;
   return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
     map((res: any) => {
       return res || {};

@@ -38,6 +38,7 @@ import { AboutComponent } from './pages/about/about.component';
 
 import { ServicesComponent } from './pages/services/services.component';
 import { BloggerComponent } from './pages/blogger/blogger.component';
+import { PostBloggerComponent } from './pages/post-blogger/post-blogger.component';
 
 
 
@@ -48,7 +49,7 @@ import { BloggerComponent } from './pages/blogger/blogger.component';
     HomeComponent,
     FooterComponent,
     AboutComponent,    
-    ServicesComponent, BloggerComponent
+    ServicesComponent, BloggerComponent, PostBloggerComponent
   ],
   imports: [
     BrowserModule,

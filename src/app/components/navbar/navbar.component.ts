@@ -19,11 +19,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    // public dialog: MatDialog,
-    private route: ActivatedRoute,
-    // private medicamentosService: MedicamentosService,
-    // private loginService: LoginService
+    private activatedRoute: ActivatedRoute,    
+    private route: ActivatedRoute  
     ) {}
 
   rotaAtual = ""

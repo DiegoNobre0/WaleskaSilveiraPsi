@@ -57,132 +57,22 @@
             <img src="./../../assets/foto4.jpeg">
         </div> -->
         <div class="div-calculo-dose-cards" style="width: 100%;">
-            <div class="div-calculo-dose">
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
+            <div class="div-calculo-dose" >
+                <div class="card" *ngFor="let post of bloggerPosts" (click)="getPostBlogger(post.id)">
+                    <div class="image-container2">
+                        <img [src]="extractImageUrl(post.content)">
                     </div>
                     <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
+                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem; line-height: 26px;">{{ extractTitle(post.title) }}</p>
                     </div>
                     <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
+                        <p class="div-calculo-dose-cards"><b>{{ post.author.displayName }}</b></p>
+                        <p style="margin-left: 5px"> - {{ formatDate(post.published) }}</p>
                     </div>
                     <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
+                        <p class="div-calculo-dose-cards" [innerHTML]="extractSummary(post.content)"></p>
                     </div>
                 </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-                <div class="card ">
-                    <div class="image-container2 ">
-                        <img src="./../../assets/foto4.jpeg">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" style="font-size: 22px; padding-top: 1rem;line-height: 26px;">Porque é tão difícil tomar decisões?</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>Psicanalista Waleska Silveira </b></p>
-                        <p style="margin-left: 5px"> - 29/11/2020</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards">Somos seres humanos únicos e em constante desenvolvimento e isso significa que ninguém é igual a ninguém. Cada um pensa e age de uma...</p>
-                    </div>
-                </div>
-            
-               
-           
-            
-            
             </div>
         </div>
     </div>
