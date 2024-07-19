@@ -5,6 +5,6 @@ export const environment = {
 
   export const environmentBlogger = {
     production: false,
-    instagramAccessToken: 'key=AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'
+    blogAccessToken: 'key=AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'
   };  
   

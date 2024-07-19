@@ -1,0 +1,13 @@
+{
+  "/api/blogger": {
+    "target": "https://www.googleapis.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/blogger": "/blogger/v2"
+    },
+    "headers": {
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
+}

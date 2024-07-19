@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { BloggerService } from 'src/app/services/blogger.service';
+import { instagramService } from 'src/app/services/instagram.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,9 @@ export class HomeComponent implements OnInit{
     private appRef: ApplicationRef,
     private router: Router,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private bloggerService: BloggerService,
+    private instagramService: instagramService
   ) {
     this.matIconRegistry.addSvgIcon(
       'whatsapp',
@@ -25,16 +28,29 @@ export class HomeComponent implements OnInit{
     );
   }
 
-  atendimento: any;
-  imagem: any;
-  exibirModal: boolean = false;
 
-  goToItems() {
-   this.router.navigate(['/lista-antibiotico'], { relativeTo: this.route });
-  }
+  instagramPosts: any[] = [];
+  bloggerPosts: any[] = [];
+
+ 
 
   ngOnInit(){   
-    // this.openDialog();
+    this.getPosts()
+    this.getPostInstagram()
+  }
+
+  getPosts() {    
+    this.bloggerService.getAllPosts().subscribe((response: any) => {
+      console.log(response)
+      localStorage.setItem('bloggerPosts', JSON.stringify(response.items));    
+    });
+  }   
+
+  getPostInstagram() {    
+    this.instagramService.GetAll().subscribe((response: any) => {  
+      console.log(response)
+      localStorage.setItem('instagramPosts', JSON.stringify(response.data));   
+    });
   }
 
   // openDialog(): void {

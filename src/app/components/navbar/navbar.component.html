@@ -1,6 +1,6 @@
-<mat-toolbar id="nav">
+<mat-toolbar class="mat-toolbar-mobile">
     <!-- NavBar mobile -->
-    <mat-accordion class="display-mobile-accordion">
+    <mat-accordion class="display-mobile-accordion ">
         <mat-expansion-panel
          hideToggle
          style="background: white;"
@@ -32,14 +32,15 @@
                 <button mat-button (click)="blog()">
                     <span class="span-toolbar">BLOG</span>
                 </button> 
-                <button mat-button (click)="home()">
+                <button mat-button (click)="contact()">
                     <span class="span-toolbar">CONTATO</span>
                 </button>    
             </div>
         </mat-expansion-panel>
-      </mat-accordion>
+      </mat-accordion> 
+</mat-toolbar>
 
-    <!-- NavBar desktop -->
+<mat-toolbar id="nav" class="mat-toolbar-desktop">    
     <div class="div-logo display-mobile-menu">
         <img class="img-logo" src="../../../assets/logo-png-ws.png" (click)="home()">
     </div>
@@ -57,9 +58,10 @@
         <button mat-button (click)="blog()">
             <span class="span-toolbar">BLOG</span>
         </button> 
-        <button mat-button (click)="home()">
+        <button mat-button (click)="contact()">
             <span class="span-toolbar">CONTATO</span>
         </button>    
      
     </div>
 </mat-toolbar>
+

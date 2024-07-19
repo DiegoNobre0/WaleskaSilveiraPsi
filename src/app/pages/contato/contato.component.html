@@ -1,0 +1,98 @@
+<div class="div-body">
+    <!-- <div class="display-mobile">
+        <div style="width: 100%;">
+            <span>
+                <img class="image-container" src="../../../assets/Butterfly.jpg">
+            </span>
+        </div>
+    </div> -->
+    <div class="text-name" style="padding-top: 7rem;">
+        <div class="div-calculo-dose-2">
+            <span class="spam-flex-justify name-home">CONTATO</span>
+            <hr class="style-hr">
+            <div style="text-align: center; padding-top: 2rem;">
+                <p class="name-home" style="font-size: 20px;">Mande aqui suas dúvidas que em breve estarei entrando em
+                    contato</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex;" class="div-sobre">
+        <div>
+            <p class="name-home no-margin" style="font-size: 25px;">SIGA-ME NAS REDES SOCIAIS</p>
+        </div>
+        <div style="display: flex;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=URL_DO_SEU_SITE" target="_blank"
+                class="share-button facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/?text=Texto%20de%20compartilhamento%20URL_DO_SEU_SITE" target="_blank"
+                class="share-button whatsapp">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="div-sobre div-curva">
+        <div class="text-container div-info" style="color: #744972;">
+            <div style="padding-bottom: 1rem; display: flex; flex-direction: column;">
+                <div>
+                    <p class="name-home no-margin" style="font-size: 25px;">SESSÕES VIA AGENDAMENTO</p>
+                </div>
+                <div class="div-flex-center marg-text-wpp">
+                    <p class="div-calculo-dose-cards text-wpp" style="font-size: 12px;color: #744972; padding-left: 15px;">AGENDAR VIA WHATSAPP</p>
+                </div>
+                <div>
+                    <p class="name-home no-margin" style="font-size: 25px;"><b>E-MAIL:</b></p>
+                    <p class="name-home no-margin" style="font-size: 25px;">CONTATO@TESTETESTE</p>
+                </div>
+                <div>
+                    <p class="name-home no-margin" style="font-size: 25px;"><b>INSTAGRAM:</b></p>
+                    <p class="name-home no-margin" style="font-size: 25px;">@TESTETETETET</p>
+                </div>
+            </div>          
+        </div>     
+        <div class="div-calculo-dose-cards">
+            <div class="form-container">                
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                    <input style="padding-bottom: 0.5rem;" type="text" id="name" formControlName="name" placeholder="Seu nome">
+                    <div style="padding-bottom: 0.5rem;" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                        <small class="error">O campo é obrigatório.</small>
+                    </div>
+
+                    <input style="padding-bottom: 0.5rem;" type="email" id="email" formControlName="email" placeholder="Seu e-mail">
+                    <div style="padding-bottom: 0.5rem;" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                        <small class="error" *ngIf="contactForm.get('email')?.errors?.['required']">O campo é obrigatório.</small>
+                        <small class="error" *ngIf="contactForm.get('email')?.errors?.['email']">Email inválido.</small>
+                    </div>
+
+                    <input  style="padding-bottom: 0.5rem;" type="tel" id="number" formControlName="number" placeholder="Seu WhatsApp">
+                    <div style="padding-bottom: 0.5rem;" *ngIf="contactForm.get('number')?.invalid && contactForm.get('number')?.touched">
+                        <small class="error" *ngIf="contactForm.get('number')?.errors?.['required']">O campo é obrigatório.</small>
+                        <small class="error" *ngIf="contactForm.get('number')?.errors?.['pattern']">Formato de número
+                            inválido.</small>
+                    </div>
+
+                    <textarea style="padding-bottom: 0.5rem;" id="message" formControlName="message" rows="8" placeholder="Mensagem"></textarea>
+                    <div  *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                        <small class="error">Mensagem é obrigatória.</small>
+                    </div>
+
+                    <button type="submit" [disabled]="contactForm.invalid">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </div>  
+    <div class="div-flex-center marg-text-wpp">
+        <p class="name-home no-margin" style="font-size: 25px;">R. ESTRADA, 25 - JARDIM LIMOEIRO, CAMAÇARI - BA</p>
+    </div>
+    <div>
+        <google-map height="450px"
+            width="1000px"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+</google-map>
+    </div>
+</div>

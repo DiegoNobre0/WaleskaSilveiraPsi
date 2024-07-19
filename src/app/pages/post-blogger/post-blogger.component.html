@@ -6,43 +6,142 @@
             </span>
         </div>
     </div> -->
-    <div class="text-name" style="padding-top: 7rem;">
+    <!-- <div class="text-name" style="padding-top: 7rem;">
         <div class="div-calculo-dose-2">
             <span class="spam-flex-justify name-home">BLOG</span>
             <hr class="style-hr">
         </div>
-    </div>
+    </div> -->
 
-    <div class="div-sobre div-curva" >
-        <div class="text-container div-info" style="color: #744972;" >
+    <div class="div-sobre div-curva">
+        <div class="text-container div-info" style="color: #744972;">
             <div style="padding-bottom: 1rem; display: flex; flex-direction: column;">
+                <div style="display: flex;">
+                    <p style="margin-right: 0.5rem;font-size: 11px;">Inicio</p>
+                    <p style="margin-right: 0.5rem;font-size: 11px;">&gt;</p>
+                    <p style="margin-right: 0.5rem;font-size: 11px;"> Blog</p>
+                    <p style="margin-right: 0.5rem;font-size: 11px;">&gt;</p>
+                    <p style="font-size: 11px;">{{extractTitle(bloggerPost?.title) }}</p>
+                </div>
                 <div>
-                    <p class="name-home no-margin" style="font-size: 25px;">{{extractTitle(bloggerPost?.title) }}</p>                    
-                </div> 
-                <div class="div-flex-center">
-                    <p class="div-calculo-dose-cards">Por</p>
-                    <p class="div-calculo-dose-cards" style="margin-left: 5px" ><b>{{ bloggerPost.author.displayName }}</b></p>
-                    <p style="margin-left: 5px"> - {{ formatDate(bloggerPost.published) }}</p>
+                    <p class="name-home no-margin" style="font-size: 30px;">{{extractTitle(bloggerPost?.title) }}</p>
+                </div>
+                <div class="div-flex-center" style="padding-bottom: 1.5rem;">
+                    <p class="div-calculo-dose-cards" style="font-size: 12px;">Por</p>
+                    <p class="div-calculo-dose-cards" style="font-size: 12px;margin-left: 5px"><b>{{ bloggerPost.author.displayName}}</b></p>
+                    <p style="margin-left: 5px;font-size: 12px;"> - {{ formatDate(bloggerPost.published) }}</p>
                 </div>
                 <div class="image-container2">
                     <img [src]="extractImageUrl(bloggerPost.content)">
                 </div>
                 <div class="div-flex-center" style="flex-direction: column;">
-                    <p class="div-calculo-dose-cards" style="flex-direction: column;" [innerHTML]="extractSummary(bloggerPost.content)"></p>
+                    <p class="div-calculo-dose-cards" style="flex-direction: column;"
+                        [innerHTML]="extractSummary(bloggerPost.content)"></p>
+                </div>
+                <div style="display: flex; padding-bottom: 1.5rem;">
+                    <div class="div-flex-center style-tag" style="margin-right: 0.4rem;">
+                        <p class="div-calculo-dose-cards"
+                            style="color: white; margin: 0; font-weight: 600; font-size: 12px;">TAGS</p>
+                    </div>
+                    <div *ngFor="let blogueTags of tags" class="div-flex-center style-tag-2"
+                        style="margin-right: 0.4rem;">
+                        <p class="div-calculo-dose-cards" style="margin: 0; font-weight: 600; font-size: 9px;">
+                            {{blogueTags}}</p>
+                    </div>
+                </div>
+                <hr class="style-hr-2">
+                <div class="share-buttons">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=URL_DO_SEU_SITE" target="_blank"
+                        class="share-button facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/intent/tweet?url=URL_DO_SEU_SITE&text=Texto%20de%20compartilhamento"
+                        target="_blank" class="share-button x">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/button/?url=URL_DO_SEU_SITE&media=URL_DA_IMAGEM&description=Descrição"
+                        target="_blank" class="share-button pinterest">
+                        <i class="fab fa-pinterest"></i>
+                    </a>
+                    <a href="https://wa.me/?text=Texto%20de%20compartilhamento%20URL_DO_SEU_SITE" target="_blank"
+                        class="share-button whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <hr class="style-hr-2">
+            </div>
+            <div *ngIf="blogPosts.length > 0"
+                style="display: flex; justify-content: space-between; padding-bottom: 2rem;">
+                <div style="display: flex; flex-direction: column; padding-right: 3rem;">
+                    <p *ngIf="titlePrevious" style="font-size: 11px;">Artigo anterior</p>
+                    <p (click)="PreviousPage()" class="text-button-next" style="font-size: 14px;">{{titlePrevious }}</p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; padding-left: 3rem;">
+                    <p *ngIf="titleNext" style="font-size: 11px; text-align: end;">próximo artigo</p>
+                    <p (click)="nextPage()" class="text-button-next" style="font-size: 14px;text-align:end;">{{ titleNext }}</p>
                 </div>
             </div>
-            <div *ngIf="blogPosts.length > 0" style="display: flex;">
-                <div style="display: flex; flex-direction: column;">
-                    <p *ngIf="titlePrevious">Artigo anterior</p>
-                    <p (click)="PreviousPage()">{{titlePrevious }}</p>
-                    <!-- Mostrará o título do post anterior se existir -->
+            <div style="display: flex; padding: 2rem 1rem 1rem 2rem" class="demo-section">
+                <div class="img-info-blog">
+                    <img class="image-container-info-blog" src="../../../assets/foto6.jpeg">
                 </div>
-               
-                <div style="display: flex; flex-direction: column;" >
-                    <p *ngIf="titleNext">próximo artigo</p>
-                    <p (click)="nextPage()">{{ titleNext }}</p>           
+                <div class="text-info-blog">
+                    <p><b>Psicanalista Waleska Silveira</b></p>
+                    <p style="font-size: 12px;">htttps://testesteteste.com.br/</p>
+                    <p style="font-size: 12px;">
+                        Sou Waleska Silveira, psicanalista e hipnoterapeuta, especialista em sexualidade e neurociência, com
+                        vasta experiência em atendimento clínico.
+                        Minha paixão é guiar pessoas em suas jornadas de autoconhecimento e transformação pessoal.
+                        Meu trabalho é focado em promover a saúde mental e o bem-estar emocional. Utilizo técnicas
+                        inovadoras e eficazes para tratar uma ampla gama de questões
+                        psicológicas e emocionais.
+                    </p>
+                    <p class="icon-info-blog ">
+                        <a href="https://pinterest.com/pin/create/button/?url=URL_DO_SEU_SITE&media=URL_DA_IMAGEM&description=Descrição"
+                            target="_blank" class="share-button " style="color: #744972;">
+                            <i class="fab fa-facebook" style="color: #744972;"></i>
+                        </a>
+                        <a href="https://wa.me/?text=Texto%20de%20compartilhamento%20URL_DO_SEU_SITE" target="_blank"
+                            class="share-button">
+                            <i class="fab fa-instagram" style="color: #744972;"></i>
+                        </a>
+                    </p>
                 </div>
             </div>
+            <div style="padding-top: 3rem; border-bottom: 3px solid #744972; width: 100%;">
+                <div class="div-flex-center style-tag" style="margin-right: 0.4rem; width: 11rem; height: 25px;">
+                    <p style="color: white; margin: 0; font-weight: 600; font-size: 12px;">ARTIGOS RELACIONADOS</p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="card-1" *ngFor="let filteredPost of paginatedPosts" (click)="getPostBloggerId(filteredPost.id)">
+                    <div class="image-wrapper">
+                        <img class="image-container" [src]="extractImageUrl(filteredPost.content)">
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <p class="name-home no-margin">
+                            <b class="font-size-card">{{ extractTitle(filteredPost?.title) }}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="pagination-button"
+                    style="margin-right: 1rem;">&lt;</button>
+                <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= filteredPosts.length"
+                    class="pagination-button">&gt;</button>
+            </div>
+            <!-- <div style="padding-top: 4rem;">
+                <p><b>DEIXE UMA RESPOSTA</b></p>
+                <div>
+                  <textarea [(ngModel)]="commentText" placeholder="Digite seu comentário..." rows="4"></textarea>
+                  <br>
+                  <button (click)="submitComment()">Enviar Comentário</button>
+                </div>
+              </div> -->
         </div>
     </div>
 </div>

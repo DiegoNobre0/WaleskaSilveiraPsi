@@ -39,8 +39,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { BloggerComponent } from './pages/blogger/blogger.component';
 import { PostBloggerComponent } from './pages/post-blogger/post-blogger.component';
-
-
+import { ContatoComponent } from './pages/contato/contato.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -49,10 +49,11 @@ import { PostBloggerComponent } from './pages/post-blogger/post-blogger.componen
     HomeComponent,
     FooterComponent,
     AboutComponent,    
-    ServicesComponent, BloggerComponent, PostBloggerComponent
+    ServicesComponent, BloggerComponent, PostBloggerComponent, ContatoComponent
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     AppRoutingModule,
     MatIconModule,
     MatButtonModule,

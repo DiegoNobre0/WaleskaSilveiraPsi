@@ -5,6 +5,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { BloggerComponent } from './pages/blogger/blogger.component';
 import { PostBloggerComponent } from './pages/post-blogger/post-blogger.component';
+import { ContatoComponent } from './pages/contato/contato.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:"servicos", component:ServicesComponent},
   {path:"blog", component:BloggerComponent},
   {path: 'post/:id', component: PostBloggerComponent },
+  {path: 'contato', component: ContatoComponent },
 
 ];
 

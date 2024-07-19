@@ -1,65 +1,62 @@
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 import { environmentBlogger } from '../environment';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class bloggerService {
+export class BloggerService {
 
-private accessToken = environmentBlogger.instagramAccessToken;
-REST_API: string = 'https://www.googleapis.com/blogger/v3/blogs/7973829152381710727';
-httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-constructor(private httpClient: HttpClient) {}
+  private apiKey = environmentBlogger.blogAccessToken; // Chave de API do Google
+  private blogId = '7973829152381710727'; // ID do seu blog no Blogger
+  private baseUrl = 'https://www.googleapis.com/blogger/v3/blogs';
 
-Add(data: any): Observable<any> {  
-  let API_URL = `${this.REST_API}/Medicamentos`;
-  return this.httpClient
-    .post(API_URL, data)
-    .pipe(catchError(this.handleError));
-}
+  constructor(private http: HttpClient) {}
 
-GetAll() {
-  return this.httpClient.get(`${this.REST_API}/posts?${this.accessToken}`);
-}
+  getAllPosts(): Observable<any> {
+    const url = `${this.baseUrl}/${this.blogId}/posts?key=${this.apiKey}`;
+    return this.http.get(url, { headers: this.getHeaders() }).pipe(
+      map((res: any) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
 
+  getPostById(id: string): Observable<any> {
+    const url = `${this.baseUrl}/${this.blogId}/posts/${id}?key=${this.apiKey}`;
+    return this.http.get(url, { headers: this.getHeaders() }).pipe(
+      map((res: any) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
 
-Get(id: any): Observable<any> {  
-  let API_URL = `${this.REST_API}/posts/${id}?${this.accessToken}`;
-  return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
-    map((res: any) => {
-      return res || {};
-    }),
-    catchError(this.handleError)
-  );
-}
+  postComment(postId: string, comment: string): Observable<any> {
+    const url = `/api/blogger/blogs/${this.blogId}/posts/${postId}/comments?key=${this.apiKey}`;
 
-// update(data: any): Observable<any> {
-//   let API_URL = `${this.REST_API}/Medicamentos/${data.id}`;
-//   return this.httpClient
-//     .put(API_URL, data, { headers: this.httpHeaders })
-//     .pipe(catchError(this.handleError));
-// }
+    const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    
+    return this.http.post(url, { content: comment }, { headers: httpHeaders }).pipe(
+      catchError(this.handleError)
+    );
+  }
 
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders().set('Content-Type', 'application/json');
+  }
 
-
-handleError(error: HttpErrorResponse) {
-  let errorMessage = '';
-  if (error.error instanceof ErrorEvent) {
-    errorMessage = error.error.message;
-  } else {
-    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-  } 
-  return throwError(() => {
-    errorMessage;
-  });
-}
-
+  private handleError(error: HttpErrorResponse): Observable<any> {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
 }

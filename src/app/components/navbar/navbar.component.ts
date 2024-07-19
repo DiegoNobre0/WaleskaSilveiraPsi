@@ -85,6 +85,12 @@ export class NavbarComponent implements OnInit {
      this.closePanel();
   }
 
+  contact(): void{
+    this.router.navigate(['/contato'], { relativeTo: this.route });
+     this.closePanel();
+  }
+
+
   // openDialogLogin(): void {
   //   const dialogRef = this.dialog.open(PopupLoginComponent, {
   //     panelClass: 'custom-dialog-container-login',

@@ -40,7 +40,22 @@
     
 }
 
-.mat-toolbar{
+.mat-toolbar-mobile{
+    transition: all 0.3s ease-out;
+    padding: 1rem 0rem 0rem 0rem;
+    display: none;
+    justify-content: center;
+    position: fixed;
+    z-index: 9;
+    // height: 7rem;
+    margin-top: -1rem;
+    @media (max-width: 990px){
+        display: block;
+        background:#fff;
+    }
+}
+
+.mat-toolbar-desktop{
     transition: all 0.3s ease-out;
     padding: 1rem 0rem 0rem 0rem;
     display: flex;
@@ -50,7 +65,7 @@
     height: 7rem;
     margin-top: -1rem;
     @media (max-width: 990px){
-        display: block;
+        display: none;
         background:#fff;
     }
 }

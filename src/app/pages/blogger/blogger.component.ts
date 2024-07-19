@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { bloggerService } from 'src/app/services/blogger.service';
+
 import { instagramService } from 'src/app/services/instagram.service';
 
 @Component({
@@ -19,8 +19,7 @@ export class BloggerComponent {
     private appRef: ApplicationRef,
     private router: Router,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private bloggerService: bloggerService,
+    private domSanitizer: DomSanitizer,    
     private instagramService: instagramService
   ) {
     this.getPosts();
@@ -36,14 +35,10 @@ export class BloggerComponent {
   exibirModal: boolean = false;
   instagramPosts: any[] = [];
   bloggerPosts: any[] = [];
-
-  goToItems() {
-   this.router.navigate(['/lista-antibiotico'], { relativeTo: this.route });
-  }
+ 
  
   postBloger(): void{
-    this.router.navigate(['/blogPost'], { relativeTo: this.route });
-  
+    this.router.navigate(['/blogPost'], { relativeTo: this.route });  
   }
 
   ngOnInit(){   
@@ -55,23 +50,21 @@ export class BloggerComponent {
   }
 
   getPosts() {    
-    this.bloggerService.GetAll().subscribe((response: any) => {
-      this.bloggerPosts = response.items
-      console.log(this.bloggerPosts)
-    });
+    const dataString = localStorage.getItem('bloggerPosts');
+    this.bloggerPosts = dataString ? JSON.parse(dataString) : null;       
   }  
   getPostBlogger(id:any) {   
-    this.router.navigate(['/post', id], { relativeTo: this.route }); 
-    // this.bloggerService.Get(id).subscribe((response: any) => {
-    //   console.log(response)
-    // });
+    this.router.navigate(['/post', id], { relativeTo: this.route });    
   }  
 
   getPostInstagram() {
-    // debugger
-    this.instagramService.GetAll().subscribe((response: any) => {  
-      this.instagramPosts= response.data      
-    });
+    const dataString = localStorage.getItem('instagramPosts');
+    if (dataString) {
+      const instagramPosts = JSON.parse(dataString);
+      this.instagramPosts = instagramPosts.filter((post: any) => post.media_type !== "VIDEO");
+    } else {
+      this.instagramPosts = [];
+    }
   }
 
 
