@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environmentBlogger } from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BloggerService {
 
-  private apiKey = environmentBlogger.blogAccessToken; // Chave de API do Google
+  private apiKey = 'key=AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'; // Chave de API do Google
   private blogId = '7973829152381710727'; // ID do seu blog no Blogger
   private baseUrl = 'https://www.googleapis.com/blogger/v3/blogs';
 

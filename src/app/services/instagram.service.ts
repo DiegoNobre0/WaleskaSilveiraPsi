@@ -6,7 +6,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { environment } from '../environment';
+
 
 
 @Injectable({
@@ -14,7 +14,7 @@ import { environment } from '../environment';
 })
 export class instagramService {
 
-private accessToken = environment.instagramAccessToken;
+private accessToken = 'IGQWRQYzZA5RTVzd3NXa3RoSkVqanNCcE4za1JtZAHhncmxXOVRQd09iQ3ppWEZABVzRWN18ySW85ejVKczFPWTcxNHlGNVlkdDF2YjhQX1pDNTNuUVBMaFhmbk1nelE2QmtaQXJSV1BpMlNKU1NIS0tNSGUtWi1PR2MZD';
 
 CAMPOS: string = 'media_type,media_url,thumbnail_url,permalink'
 LIMITE: string = '20'
