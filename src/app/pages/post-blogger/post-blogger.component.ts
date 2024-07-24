@@ -5,6 +5,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BloggerService } from '../../services/blogger.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-blogger',
@@ -13,6 +14,7 @@ import { BloggerService } from '../../services/blogger.service';
 })
 export class PostBloggerComponent {
   constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private matIconRegistry: MatIconRegistry,
@@ -20,6 +22,12 @@ export class PostBloggerComponent {
     private viewportScroller: ViewportScroller,
     private bloggerService: BloggerService
   ) {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],      
+      comment: ['', Validators.required],
+      id_post:['']
+    });
     this.postId = this.route.snapshot.params['id'];
     this.getPosts();
     this.getPostBlogger(this.postId);
@@ -29,12 +37,16 @@ export class PostBloggerComponent {
       'whatsapp',
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/whatsapp.svg')
     );
+    this.contactForm.patchValue({
+      id_post: this.postId
+    });
   }
 
   instagramPosts: any[] = [];
   blogPosts: any[] = [];
   filteredPosts: any[] = [];
   paginatedPost: any[] = [];
+  commentsPost: any[] = [];
   bloggerPost: any;
   postId: any;
   formattedText: string = ``;
@@ -48,9 +60,10 @@ export class PostBloggerComponent {
   currentPage: number = 1;
   postsPerPage: number = 3;  
   commentText = '';
+  contactForm: FormGroup;
 
   ngOnInit() {
-
+    this.getComments(this.postId)
   }
 
   // submitComment() {
@@ -71,6 +84,33 @@ export class PostBloggerComponent {
   //     }
   //   );
   // }
+
+  onSubmit() {
+    debugger
+    if (this.contactForm.valid) {
+      console.log(this.contactForm.value);
+    this.bloggerService.postComment(this.contactForm.value).subscribe(
+      (response) => {
+        console.log('Comentário postado com sucesso:', response);
+        alert('Comentário postado com sucesso!');
+        this.commentText = ''; // Limpar o campo de texto após o envio
+      },
+      (error) => {
+        console.error('Erro ao postar comentário:', error);
+        alert('Erro ao postar comentário. Por favor, tente novamente mais tarde.');
+      }
+    );
+    } else {
+      alert('Por favor, preencha todos os campos corretamente.');
+    }
+  }
+
+  getComments(id:string){
+    this.bloggerService.getCommentsById(id).subscribe((response: any) => {
+     this.commentsPost = response;
+     console.log(this.commentsPost)
+    });
+  }
 
   filterPostsByTag() {
     const currentPostLabels = this.bloggerPost.labels;

@@ -12,11 +12,11 @@ export class BloggerService {
   private blogId = '7973829152381710727'; // ID do seu blog no Blogger
   private baseUrl = 'https://www.googleapis.com/blogger/v3/blogs';
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   getAllPosts(): Observable<any> {
     const url = `${this.baseUrl}/${this.blogId}/posts?key=${this.apiKey}`;
-    return this.http.get(url, { headers: this.getHeaders() }).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         return res || {};
       }),
@@ -26,7 +26,7 @@ export class BloggerService {
 
   getPostById(id: string): Observable<any> {
     const url = `${this.baseUrl}/${this.blogId}/posts/${id}?key=${this.apiKey}`;
-    return this.http.get(url, { headers: this.getHeaders() }).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         return res || {};
       }),
@@ -34,14 +34,24 @@ export class BloggerService {
     );
   }
 
-  postComment(postId: string, comment: string): Observable<any> {
-    const url = `/api/blogger/blogs/${this.blogId}/posts/${postId}/comments?key=${this.apiKey}`;
-
-    const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-    
-    return this.http.post(url, { content: comment }, { headers: httpHeaders }).pipe(
+  getCommentsById(id: string): Observable<any> {
+    const url = `https://app-wspsi-backend.vercel.app/comments?id_post=${id}`;
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
+      map((res: any) => {
+        return res || {};
+      }),
       catchError(this.handleError)
     );
+  }
+
+  postComment(data: any): Observable<any> {
+    debugger
+    const url = "https://app-wspsi-backend.vercel.app/comment";
+
+    // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.httpClient
+    .post(url, data)
+    .pipe(catchError(this.handleError));
   }
 
   private getHeaders(): HttpHeaders {
