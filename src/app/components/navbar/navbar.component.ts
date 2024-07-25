@@ -69,8 +69,7 @@ export class NavbarComponent implements OnInit {
      this.closePanel();
   }
 
-  about(): void{
-    // debugger
+  about(): void{    
     this.router.navigate(['/sobre'], { relativeTo: this.route });
      this.closePanel();
   }

@@ -1,0 +1,31 @@
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Ajuste este valor conforme necessário */
+    width: 70px;
+    height: 70px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.share-button {
+    text-decoration: none;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #25d366; /* Cor do fundo do ícone do WhatsApp */
+    width: 100%; /* Faz o ícone ocupar toda a área do contêiner */
+    height: 100%; /* Faz o ícone ocupar toda a área do contêiner */    
+}
+
+.share-button i {
+    color: white;
+    font-size: 44px; /* Ajuste conforme necessário */
+}
+
+.whatsapp-icon, .share-button {
+    box-sizing: border-box;
+}

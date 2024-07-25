@@ -142,16 +142,14 @@ export class PostBloggerComponent {
     }
   }
 
-  getComments(id:string){
-    debugger
+  getComments(id:string){    
     this.bloggerService.getCommentsById(id).subscribe((response: any) => {
      this.commentsPost = response;
      console.log(this.commentsPost)
     });
   }
 
-  getCommentsRepost(){
-    debugger
+  getCommentsRepost(){    
     this.bloggerService.getCommentsRepost().subscribe((response: any) => {
      this.commentsRepostPost = response;
      console.log(this.commentsRepostPost)

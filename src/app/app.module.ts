@@ -41,6 +41,7 @@ import { BloggerComponent } from './pages/blogger/blogger.component';
 import { PostBloggerComponent } from './pages/post-blogger/post-blogger.component';
 import { ContatoComponent } from './pages/contato/contato.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HomeComponent,
     FooterComponent,
     AboutComponent,    
-    ServicesComponent, BloggerComponent, PostBloggerComponent, ContatoComponent
+    ServicesComponent, BloggerComponent, PostBloggerComponent, ContatoComponent, WhatsappComponent
   ],
   imports: [
     BrowserModule,
