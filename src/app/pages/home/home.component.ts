@@ -53,6 +53,17 @@ export class HomeComponent implements OnInit{
     });
   }
 
+  about(): void{    
+    this.router.navigate(['/sobre'], { relativeTo: this.route });
+    //  this.closePanel();
+  }
+
+  whatsapp(): void{    
+    const phoneNumber = '71992117598';
+    const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  }
   // openDialog(): void {
   //   const dialogRef = this.dialog.open(PopupComponent, {
   //     panelClass: 'custom-dialog-container'

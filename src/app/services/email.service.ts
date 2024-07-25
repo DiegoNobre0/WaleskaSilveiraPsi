@@ -6,11 +6,12 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BloggerService {
+export class EmailService {
   constructor(private httpClient: HttpClient) {}
 
  
-  postComment(data: any): Observable<any> {    
+  postEmail(data: any): Observable<any> {   
+    debugger 
     const url = "https://app-wspsi-backend.vercel.app/send-form";
     // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient

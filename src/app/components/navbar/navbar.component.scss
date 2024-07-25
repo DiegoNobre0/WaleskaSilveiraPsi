@@ -30,14 +30,27 @@
     color: #744972;
     font-size: 18px;
     letter-spacing: 2px;
-    font-weight: 400;
+    font-weight: 500;
     transition: color 0.3s ease;
 
 }
 
 .span-toolbar:hover {
-    color:#007bff;
-    
+    color:#fd8d76;
+}
+
+button.mat-button {
+    background: none;
+    box-shadow: none;
+}
+
+/* Remover sombra e contorno quando o botão está em foco ou hover */
+button.mat-button:hover,
+button.mat-button:focus,
+button.mat-button:active {
+    background: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .mat-toolbar-mobile{

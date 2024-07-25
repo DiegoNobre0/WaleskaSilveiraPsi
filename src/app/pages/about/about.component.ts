@@ -23,14 +23,11 @@ export class AboutComponent {
       'whatsapp',
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/whatsapp.svg')
     );
-  }
+  } 
 
-  atendimento: any;
-  imagem: any;
-  exibirModal: boolean = false;
-
-  goToItems() {
-   this.router.navigate(['/lista-antibiotico'], { relativeTo: this.route });
+  whatsapp(): void{    
+    const whatsappUrl = 'https://wa.me/71992117598';
+    window.open(whatsappUrl, '_blank');
   }
 
   ngOnInit(){   

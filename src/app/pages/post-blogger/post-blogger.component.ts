@@ -73,6 +73,7 @@ export class PostBloggerComponent {
   isComment: boolean = false; 
   nameComment:any = ''
   selectedCommentIndex: number | null = null;
+  id_comment: any;
 
   ngOnInit() {
     this.getComments(this.postId)
@@ -88,7 +89,8 @@ export class PostBloggerComponent {
     this.isComment = false;
   }
 
-  onSubmitComment(idComment:any): void {    
+  onSubmitComment(idComment:any): void {  
+    this.id_comment = idComment;
     this.commentForm.patchValue({
       id_comment: idComment
     });
@@ -101,10 +103,10 @@ export class PostBloggerComponent {
       this.isComment = false;     
      
       this.bloggerService.postCommentRepost(this.commentForm.value).subscribe(
-        (response) => {
-          console.log('Comentário postado com sucesso:', response);
-          alert('Comentário postado com sucesso!');
-          this.commentText = ''; 
+        (response) => {                
+          this.commentForm.reset(); 
+          this.getComments(this.postId);
+          this.getCommentsRepost()
         },
         (error) => {
           console.error('Erro ao postar comentário:', error);
@@ -128,9 +130,8 @@ export class PostBloggerComponent {
       console.log(this.contactForm.value);
     this.bloggerService.postComment(this.contactForm.value).subscribe(
       (response) => {
-        console.log('Comentário postado com sucesso:', response);
-        alert('Comentário postado com sucesso!');
-        this.commentText = ''; 
+        this.contactForm.reset(); 
+        this.getComments(this.postId)
       },
       (error) => {
         console.error('Erro ao postar comentário:', error);

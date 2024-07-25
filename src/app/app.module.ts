@@ -55,7 +55,7 @@ import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
   imports: [
     BrowserModule,
     GoogleMapsModule,
-    AppRoutingModule,
+    AppRoutingModule,    
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
@@ -76,7 +76,8 @@ import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
     MatTabsModule,
     MatSnackBarModule,
     MatTableModule,
-    MaskedTextBoxModule  
+    MaskedTextBoxModule,
+    
   ],
   providers: [
     {

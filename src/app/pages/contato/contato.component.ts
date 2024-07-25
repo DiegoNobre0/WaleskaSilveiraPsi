@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { instagramService } from 'src/app/services/instagram.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'app-contato',
@@ -21,12 +22,12 @@ export class ContatoComponent {
     private router: Router,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private instagramService: instagramService
+    private emailService: EmailService
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}')]],
+      number: ['', [Validators.required, Validators.pattern('^\\d{2}\\d{4,5}\\d{4}$')]],
       message: ['', Validators.required]
     });
     this.getPosts();
@@ -54,6 +55,13 @@ export class ContatoComponent {
 
   openInstagramPost(id: string) {
     window.open(`${id}`, "_blank");
+  }
+
+  whatsapp(): void{    
+    const phoneNumber = '71992117598';
+    const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
   }
 
   getPosts() {
@@ -118,9 +126,18 @@ export class ContatoComponent {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
      
-    } else {
-      console.log(this.contactForm.value);
-      // Adicione a lógica para enviar os dados do formulário para um servidor aqui
+    } else {      
+      this.emailService.postEmail(this.contactForm.value).subscribe(
+        () => {         
+          alert('E-mail enviado com sucesso!');
+          this.contactForm.reset(); 
+        },
+        (error) => {
+          console.error('Erro ao postar comentário:', error);
+          alert('Erro ao enviar o e-mail. Por favor, tente novamente mais tarde.');
+        }
+      );
+      
     }
   }
 

@@ -254,11 +254,18 @@
     color: #FAEBE8;
 }
 
+.title-p{}
+
+.title-p:hover{
+    color: #fd8d76;
+}
+    
+
 .text-wpp{
     font-size: 14px;
     display: flex;
     align-items: center;
-    padding-top: 0.8rem;
+    // padding-top: 0.8rem;
     color: #FAEBE8;
 }
 
