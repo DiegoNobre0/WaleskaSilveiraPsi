@@ -79,6 +79,14 @@
     }
 }
 
+.card-2 {
+    width: 100%;
+    height: auto;    
+    @media (max-width: 760px) {
+        display: flex;        
+    }
+}
+
 .card-1:hover {
     color: #c47cff ;
 }
@@ -90,6 +98,18 @@
     padding-bottom: 0.2rem;
     @media (max-width: 760px) {
         width: 10rem;   
+        height: 6rem;    
+        margin-right: 0.5rem;
+    }
+}
+
+.image-wrapper-2 {
+    // width: 100%;
+    height: 8rem;
+    // overflow: hidden;
+    padding-bottom: 0.2rem;
+    @media (max-width: 760px) {
+        width: 4rem;   
         height: 6rem;    
         margin-right: 0.5rem;
     }

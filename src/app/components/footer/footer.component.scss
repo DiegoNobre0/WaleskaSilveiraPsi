@@ -11,7 +11,7 @@
 .div-footer{    
     padding-top: 2rem;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 38% 33% 33%;
     padding-left: 3rem;
     @media (max-width: 990px){
        display: flex;
@@ -25,6 +25,7 @@
     padding-left: 3rem;
     @media (max-width: 990px){
         padding-left: 0rem;
+        padding-bottom: 2rem;
       }
 }
 
@@ -47,4 +48,42 @@
     font-size: 30px;
     width: 40px;
     height: 30px;
+}
+
+
+.form-container {  
+    // padding: 2rem;    
+    width: 17rem;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #F1F1F1;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #744972;
+    color: #FAEBE8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 9px;
 }

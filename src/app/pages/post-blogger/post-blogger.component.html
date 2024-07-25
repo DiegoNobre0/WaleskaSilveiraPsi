@@ -139,32 +139,81 @@
                     class="pagination-button">&gt;</button>
             </div>
 
-            <div style="padding-top: 3rem; border-bottom: 3px solid #744972; width: 100%;">
+            <div *ngIf="commentsPost.length > 0" style="padding-top: 3rem; border-bottom: 3px solid #744972; width: 100%;">
                 <div class="div-flex-center style-tag" style="margin-right: 0.4rem; width: 11rem; height: 25px;">
-                    <p style="color: white; margin: 0; font-weight: 600; font-size: 12px;">COMENTÁRIO</p>
+                    <p style="color: white; margin: 0; font-weight: 600; font-size: 12px;">{{commentsPost.length}} COMENTÁRIO</p>
                 </div>
             </div>
 
-            <div style="display: flex; flex-direction: column; padding-top: 1rem;">
-                <div class="card-1" style="display: flex;" *ngFor="let commentPost of commentsPost">
-                    <div class="image-wrapper">
-                        <img class="image-container-comments" src="./../../assets/unnamed.png">
-                    </div>
-                    <div style="padding-left: 1rem;">
-                        <div style="display: flex; align-items: center;">
-                            <p class="div-calculo-dose-cards" style="font-size: 18px;margin-left: 5px"><b>{{
-                                commentPost.name}}</b></p>
-                            <p style="margin-left: 5px;font-size: 13px;"> - {{ formatDate(commentPost.created_comment) }}</p>
+            <div style="display: flex; flex-direction: column; padding-top: 1rem; width: 100%;">
+                <div class="card-2" style="display: flex; flex-direction: column;" *ngFor="let commentPost of commentsPost; let i = index">
+                    <div style="display: flex;">
+                        <div class="image-wrapper-2">
+                            <img class="image-container-comments" src="./../../assets/unnamed.png">
                         </div>
-                        <div style="display: flex; align-items: center;">
-                            <p class="div-calculo-dose-cards" style="font-size: 14px;margin-left: 5px">{{
-                                commentPost.comment}}</p>
+                        <div style="padding-left: 1rem;">
+                            <div style="display: flex; align-items: center; margin-bottom: -6px;">
+                                <p class="div-calculo-dose-cards" style="font-size: 18px; margin-left: 5px"><b>{{ commentPost.name }}</b></p>
+                                <p style="margin-left: 5px; font-size: 13px;"> - {{ formatDate(commentPost.created_comment) }}</p>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <p class="div-calculo-dose-cards" style="font-size: 16px; margin-left: 5px">{{ commentPost.comment }}</p>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <p class="div-calculo-dose-cards" style="font-size: 14px; margin-left: 5px;cursor: pointer;" (click)="selectComment(i)">Responder</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-2" style="display: flex; flex-direction: column; padding-left: 5.3rem;" *ngFor="let commentRepostPost of getRepliesForComment(commentPost.id)">
+                        <div style="display: flex;">
+                            <div class="image-wrapper-2">
+                                <img class="image-container-comments" src="./../../assets/unnamed.png">
+                            </div>
+                            <div style="padding-left: 1rem;">
+                                <div style="display: flex; align-items: center; margin-bottom: -6px;">
+                                    <p class="div-calculo-dose-cards" style="font-size: 18px; margin-left: 5px"><b>{{ commentRepostPost.name }}</b></p>
+                                    <p style="margin-left: 5px; font-size: 13px;"> - {{ formatDate(commentRepostPost.createdAt) }}</p>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <p class="div-calculo-dose-cards" style="font-size: 16px; margin-left: 5px">{{ commentRepostPost.commentRepost }}</p>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>
+                    <div *ngIf="selectedCommentIndex === i" style="padding-bottom: 2rem;">
+                        <div style="margin-left: 5rem;">
+                            <div style="display: flex; align-items: center; margin-bottom: -6px;">
+                                <p class="div-calculo-dose-cards" style="font-size: 18px; margin-left: 5px"><b>Responda para {{ commentPost.name }}</b></p>
+                                <p style="margin-left: 5px; font-size: 13px; cursor: pointer;" (click)="cancelResponse()"> - Cancelar resposta</p>
+                            </div>                          
+                            <div class="form-container">
+                                <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment(commentPost.id)">
+                                    <textarea id="comment" formControlName="commentRepost" rows="8" placeholder="Comentário:"></textarea>
+                                    <div *ngIf="commentForm.get('comment')?.invalid && commentForm.get('comment')?.touched" style="padding-bottom: 0.5rem; margin-top: -1rem;">
+                                        <small class="error">Por favor, digite seu comentário!</small>
+                                    </div>
+            
+                                    <input type="text" id="name" formControlName="name" placeholder="Nome:">
+                                    <div style="padding-bottom: 0.5rem; margin-top: -1rem;" *ngIf="commentForm.get('name')?.invalid && commentForm.get('name')?.touched">
+                                        <small class="error">Por favor, digite seu nome!</small>
+                                    </div>
+            
+                                    <input type="email" id="email" formControlName="email" placeholder="E-mail:">
+                                    <div style="padding-bottom: 0.5rem; margin-top: -1rem;" *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">
+                                        <small class="error" *ngIf="commentForm.get('email')?.errors?.['required']">Por favor, digite seu endereço de e-mail!</small>
+                                        <small class="error" *ngIf="commentForm.get('email')?.errors?.['email']">Email inválido.</small>
+                                    </div>
+                                    <button class="button-comment" type="submit">Postar resposta</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
 
 
-                <div style="padding-top: 4rem;">
+                <div *ngIf="!isComment" style="padding-top: 4rem;">
                     <p><b>DEIXE UMA RESPOSTA</b></p>
                     <div class="form-container">
                         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">

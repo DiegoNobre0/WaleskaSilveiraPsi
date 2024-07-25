@@ -104,16 +104,25 @@ export class ContatoComponent {
   }
 
 
-  onSubmit() {
-    if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
-      alert('Formulário enviado com sucesso!');
-      // Aqui você pode adicionar a lógica para enviar os dados do formulário para um servidor
+  // onSubmit() {    
+  //   if (this.contactForm.valid) {
+  //     console.log(this.contactForm.value);
+  //     this.contactForm.markAllAsTouched();
+  //     return;
+  //     // Aqui você pode adicionar a lógica para enviar os dados do formulário para um servidor
+  //   } else {
+  //     alert('Por favor, preencha todos os campos corretamente.');
+  //   }
+  // }
+  onSubmit(): void {
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+     
     } else {
-      alert('Por favor, preencha todos os campos corretamente.');
+      console.log(this.contactForm.value);
+      // Adicione a lógica para enviar os dados do formulário para um servidor aqui
     }
   }
-
 
   display: any;
   center: google.maps.LatLngLiteral = {

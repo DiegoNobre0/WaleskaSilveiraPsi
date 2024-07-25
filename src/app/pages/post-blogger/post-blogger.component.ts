@@ -28,8 +28,15 @@ export class PostBloggerComponent {
       comment: ['', Validators.required],
       id_post:['']
     });
+    this.commentForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],      
+      commentRepost: ['', Validators.required],
+      id_comment:['']
+    });
     this.postId = this.route.snapshot.params['id'];
     this.getPosts();
+    this.getCommentsRepost();
     this.getPostBlogger(this.postId);
     this.getTags(this.postId);
     this.filterPostsByTag();
@@ -47,6 +54,7 @@ export class PostBloggerComponent {
   filteredPosts: any[] = [];
   paginatedPost: any[] = [];
   commentsPost: any[] = [];
+  commentsRepostPost: any[] = [];
   bloggerPost: any;
   postId: any;
   formattedText: string = ``;
@@ -61,39 +69,68 @@ export class PostBloggerComponent {
   postsPerPage: number = 3;  
   commentText = '';
   contactForm: FormGroup;
+  commentForm: FormGroup;
+  isComment: boolean = false; 
+  nameComment:any = ''
+  selectedCommentIndex: number | null = null;
 
   ngOnInit() {
     this.getComments(this.postId)
   }
 
-  // submitComment() {
-  //   if (this.commentText.trim() === '') {
-  //     alert('Por favor, digite um comentário válido.');
-  //     return;
-  //   }
+  selectComment(index: number): void {    
+    this.selectedCommentIndex = index;
+    this.isComment = true;
+  }
+  
+  cancelResponse(): void {
+    this.selectedCommentIndex = null;
+    this.isComment = false;
+  }
 
-  //   this.bloggerService.postComment(this.postId, this.commentText).subscribe(
-  //     (response) => {
-  //       console.log('Comentário postado com sucesso:', response);
-  //       alert('Comentário postado com sucesso!');
-  //       this.commentText = ''; // Limpar o campo de texto após o envio
-  //     },
-  //     (error) => {
-  //       console.error('Erro ao postar comentário:', error);
-  //       alert('Erro ao postar comentário. Por favor, tente novamente mais tarde.');
-  //     }
-  //   );
-  // }
+  onSubmitComment(idComment:any): void {    
+    this.commentForm.patchValue({
+      id_comment: idComment
+    });
+
+    if (this.commentForm.invalid) {
+      this.commentForm.markAllAsTouched();
+     
+    } else {
+      this.selectedCommentIndex = null; 
+      this.isComment = false;     
+     
+      this.bloggerService.postCommentRepost(this.commentForm.value).subscribe(
+        (response) => {
+          console.log('Comentário postado com sucesso:', response);
+          alert('Comentário postado com sucesso!');
+          this.commentText = ''; 
+        },
+        (error) => {
+          console.error('Erro ao postar comentário:', error);
+          alert('Erro ao postar comentário. Por favor, tente novamente mais tarde.');
+        }
+      );
+    }
+  }
+
+  getRepliesForComment(commentId: string): any[] {
+    return this.commentsRepostPost.filter(reply => reply.id_comment === commentId);
+  }
+
+
+  replaceComment(){    
+    this.isComment = true;   
+  }
 
   onSubmit() {
-    debugger
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
     this.bloggerService.postComment(this.contactForm.value).subscribe(
       (response) => {
         console.log('Comentário postado com sucesso:', response);
         alert('Comentário postado com sucesso!');
-        this.commentText = ''; // Limpar o campo de texto após o envio
+        this.commentText = ''; 
       },
       (error) => {
         console.error('Erro ao postar comentário:', error);
@@ -106,9 +143,18 @@ export class PostBloggerComponent {
   }
 
   getComments(id:string){
+    debugger
     this.bloggerService.getCommentsById(id).subscribe((response: any) => {
      this.commentsPost = response;
      console.log(this.commentsPost)
+    });
+  }
+
+  getCommentsRepost(){
+    debugger
+    this.bloggerService.getCommentsRepost().subscribe((response: any) => {
+     this.commentsRepostPost = response;
+     console.log(this.commentsRepostPost)
     });
   }
 
@@ -124,8 +170,7 @@ export class PostBloggerComponent {
     this.updatePaginatedPosts();
   }
 
-  updatePaginatedPosts() {
-    // Lógica para atualizar os posts exibidos na página atual de acordo com a paginação
+  updatePaginatedPosts() {    
     const startIndex = (this.currentPage - 1) * this.postsPerPage;
     this.paginatedPost = this.filteredPosts.slice(startIndex, startIndex + this.postsPerPage);
   }
@@ -163,6 +208,8 @@ export class PostBloggerComponent {
   getPostBloggerId(id:any) {     
     this.getPostBlogger(id);
     this.getTags(id)
+    this.getComments(id)
+    this.getCommentsRepost()
     this.filterPostsByTag();
     this.router.navigate(['/post', id], { relativeTo: this.route });    
   }  
@@ -170,7 +217,7 @@ export class PostBloggerComponent {
 
   nextPage() {
     this.getPostBlogger(this.nextId);
-    this.getTags(this.pageId)
+    this.getTags(this.pageId)    
     this.filterPostsByTag();
     this.router.navigate(['/post', this.nextId], { relativeTo: this.route }).then(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
@@ -179,7 +226,7 @@ export class PostBloggerComponent {
 
   PreviousPage() {
     this.getPostBlogger(this.previousId);
-    this.getTags(this.pageId)
+    this.getTags(this.pageId)    
     this.filterPostsByTag();
     this.router.navigate(['/post', this.previousId], { relativeTo: this.route }).then(() => {
       this.viewportScroller.scrollToPosition([0, 0]);
@@ -238,11 +285,10 @@ export class PostBloggerComponent {
     return summary;
   }
 
-  formatDate(dateString: string): string {
-    // Lógica para formatar a data de publicação
+  formatDate(dateString: string): string {    
     const date = new Date(dateString);
-    const day = ('0' + date.getDate()).slice(-2); // Adiciona zero à esquerda se necessário
-    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Adiciona zero à esquerda se necessário
+    const day = ('0' + date.getDate()).slice(-2); 
+    const month = ('0' + (date.getMonth() + 1)).slice(-2); 
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }

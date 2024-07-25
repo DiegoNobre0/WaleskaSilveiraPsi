@@ -58,14 +58,14 @@
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                     <input style="padding-bottom: 0.5rem;" type="text" id="name" formControlName="name"
                         placeholder="Seu nome">
-                    <div style="padding-bottom: 0.5rem;"
+                    <div style="padding-bottom: 0.5rem;display: flex;"
                         *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
                         <small class="error">O campo é obrigatório.</small>
                     </div>
 
                     <input style="padding-bottom: 0.5rem;" type="email" id="email" formControlName="email"
                         placeholder="Seu e-mail">
-                    <div style="padding-bottom: 0.5rem;"
+                    <div style="padding-bottom: 0.5rem;display: flex;"
                         *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
                         <small class="error" *ngIf="contactForm.get('email')?.errors?.['required']">O campo é
                             obrigatório.</small>
@@ -74,7 +74,7 @@
 
                     <input style="padding-bottom: 0.5rem;" type="tel" id="number" formControlName="number"
                         placeholder="Seu WhatsApp">
-                    <div style="padding-bottom: 0.5rem;"
+                    <div style="padding-bottom: 0.5rem;display: flex;"
                         *ngIf="contactForm.get('number')?.invalid && contactForm.get('number')?.touched">
                         <small class="error" *ngIf="contactForm.get('number')?.errors?.['required']">O campo é
                             obrigatório.</small>
@@ -84,11 +84,11 @@
 
                     <textarea style="padding-bottom: 0.5rem;" id="message" formControlName="message" rows="8"
                         placeholder="Mensagem"></textarea>
-                    <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                    <div style="display: flex;margin-top: -11px;margin-bottom: 1rem;" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
                         <small class="error">Mensagem é obrigatória.</small>
                     </div>
 
-                    <button type="submit" [disabled]="contactForm.invalid">Enviar Mensagem</button>
+                    <button type="submit">Enviar Mensagem</button>
                 </form>
             </div>
         </div>

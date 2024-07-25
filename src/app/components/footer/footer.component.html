@@ -60,36 +60,43 @@
             </div>
         </div>
         <div class="div-grid">
-            <span style="padding-bottom: 2rem; font-size: 22px;">Especialidades</span>
-            <div class="div-pb">
-                <mat-icon class="icon-calculo-2">psychology</mat-icon>
-                <span style="position: absolute; margin-top: 5px;">	
-                    TRATAMENTO DE DEPRESSÃO
-                </span>
-            </div>
-            <div class="div-pb">
-                <mat-icon class="icon-calculo-2">psychology</mat-icon>
-                <span style="position: absolute; margin-top: 5px;">	
-                    TRATAMENTO DE ANSIEDADE
-                </span>
-            </div>
-            <div class="div-pb">
-                <mat-icon class="icon-calculo-2">psychology</mat-icon>
-                <span style="position: absolute; margin-top: 5px;">	
-                    TRANSTORNOS DE HUMOR
-                </span>
-            </div>
-            <div class="div-pb">
-                <mat-icon class="icon-calculo-2">psychology</mat-icon>
-                <span style="position: absolute; margin-top: 5px;">	
-                    RELACIONAMENTOS
-                </span>
-            </div>
-            <div class="div-pb">
-                <mat-icon class="icon-calculo-2">psychology</mat-icon>
-                <span style="position: absolute; margin-top: 5px;">	
-                    VÍTIMAS DE VIOLÊNCIA
-                </span>
+            <span style="padding-bottom: 2rem; font-size: 22px;">Contato</span>
+            <div class="form-container">
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                    <input style="padding-bottom: 0.5rem;" type="text" id="name" formControlName="name"
+                        placeholder="Seu nome">
+                    <div style="padding-bottom: 0.5rem;display: flex;"
+                        *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                        <small class="error">O campo é obrigatório.</small>
+                    </div>
+
+                    <input style="padding-bottom: 0.5rem;" type="email" id="email" formControlName="email"
+                        placeholder="Seu e-mail">
+                    <div style="padding-bottom: 0.5rem;display: flex;"
+                        *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                        <small class="error" *ngIf="contactForm.get('email')?.errors?.['required']">O campo é
+                            obrigatório.</small>
+                        <small class="error" *ngIf="contactForm.get('email')?.errors?.['email']">Email inválido.</small>
+                    </div>
+
+                    <input style="padding-bottom: 0.5rem;" type="tel" id="number" formControlName="number"
+                        placeholder="Seu WhatsApp">
+                    <div style="padding-bottom: 0.5rem;display: flex;"
+                        *ngIf="contactForm.get('number')?.invalid && contactForm.get('number')?.touched">
+                        <small class="error" *ngIf="contactForm.get('number')?.errors?.['required']">O campo é
+                            obrigatório.</small>
+                        <small class="error" *ngIf="contactForm.get('number')?.errors?.['pattern']">Formato de número
+                            inválido.</small>
+                    </div>
+
+                    <textarea style="padding-bottom: 0.5rem;" id="message" formControlName="message" rows="8"
+                        placeholder="Mensagem"></textarea>
+                    <div style="display: flex;margin-top: -11px;margin-bottom: 1rem;" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                        <small class="error">Mensagem é obrigatória.</small>
+                    </div>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
             </div>
         </div>
     </div>

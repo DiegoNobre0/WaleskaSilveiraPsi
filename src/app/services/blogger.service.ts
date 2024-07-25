@@ -44,9 +44,26 @@ export class BloggerService {
     );
   }
 
-  postComment(data: any): Observable<any> {
-    debugger
+  getCommentsRepost(): Observable<any> {
+    const url = "https://app-wspsi-backend.vercel.app/commentsRepost";
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
+      map((res: any) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  postComment(data: any): Observable<any> {    
     const url = "https://app-wspsi-backend.vercel.app/comment";
+    // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.httpClient
+    .post(url, data)
+    .pipe(catchError(this.handleError));
+  }
+
+  postCommentRepost(data: any): Observable<any> {    
+    const url = "https://app-wspsi-backend.vercel.app/commentRepost";
 
     // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient
