@@ -183,7 +183,7 @@
     padding: 2rem;
     margin: 1rem;
     width: 67%;
-    background-color: #F1F1F1;
+    background-color: #FAEBE8;
     transition: all 0.3s ease-out;
     cursor: pointer;
     @media (max-width: 500px) {
@@ -293,7 +293,7 @@
 }
 
 .image-container2 img {
-    border: 5px solid #F1F1F1;
+    border: 5px solid white;
     width: 100%;
     /* Largura fixa para a imagem */
     height: 12rem;
@@ -468,7 +468,7 @@
 .div-sobre{
     display: flex;
     justify-content: space-around;
-    background-color: #FAEBE8;
+    background-color: #F1F1F1;
     padding: 3rem 1rem 3rem 1rem;
 
     @media (max-width: 1300px) {

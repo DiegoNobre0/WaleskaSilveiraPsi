@@ -8,8 +8,8 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class BloggerService {
 
-  private apiKey = 'AIzaSyCLoF7T9NZKd3FM5qnoO8wmYgWXGezjosg'; // Chave de API do Google
-  private blogId = '7973829152381710727'; // ID do seu blog no Blogger
+  private apiKey = 'AIzaSyAbXrTHB46qVX2NV-Rt---wlQKMEZuuV0A'; // Chave de API do Google
+  private blogId = '3069278887571364282'; // ID do seu blog no Blogger
   private baseUrl = 'https://www.googleapis.com/blogger/v3/blogs';
 
   constructor(private httpClient: HttpClient) {}
