@@ -12,7 +12,7 @@
     padding-top: 2rem;
     display: grid;
     grid-template-columns: 34% 33% 33%;
-    padding-left: 3rem;
+    padding-left: 1rem;
     @media (max-width: 990px){
        display: flex;
        flex-direction: column;
@@ -74,6 +74,10 @@ input, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     background: #F1F1F1;
+    @media (max-width: 337px){
+        width: 85%;
+      }
+
 }
 
 button {
@@ -86,4 +90,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin-left: 9px;
+    @media (max-width: 337px){
+        width: 85%;
+      }
 }

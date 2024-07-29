@@ -6,6 +6,10 @@
     background: white;
     margin: 0px;
     overflow-x: hidden;
+    width: 100%;
+    @media (max-width: 330px) {
+        width: 20rem;
+    }
 }
 
 .cards-button {
@@ -124,7 +128,7 @@
   }
   
   .instagram-card:hover .card-content {
-    transform: scale(1.2);   
+    transform: scale(1.1);   
     @media (max-width: 990px){
         transform: none;
     } 

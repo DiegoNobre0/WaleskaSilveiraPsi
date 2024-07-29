@@ -22,12 +22,12 @@ REST_API: string = `https://graph.instagram.com/me/media?fields=${this.CAMPOS}&a
 httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 constructor(private httpClient: HttpClient) {}
 
-Add(data: any): Observable<any> {  
-  let API_URL = `${this.REST_API}/Medicamentos`;
-  return this.httpClient
-    .post(API_URL, data)
-    .pipe(catchError(this.handleError));
-}
+// Add(data: any): Observable<any> {  
+//   let API_URL = `${this.REST_API}/Medicamentos`;
+//   return this.httpClient
+//     .post(API_URL, data)
+//     .pipe(catchError(this.handleError));
+// }
 
 GetAll() {
   return this.httpClient.get(`${this.REST_API}`);
@@ -38,16 +38,16 @@ GetMediaDetails(mediaId: string) {
     return this.httpClient.get(`https://graph.instagram.com/${mediaId}?fields=id,media_type,media_url,permalink,shortcode&access_token=${this.accessToken}`);
   }
 
-Get(id: any): Observable<any> {
+// Get(id: any): Observable<any> {
   
-  let API_URL = `${this.REST_API}/Medicamentos/${id}`;
-  return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
-    map((res: any) => {
-      return res || {};
-    }),
-    catchError(this.handleError)
-  );
-}
+//   let API_URL = `${this.REST_API}/Medicamentos/${id}`;
+//   return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
+//     map((res: any) => {
+//       return res || {};
+//     }),
+//     catchError(this.handleError)
+//   );
+// }
 
 // update(data: any): Observable<any> {
 //   let API_URL = `${this.REST_API}/Medicamentos/${data.id}`;

@@ -6,6 +6,10 @@
     background: #f8f9fa;
     margin: 0px;
     overflow-x: hidden;
+    width: 100%;
+    @media (max-width: 330px) {
+        width: 20rem;
+    }
 }
 
 .cards-button {
@@ -49,9 +53,30 @@
     }
 }
 
+.overlay-text {
+    position: absolute;
+    top: 39%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Altere para a cor e opacidade desejadas */
+    @media(max-width: 990px) {
+       
+    } 
+}
+
 .div-calculo-dose {
     color: #744972;
-    padding: 3rem 2rem 0rem 2rem;
+    padding: 2rem 2rem 0rem 2rem;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
 
@@ -95,6 +120,34 @@
     width: 100%;
     @media (max-width: 990px){
         padding-top: 3rem;
+    }
+}
+
+.image-container-2 {
+    height: 51rem;
+    width: 100%;
+    @media (max-width: 990px){
+        padding-top: 3rem;
+        height: 65%;
+    }
+}
+
+.image-container-3{
+    position: relative;
+    width: 100%;
+    background-image: url('../../../assets/foto12.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: auto; /* Ajuste conforme necessário */
+    padding-top: 56.25%; /* Proporção 16:9, ajuste conforme necessário */
+    @media (max-width: 990px){
+        display: none;
+    }
+}
+
+.image-desktop{
+    @media (min-width: 990px){
+        display: none;
     }
 }
 
@@ -242,6 +295,26 @@
     font-style: normal;
     // font-style: normal;
     font-size: 65px;
+    @media (max-width: 660px) {
+        line-height: 65px;
+    }
+    // @media (max-width: 564px) {
+    //     line-height: 20px;
+    // }
+    // @media (max-width: 476px) {
+    //     line-height: 20px;
+    // }
+  
+}
+
+.name-home-2 {
+    // font-family: "Nanum Myeongjo", serif;
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    // font-style: normal;
+    font-size: 90px;
     @media (max-width: 660px) {
         line-height: 65px;
     }

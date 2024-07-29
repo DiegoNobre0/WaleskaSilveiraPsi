@@ -42,6 +42,8 @@ import { PostBloggerComponent } from './pages/post-blogger/post-blogger.componen
 import { ContatoComponent } from './pages/contato/contato.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
+import { ApproveCommentComponent } from './components/approve-comment/approve-comment.component';
+import { RejectCommentComponent } from './components/reject-comment/reject-comment.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,13 @@ import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
     HomeComponent,
     FooterComponent,
     AboutComponent,    
-    ServicesComponent, BloggerComponent, PostBloggerComponent, ContatoComponent, WhatsappComponent
+    ServicesComponent,
+    BloggerComponent,
+    PostBloggerComponent,
+    ContatoComponent,
+    WhatsappComponent,
+    ApproveCommentComponent,
+    RejectCommentComponent
   ],
   imports: [
     BrowserModule,

@@ -49,19 +49,23 @@ export class NavbarComponent implements OnInit {
 
     if (this.rotaAtual === "" && window.scrollY > 90) {
       nav.style.background = '#fff';
+      nav.style.color = '#744972'
       return
     }
 
     if (window.scrollY === 0) {
       nav.style.background = 'transparent';
+      nav.style.color = 'white'
       return;
     }
 
     if(this.rotaAtual){
       nav.style.background = '#fff';
+      nav.style.color = '#744972'
       return
     }
     nav.style.background = 'transparent';
+    nav.style.color = 'white'
   }
 
   home(): void{

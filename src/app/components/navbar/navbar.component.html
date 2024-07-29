@@ -3,7 +3,7 @@
     <mat-accordion class="display-mobile-accordion ">
         <mat-expansion-panel
          hideToggle
-         style="background: white;"
+         style="background: white; color: #744972;"
          (opened)="panelOpenState = true"
          (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
@@ -12,7 +12,7 @@
                     <img class="img-logo" src="../../../assets/logo-png-ws.png" (click)="home()">
                 </div>
                 <button mat-icon-button >
-                    <mat-icon>{{panelOpenState? "close" : "menu"}}</mat-icon>
+                    <mat-icon style="color: #744972;">{{panelOpenState? "close" : "menu"}}</mat-icon>
                 </button>
             </mat-panel-title>
             <mat-panel-description style="display: contents;">
@@ -21,19 +21,19 @@
           </mat-expansion-panel-header >
             <div style="display: grid;">
                 <button mat-button (click)="home()">
-                    <span class="span-toolbar">HOME</span>
+                    <span class="span-toolbar" style="color: #744972;">HOME</span>
                 </button>  
                 <button mat-button (click)="about()">
-                    <span class="span-toolbar">SOBRE</span>
+                    <span class="span-toolbar" style="color: #744972;">SOBRE</span>
                 </button> 
                 <button mat-button (click)="service()">
-                    <span class="span-toolbar">SERVIÇOS</span>
+                    <span class="span-toolbar" style="color: #744972;">SERVIÇOS</span>
                 </button> 
                 <button mat-button (click)="blog()">
-                    <span class="span-toolbar">BLOG</span>
+                    <span class="span-toolbar" style="color: #744972;">BLOG</span>
                 </button> 
                 <button mat-button (click)="contact()">
-                    <span class="span-toolbar">CONTATO</span>
+                    <span class="span-toolbar" style="color: #744972;">CONTATO</span>
                 </button>    
             </div>
         </mat-expansion-panel>

@@ -147,7 +147,7 @@
 
             <div style="display: flex; flex-direction: column; padding-top: 1rem; width: 100%;">
                 <div class="card-2" style="display: flex; flex-direction: column;" *ngFor="let commentPost of commentsPost; let i = index">
-                    <div style="display: flex;">
+                    <div *ngIf="commentPost.status === 'approved'" style="display: flex;">
                         <div class="image-wrapper-2">
                             <img class="image-container-comments" src="./../../assets/unnamed.png">
                         </div>
@@ -163,6 +163,20 @@
                                 <p class="div-calculo-dose-cards" style="font-size: 14px; margin-left: 5px;cursor: pointer;" (click)="selectComment(i)">Responder</p>
                             </div>
                         </div>
+                    </div>
+                    <div *ngIf="commentPost.status === 'pending'" style="display: flex;">
+                        <div class="image-wrapper-2">
+                            <img class="image-container-comments" src="./../../assets/unnamed.png">
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: center; margin-bottom: -6px;">
+                                <p style="font-size: 16px; margin-left: 5px">Comentário está aguardando aprovação.</p>                                
+                            </div> 
+                        </div>
+                    </div>
+                  
+                    <div *ngIf="commentPost.status === 'rejected'" style="display: none;">
+                        <!-- Comentário rejeitado, não exibe nada -->
                     </div>
                     <div class="card-2" style="display: flex; flex-direction: column; padding-left: 5.3rem;" *ngFor="let commentRepostPost of getRepliesForComment(commentPost.id)">
                         <div style="display: flex;">
