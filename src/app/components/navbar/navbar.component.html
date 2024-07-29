@@ -42,8 +42,9 @@
 
 <mat-toolbar id="nav" class="mat-toolbar-desktop">    
     <div class="div-logo display-mobile-menu">
-        <img class="img-logo" src="../../../assets/logo-png-ws.png" (click)="home()">
-    </div>
+        <img *ngIf="showWhiteLogo" class="img-logo" src="../../../assets/logo-wspsi-white.svg" (click)="home()">
+        <img *ngIf="showDefaultLogo" class="img-logo" src="../../../assets/logo-wspsi.svg" (click)="home()">
+      </div>
     <span class="toolbar-spacer display-mobile-menu"></span>
     <div class="display-mobile-menu">
         <button mat-button (click)="home()">

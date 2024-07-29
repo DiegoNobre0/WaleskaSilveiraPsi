@@ -26,12 +26,15 @@ export class NavbarComponent implements OnInit {
   rotaAtual = ""
   panelOpenState : boolean = false;
   loginLogout : boolean = false;
+  showWhiteLogo : boolean = true;
+  showDefaultLogo : boolean= false;
 
   ngOnInit() {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.rotaAtual = this.activatedRoute?.root?.firstChild?.snapshot?.routeConfig?.path ?? ""
+        console.log(this.rotaAtual)
         this.onWindowScroll();
       });
       // this.confirmToken();
@@ -46,26 +49,48 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll(){    
     const nav = this.elementRef.nativeElement.querySelector('#nav');
-
+  
     if (this.rotaAtual === "" && window.scrollY > 90) {
+      this.showWhiteLogo = false;
+      this.showDefaultLogo = true;
       nav.style.background = '#fff';
       nav.style.color = '#744972'
       return
     }
 
-    if (window.scrollY === 0) {
+    // if (window.scrollY === 0) {
+    //   nav.style.background = 'transparent';
+    //   nav.style.color = 'white'
+    //   return;
+    // }
+
+    if (window.scrollY === 0 && this.rotaAtual === "") {
+      this.showWhiteLogo = true;
+      this.showDefaultLogo = false;
       nav.style.background = 'transparent';
       nav.style.color = 'white'
       return;
     }
 
+    if (window.scrollY === 0 && (this.rotaAtual === "blog" || this.rotaAtual === "servicos" || this.rotaAtual === "contato" || this.rotaAtual === "sobre" )) {
+      this.showWhiteLogo = false;
+      this.showDefaultLogo = true;
+      nav.style.background = 'transparent';
+      nav.style.color = '#744972'
+      return;
+    }
+
     if(this.rotaAtual){
+      this.showWhiteLogo = false;
+      this.showDefaultLogo = true;
       nav.style.background = '#fff';
       nav.style.color = '#744972'
       return
     }
+
+  
     nav.style.background = 'transparent';
-    nav.style.color = 'white'
+    
   }
 
   home(): void{
