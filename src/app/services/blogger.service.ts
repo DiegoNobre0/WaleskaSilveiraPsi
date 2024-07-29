@@ -58,8 +58,8 @@ export class BloggerService {
   }
 
   postComment(data: any): Observable<any> {       
-    const url = "https://app-wspsi-backend-v2.vercel.app/comment";
-    // const url = `${this.URL_LOCAL}/comment`;
+    // const url = "https://app-wspsi-backend-v2.vercel.app/comment";
+    const url = `${this.URL_LOCAL}/comment`;
     // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient
     .post(url, data)

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommentService {
-  private apiUrl = 'https://app-wspsi-backend-v2.vercel.app'; // URL base do seu backend
+  // private apiUrl = 'https://app-wspsi-backend-v2.vercel.app';
+  private apiUrl = 'https://localhost:3333';
 
   constructor(private http: HttpClient) {}
 
