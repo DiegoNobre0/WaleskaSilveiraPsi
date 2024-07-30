@@ -24,6 +24,7 @@ export class BloggerComponent {
   ) {
     this.getPosts();
     this.getPostInstagram();
+    this.updatePaginatedPosts();
     this.matIconRegistry.addSvgIcon(
       'whatsapp',
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/whatsapp.svg')
@@ -35,6 +36,9 @@ export class BloggerComponent {
   exibirModal: boolean = false;
   instagramPosts: any[] = [];
   bloggerPosts: any[] = [];
+  paginatedPost: any[] = [];
+  currentPage: number = 1;
+  postsPerPage: number = 4;
  
  
   postBloger(): void{
@@ -43,6 +47,26 @@ export class BloggerComponent {
 
   ngOnInit(){   
     
+  }
+
+  
+  nextPageBlog() {
+    if ((this.currentPage * this.postsPerPage) < this.bloggerPosts.length) {
+      this.currentPage++;
+      this.updatePaginatedPosts();
+    }
+  }
+  
+  prevPageBlog() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePaginatedPosts();
+    }
+  }
+  
+  updatePaginatedPosts() {
+    const startIndex = (this.currentPage - 1) * this.postsPerPage;
+    this.paginatedPost = this.bloggerPosts.slice(startIndex, startIndex + this.postsPerPage);
   }
 
   openInstagramPost(id: string) {

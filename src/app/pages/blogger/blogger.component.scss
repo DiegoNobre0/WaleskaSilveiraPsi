@@ -74,11 +74,11 @@
 }
 
 .div-calculo-dose-cards {
-    text-align: justify;
+    text-align: -webkit-auto;
     @media (max-width: 990px) {
         display: flex;
-        justify-content: center;
-        text-align: justify;
+        flex-direction: column;
+        text-align: -webkit-auto;
     }
 }
 
@@ -279,14 +279,14 @@
         margin-left: 0rem;
     }
 }
-.marg-text-wpp{    
-    @media (max-width: 1100px) {
-        padding-left: 1rem;
-    }
-     @media (max-width: 500px) {
-        padding-left: 0rem;
-    }
-}
+// .marg-text-wpp{    
+//     @media (max-width: 1100px) {
+//         padding-left: 1rem;
+//     }
+//      @media (max-width: 500px) {
+//         padding-left: 0rem;
+//     }
+// }
 .image-container2 {
     display: flex;
     align-items: center;
@@ -469,15 +469,44 @@
     }
 }
 
+.pagination {
+    display: flex;
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+
+.pagination span {
+    margin: 0 1rem;
+}
+
+.pagination-button {
+    background-color: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    border: 1px solid  #744972;
+    color: #744972;
+}
+
+.pagination-button:hover {
+   background-color:#744972;
+   color: #FAEBE8;
+}
+
 .div-sobre{
     display: flex;
     justify-content: space-around;
     background-color: #F1F1F1;
     padding: 3rem 1rem 3rem 1rem;
+    
 
     @media (max-width: 1300px) {
         justify-content: none;
         flex-direction: column-reverse;
+    }
+
+    @media (max-width: 990px) {
+        padding: 0rem 1rem 3rem 0rem;
     }
 }
 

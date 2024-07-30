@@ -15,7 +15,7 @@
 
     <div class="div-sobre div-curva">
         <div class="text-container div-info" style="color: #744972;">
-            <div style="padding-bottom: 1rem; display: flex;">
+            <div style="padding-bottom: 1rem; display: flex;width: 23rem;">
                 <div>
                     <p class="name-home no-margin" style="font-size: 25px; font-weight: 600">@waleskasilveirapsi</p>
                     <hr class="style-hr" style="margin-top: 0; margin-left: 0; color: #744972;">
@@ -57,23 +57,30 @@
             <img src="./../../assets/foto4.jpeg">
         </div> -->
         <div class="div-calculo-dose-cards" style="width: 100%;">
-            <div class="div-calculo-dose" >
-                <div class="card" *ngFor="let post of bloggerPosts" (click)="getPostBlogger(post.id)">
-                    <div class="image-container2">
-                        <img [src]="extractImageUrl(post.content)">
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" class="title-p" style="font-size: 22px; padding-top: 1rem; line-height: 26px;">{{ extractTitle(post.title) }}</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards"><b>{{ post.author.displayName }}</b></p>
-                        <p style="margin-left: 5px"> - {{ formatDate(post.published) }}</p>
-                    </div>
-                    <div class="div-flex-center">
-                        <p class="div-calculo-dose-cards" [innerHTML]="extractSummary(post.content)"></p>
-                    </div>
+            <div class="div-calculo-dose">
+              <div class="card" *ngFor="let post of paginatedPost" (click)="getPostBlogger(post.id)">
+                <div class="image-container2">
+                  <img [src]="extractImageUrl(post.content)">
                 </div>
+                <div class="div-flex-center">
+                  <p class="div-calculo-dose-cards" class="title-p" style="font-size: 22px; padding-top: 1rem; line-height: 26px;">
+                    {{ extractTitle(post.title) }}
+                  </p>
+                </div>
+                <div class="div-flex-center">
+                  <p class="div-calculo-dose-cards"><b>{{ post.author.displayName }}</b></p>
+                  <p style="margin-left: 5px"> - {{ formatDate(post.published) }}</p>
+                </div>
+                <div class="div-flex-center">
+                  <p class="div-calculo-dose-cards" [innerHTML]="extractSummary(post.content)"></p>
+                </div>
+              </div>
             </div>
-        </div>
+            <div class="pagination">
+              <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="pagination-button" style="margin-right: 1rem;">&lt;</button>
+              <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= bloggerPosts.length" class="pagination-button">&gt;</button>
+            </div>
+          </div>
+          
     </div>
 </div>
