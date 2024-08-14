@@ -126,6 +126,7 @@ export class PostBloggerComponent {
   }
 
   onSubmit() {
+    debugger
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
     this.bloggerService.postComment(this.contactForm.value).subscribe(
