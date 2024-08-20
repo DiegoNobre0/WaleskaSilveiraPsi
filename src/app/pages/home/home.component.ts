@@ -41,14 +41,14 @@ export class HomeComponent implements OnInit{
 
   getPosts() {    
     this.bloggerService.getAllPosts().subscribe((response: any) => {
-      console.log(response)
+      // console.log(response)
       localStorage.setItem('bloggerPosts', JSON.stringify(response.items));    
     });
   }   
 
   getPostInstagram() {    
     this.instagramService.GetAll().subscribe((response: any) => {  
-      console.log(response)
+      // console.log(response)
       localStorage.setItem('instagramPosts', JSON.stringify(response.data));   
     });
   }

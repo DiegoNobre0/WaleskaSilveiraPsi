@@ -128,7 +128,7 @@ export class PostBloggerComponent {
   onSubmit() {
     debugger
     if (this.contactForm.valid) {
-      console.log(this.contactForm.value);
+      // console.log(this.contactForm.value);
     this.bloggerService.postComment(this.contactForm.value).subscribe(
       (response) => {
         this.contactForm.reset(); 
@@ -147,14 +147,14 @@ export class PostBloggerComponent {
   getComments(id:string){    
     this.bloggerService.getCommentsById(id).subscribe((response: any) => {
      this.commentsPost = response;
-     console.log(this.commentsPost)
+    //  console.log(this.commentsPost)
     });
   }
 
   getCommentsRepost(){    
     this.bloggerService.getCommentsRepost().subscribe((response: any) => {
      this.commentsRepostPost = response;
-     console.log(this.commentsRepostPost)
+    //  console.log(this.commentsRepostPost)
     });
   }
 

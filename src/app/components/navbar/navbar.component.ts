@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.rotaAtual = this.activatedRoute?.root?.firstChild?.snapshot?.routeConfig?.path ?? ""
-        console.log(this.rotaAtual)
+        // console.log(this.rotaAtual)
         this.onWindowScroll();
       });
       // this.confirmToken();

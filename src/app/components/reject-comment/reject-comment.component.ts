@@ -23,7 +23,7 @@ export class RejectCommentComponent  {
       const token = params['token'];
       if (id && token) {
         this.commentService.rejectComment(id, token).subscribe(response => {
-          console.log(response)
+          // console.log(response)
           if (response.success === true) {
             const id_post = response.id_post; // Verifique se a resposta inclui id_post
             this.router.navigate(['/post', id_post]);
