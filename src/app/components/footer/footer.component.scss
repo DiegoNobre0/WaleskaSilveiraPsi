@@ -1,96 +1,241 @@
-.div-logo{
-    width: 57%;
+// Variáveis
+$color-primary: #744972;  // Roxo
+$color-accent: #fd8d76;   // Coral
+$bg-light: #fdfdfd;       // Fundo bem clarinho
+$font-cinzel: 'Cinzel', serif;
+
+.footer-section {
+    background-color: $bg-light;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 4rem;
+    color: $color-primary;
 }
 
-.img-logo{
-    height: 10rem;
-    width: 10rem;
-    
-}
-
-.div-footer{    
-    padding-top: 2rem;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
     display: grid;
-    grid-template-columns: 34% 33% 33%;
-    padding-left: 1rem;
-    @media (max-width: 990px){
-       display: flex;
-       flex-direction: column;
-     }
+    grid-template-columns: 1fr; // Mobile: 1 coluna
+    gap: 3rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1.2fr 1fr 1fr; // PC: 3 colunas
+        gap: 4rem;
+    }
 }
 
-.div-grid{
+// --- COLUNA 1: INFO ---
+.info-column {
+    .logo-area img {
+        height: 6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .intro-text {
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+        text-align: justify;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        
+        i {
+            color: $color-accent;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        span { font-weight: 500; }
+    }
+}
+
+// --- COLUNA 2: ESPECIALIDADES ---
+.specialties-column {
+    .specialties-list {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(116, 73, 114, 0.1);
+            display: flex;
+            align-items: center;
+            
+            i {
+                color: $color-accent;
+                margin-right: 10px;
+                font-size: 0.8rem;
+            }
+
+            &:last-child { border-bottom: none; }
+        }
+    }
+}
+
+// --- COLUNA 3: FORMULÁRIO ---
+.form-column {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+
+    .field {
+        margin-bottom: 1rem;
+    }
+
+    .error {
+        color: #e74c3c;
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+        display: block;
+    }
+
+    // Estilo dos Inputs do PrimeNG
+    ::ng-deep {
+        .p-inputtext {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            color: $color-primary;
+            
+            &:focus {
+                border-color: $color-primary;
+                box-shadow: 0 0 0 2px rgba(116, 73, 114, 0.2);
+            }
+        }
+
+        .btn-send {
+            margin-top: 1rem;
+            color: $color-primary !important;
+            border-color: $color-primary !important;
+            font-weight: 600;
+            
+            &:hover {
+                background-color: $color-primary !important;
+                color: white !important;
+            }
+        }
+    }
+}
+
+// Títulos das Colunas
+.column-title {
+    font-family: $font-cinzel;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid $color-accent;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+// --- BARRA DE COPYRIGHT ---
+.copyright-bar {
+    margin-top: 4rem;
+    padding: 1.5rem;
+    background-color: $color-primary;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    
+    p { margin: 0; }
+}
+
+$color-primary: #744972; // Roxo
+$color-error: #e74c3c;
+
+.footer-form {
     display: flex;
     flex-direction: column;
-    padding-left: 3rem;
-    @media (max-width: 990px){
-        padding-left: 0rem;
-        padding-bottom: 2rem;
-      }
-}
-
-.spam-flex-justify{
-    display: flex;
-    justify-content: center;
-}
-
-.div-pb{
-    padding-bottom: 1rem;
-}
-
-.icon-calculo{
-    font-size: 24px;
-    width: 40px;
-    height: 30px;
-}
-
-.icon-calculo-2{
-    font-size: 30px;
-    width: 40px;
-    height: 30px;
-}
-
-
-.form-container {  
-    // padding: 2rem;    
-    width: 17rem;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input, textarea {
+    gap: 1rem;
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #F1F1F1;
-    @media (max-width: 337px){
-        width: 85%;
-      }
+    max-width: 400px; // Limita a largura para ficar bonito
+    margin: 0 auto;   // Centraliza
 
-}
+    .form-group, .input-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #744972;
-    color: #FAEBE8;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 9px;
-    @media (max-width: 337px){
-        width: 85%;
-      }
+    // --- ESTILO UNIFICADO PARA TODOS OS INPUTS ---
+    // Targeta inputs normais, textareas e o input de dentro do p-inputMask
+    .custom-input, 
+    ::ng-deep .custom-input {
+        width: 100%;
+        padding: 12px 15px !important; // Espaçamento interno confortável
+        border: 1px solid #ccc !important; // Borda cinza suave padrão
+        border-radius: 6px !important;
+        background-color: #ffffff !important; // Força fundo BRANCO (tira o cinza do PrimeNG)
+        font-family: inherit;
+        font-size: 1rem;
+        color: #333;
+        outline: none;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+
+        // Placeholder com cor suave
+        &::placeholder {
+            color: #999;
+            opacity: 1;
+        }
+
+        // Estado de Foco (Clicado)
+        &:focus {
+            border-color: $color-primary !important; // Borda Roxa
+            box-shadow: 0 0 0 3px rgba(116, 73, 114, 0.15) !important; // Brilho roxo suave
+        }
+    }
+
+    // Correção específica para o componente de Máscara do PrimeNG
+    // O componente cria uma div em volta, precisamos garantir que ela ocupe 100%
+    ::ng-deep p-inputmask {
+        display: block;
+        width: 100%;
+    }
+
+    // Área de Texto (Textarea)
+    textarea.custom-input {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    // Mensagens de Erro
+    .error-msg {
+        color: $color-error;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        padding-left: 2px;
+    }
+
+    // Botão de Enviar
+    .submit-btn {
+        margin-top: 10px;
+        padding: 14px;
+        background-color: $color-primary;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        &:hover {
+            background-color: lighten($color-primary, 10%);
+        }
+
+        &:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    }
 }

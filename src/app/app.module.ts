@@ -35,7 +35,7 @@ import { MaskedTextBoxModule } from '@progress/kendo-angular-inputs';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './pages/about/about.component';
-
+import { AccordionModule } from 'primeng/accordion';
 import { ServicesComponent } from './pages/services/services.component';
 import { BloggerComponent } from './pages/blogger/blogger.component';
 import { PostBloggerComponent } from './pages/post-blogger/post-blogger.component';
@@ -44,6 +44,13 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 import { ApproveCommentComponent } from './components/approve-comment/approve-comment.component';
 import { RejectCommentComponent } from './components/reject-comment/reject-comment.component';
+import { CarouselModule } from 'primeng/carousel';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { InputMaskModule } from 'primeng/inputmask';
+import { MentoriaLibertaComponent } from './pages/mentoria-liberta/mentoria-liberta.component';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [
@@ -58,7 +65,8 @@ import { RejectCommentComponent } from './components/reject-comment/reject-comme
     ContatoComponent,
     WhatsappComponent,
     ApproveCommentComponent,
-    RejectCommentComponent
+    RejectCommentComponent,
+    MentoriaLibertaComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +93,13 @@ import { RejectCommentComponent } from './components/reject-comment/reject-comme
     MatSnackBarModule,
     MatTableModule,
     MaskedTextBoxModule,
+    SidebarModule,
+    ButtonModule,
+    RippleModule,
+    InputMaskModule,   
+    CdkAccordionModule,
+    AccordionModule,
+    CarouselModule
     
   ],
   providers: [

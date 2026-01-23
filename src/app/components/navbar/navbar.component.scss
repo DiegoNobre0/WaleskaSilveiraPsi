@@ -1,112 +1,151 @@
-.div-logo{
-    width: 57%;
-}
+// --- Variáveis ---
+$color-primary: #744972;  // Roxo
+$color-accent: #fd8d76;   // Coral (A cor que você quer no hover)
+$color-white: #ffffff;
+$nav-height: 90px;
+$breakpoint-desktop: 992px; 
 
-.img-logo{
-    height: 5.5rem;
-    width: 5.5rem;
-    padding-left: 3rem;
-    padding-top: 0.5rem;
-}
-
-.display-mobile-menu{
-    @media (max-width: 990px){
-        display: none;
-    }
-}
-
-.display-mobile-accordion{
-    display: none;
-    @media (max-width: 990px){
-        display: contents;
-    }
-}
-
-.toolbar-spacer {
-    flex : 1  1 auto;
-}
-
-.span-toolbar{
-    // color: #744972;
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-weight: 500;
-    transition: color 0.3s ease;
-
-}
-
-.span-toolbar:hover {
-    color:#fd8d76;
-}
-
-button.mat-button {
-    background: none;
-    box-shadow: none;
-}
-
-/* Remover sombra e contorno quando o botão está em foco ou hover */
-button.mat-button:hover,
-button.mat-button:focus,
-button.mat-button:active {
-    background: none;
-    box-shadow: none;
-    outline: none;
-}
-
-.mat-toolbar-mobile{
-    transition: all 0.3s ease-out;
-    padding: 1rem 0rem 0rem 0rem;
-    display: none;
-    justify-content: center;
+// --- NAVBAR PRINCIPAL ---
+.navbar {
     position: fixed;
-    z-index: 9;
-    // height: 7rem;
-    margin-top: -1rem;
-    @media (max-width: 990px){
-        display: block;
-        background:#fff;
-    }
-}
+    top: 0; left: 0; width: 100%;
+    height: $nav-height;
+    z-index: 1000;
+    transition: all 0.4s ease-in-out;
+    background-color: transparent; 
 
-.mat-toolbar-desktop{
-    transition: all 0.3s ease-out;
-    padding: 1rem 2rem 0rem 0rem;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    z-index: 9;
-    height: 7rem;
-    margin-top: -1rem;
-    @media (max-width: 990px){
-        display: none;
-        background:#fff;
-    }
-}
-
-
-::ng-deep .custom-dialog-container-login {
-    mat-dialog-container {
-      position: fixed;
-      display: block;
-      z-index: 11;
-      width: 30rem;
-      height: 25rem;
-      left: 36%;
-      top: 4%;
-      background-color: rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(3px);
-
-      @media (max-width: 990px){
-        position: fixed;
-        display: block;
-        z-index: 11;
-        width: 100%;
-        height: 35rem;
-        left: 10%;
-        top: 10%;
-        padding: 1rem 1rem 7rem 1rem;
+    // =================================================================
+    // 1. LIMPEZA GERAL (Remove sombras azuis e fundos indesejados)
+    // =================================================================
+    ::ng-deep {
+        .p-button:focus, 
+        .p-button:active, 
+        .p-button:focus-visible {
+            box-shadow: none !important;
+            outline: none !important;
+            background-color: transparent !important;
+        }
+        
+        // Garante que o botão não fique com fundo cinza ao passar o mouse
+        .p-button:hover {
+            background-color: transparent !important;
         }
     }
+
+    // =================================================================
+    // 2. EFEITO HOVER (CORAL) - APLICA EM QUALQUER ESTADO
+    // =================================================================
+    ::ng-deep {
+        // Para os botões de texto (Home, Sobre...)
+        .nav-btn:hover .p-button-label {
+            color: $color-accent !important; // Muda a letra para Coral
+            transition: color 0.3s ease;
+        }
+
+        // Para o botão de Contato (Borda e Texto)
+        .nav-btn-contact:hover {
+            border-color: $color-accent !important; // Borda Coral
+            .p-button-label {
+                color: $color-accent !important; // Texto Coral
+            }
+        }
+    }
+
+    // =================================================================
+    // 3. ESTADO: TRANSPARENTE (NO TOPO)
+    // =================================================================
+    ::ng-deep {
+        // Texto Branco por padrão
+        .nav-btn .p-button-label { color: $color-white; } // Tirei o !important aqui para o hover funcionar
+        .mobile-trigger-btn { color: $color-white !important; }
+        
+        .nav-btn-contact { 
+            color: $color-white; 
+            border-color: $color-white; 
+        }
+    }
+
+    // =================================================================
+    // 4. ESTADO: SCROLLED (BRANCO)
+    // =================================================================
+    &.navbar-scrolled, &.navbar-dark {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        height: 7rem;
+        backdrop-filter: blur(10px);
+
+        ::ng-deep {
+            // Texto Roxo por padrão
+            .nav-btn .p-button-label { color: $color-primary; } 
+            .mobile-trigger-btn { color: $color-primary !important; }
+            
+            .nav-btn-contact { 
+                color: $color-primary; 
+                border-color: $color-primary;
+            }
+        }
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+    }
 }
 
+// --- LOGO ---
+.logo-area img {
+    height: 5rem;
+    width: auto;
+    transition: all 0.3s;
+}
 
+// --- CONTROLE DE VISIBILIDADE ---
+.desktop-menu {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    @media (min-width: $breakpoint-desktop) { display: flex; }
+}
+
+.mobile-trigger {
+    display: block;
+    @media (min-width: $breakpoint-desktop) { display: none; }
+}
+
+// --- MENU LATERAL (SIDEBAR) ---
+::ng-deep .custom-sidebar {
+    background-color: white !important;
+    width: 300px !important;
+    border-left: 4px solid $color-primary !important;
+}
+
+.mobile-container {
+    display: flex; flex-direction: column; align-items: center; margin-top: 2rem;
+}
+
+.mobile-logo {
+    height: 6rem; width: auto; margin-bottom: 2rem; cursor: pointer;
+}
+
+.mobile-links-area {
+    width: 100%; display: flex; flex-direction: column; gap: 1rem;
+}
+
+::ng-deep .mobile-nav-btn {
+    width: 100%; justify-content: center;
+    color: $color-primary !important;
+    font-size: 1.2rem !important;
+    padding: 1rem !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    
+    // Hover no mobile também fica Coral
+    &:hover { 
+        background-color: rgba(253, 141, 118, 0.1) !important; 
+        color: $color-accent !important; 
+    }
+}

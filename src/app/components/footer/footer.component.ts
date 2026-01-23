@@ -8,6 +8,10 @@ import { EmailService } from 'src/app/services/email.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  
+  contactForm: FormGroup;
+  loading: boolean = false; // Controle de carregamento
+
   constructor(
     private fb: FormBuilder,
     private emailService: EmailService  
@@ -15,31 +19,31 @@ export class FooterComponent {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.pattern('^\\d{2}\\d{4,5}\\d{4}$')]],
+      // Regex simples para garantir que tem números suficientes
+      number: ['', [Validators.required]], 
       message: ['', Validators.required]
     }); 
   }
 
-  contactForm: FormGroup;
-
-
   onSubmit(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
-     
-    } else {      
-      this.emailService.postEmail(this.contactForm.value).subscribe(
-        () => {         
-          alert('E-mail enviado com sucesso!');
-          this.contactForm.reset(); 
-        },
-        (error) => {
-          console.error('Erro ao postar comentário:', error);
-          alert('Erro ao enviar o e-mail. Por favor, tente novamente mais tarde.');
-        }
-      );
+      return;
+    } 
       
-    }
-  }
+    this.loading = true; // Ativa loading
 
+    this.emailService.postEmail(this.contactForm.value).subscribe({
+      next: () => {         
+        alert('E-mail enviado com sucesso!');
+        this.contactForm.reset(); 
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Erro ao enviar:', error);
+        alert('Erro ao enviar o e-mail. Tente novamente mais tarde.');
+        this.loading = false;
+      }
+    });
+  }
 }

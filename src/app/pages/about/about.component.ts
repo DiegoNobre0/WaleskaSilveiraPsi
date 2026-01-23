@@ -1,9 +1,4 @@
-import { Component, HostListener, ElementRef, OnInit, OnDestroy, ApplicationRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -11,28 +6,12 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-  constructor(
-    public dialog: MatDialog,
-    private route: ActivatedRoute,
-    private appRef: ApplicationRef,
-    private router: Router,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {
-    this.matIconRegistry.addSvgIcon(
-      'whatsapp',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/whatsapp.svg')
-    );
-  } 
 
-  whatsapp(): void{    
-    const whatsappUrl = 'https://wa.me/71992117598';
+  whatsapp(): void {    
+    const phoneNumber = '71992117598';
+    const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   }
-
-  ngOnInit(){   
-    // this.openDialog();
-  }
-  
 
 }

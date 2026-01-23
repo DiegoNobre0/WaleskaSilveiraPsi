@@ -8,6 +8,7 @@ import { PostBloggerComponent } from './pages/post-blogger/post-blogger.componen
 import { ContatoComponent } from './pages/contato/contato.component';
 import { ApproveCommentComponent } from './components/approve-comment/approve-comment.component';
 import { RejectCommentComponent } from './components/reject-comment/reject-comment.component';
+import { MentoriaLibertaComponent } from './pages/mentoria-liberta/mentoria-liberta.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'post/:id', component: PostBloggerComponent },
   { path: 'contato', component: ContatoComponent },
   { path: 'approve-comment', component: ApproveCommentComponent },
-  { path: 'reject-comment', component: RejectCommentComponent }
+  { path: 'reject-comment', component: RejectCommentComponent },
+  { path: 'mentoria', component: MentoriaLibertaComponent }
 
 ];
 

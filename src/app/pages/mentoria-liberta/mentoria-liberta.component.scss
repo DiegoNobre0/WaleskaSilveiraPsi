@@ -1,0 +1,247 @@
+// --- Variáveis ---
+$color-primary: #744972;  // Roxo
+$color-accent: #fd8d76;   // Coral
+$color-light: #f9f9f9;
+$color-bg-dark: #2a1b29;
+$font-cinzel: 'Cinzel', serif;
+$font-body: 'Roboto', sans-serif;
+
+// --- Configurações Gerais ---
+.container {
+    max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+    &.narrow { max-width: 800px; }
+    &.flex-row { display: flex; align-items: center; gap: 4rem; @media(max-width:992px){ flex-direction: column; } }
+}
+
+.text-purple { color: $color-primary; }
+.text-white { color: white; }
+.bg-light { background-color: $color-light; }
+.bg-purple { background-color: $color-primary; }
+
+.section-title {
+    font-family: $font-cinzel; font-size: 2.2rem; text-align: center; margin-bottom: 1rem; color: $color-primary;
+    @media(max-width:768px){ font-size: 1.8rem; }
+    &.text-white { color: white; }
+    &.text-left { text-align: left; @media(max-width:992px){ text-align: center; } }
+}
+
+.header-line {
+    width: 80px; height: 3px; margin: 0 auto 3rem auto; background-color: $color-primary;
+    &.gold-line { background-color: $color-accent; }
+    &.left { margin: 0 0 2rem 0; @media(max-width:992px){ margin: 0 auto 2rem auto; } }
+    &.white { background-color: white; opacity: 0.5; }
+}
+
+// --- Botão WhatsApp Flutuante ---
+.floating-whatsapp {
+    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    background-color: #25d366; color: white; width: 60px; height: 60px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s;
+    &:hover { transform: scale(1.1); background-color: #20b858; }
+}
+
+// --- 1. HERO ---
+.hero-section {
+    position: relative; width: 100%; min-height: 90vh;
+    // Foto de fundo: Mulher livre/feliz ou natureza
+    background-image: url('../../../assets/1000016963_c5a7a519e131cd58112a718921e6ea30-18_01_2026, 18_33_52 (1).jpg');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: white; padding-top: 80px;
+    
+    .hero-overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, rgba(40, 10, 38, 0.7), rgba(116, 73, 114, 0.8));
+        z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    
+    .text-logo { font-family: $font-cinzel; letter-spacing: 5px; font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.9; color: white; }
+
+    .hero-text {
+        max-width: 900px; margin: 0 auto;
+        .pre-headline { color: $color-accent; letter-spacing: 3px; font-weight: bold; display: block; margin-bottom: 1rem; }
+        h1 { font-family: $font-cinzel; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: white; @media(max-width:768px){ font-size: 2.2rem; } }
+        .sub-headline { font-size: 1.3rem; opacity: 0.9; margin-bottom: 2.5rem; line-height: 1.6; }
+    }
+
+    ::ng-deep .cta-button {
+        background-color: $color-accent !important; border: none !important; color: white !important;
+        font-weight: bold; padding: 1rem 2.5rem; font-size: 1.1rem;
+        box-shadow: 0 10px 20px rgba(253, 141, 118, 0.3); transition: transform 0.3s;
+        &:hover { transform: translateY(-5px); }
+    }
+}
+
+// --- 2. PAIN (Dores) ---
+.pain-section { padding: 5rem 0; background: white; }
+.pain-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem;
+    @media(max-width:768px){ grid-template-columns: 1fr; }
+    
+    .pain-item {
+        text-align: center; padding: 2rem; background: #fff; border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.05); transition: transform 0.3s;
+        &:hover { transform: translateY(-5px); }
+        
+        .icon-circle {
+            width: 70px; height: 70px; background: rgba(116, 73, 114, 0.1); color: $color-primary;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin: 0 auto 1.5rem auto;
+        }
+        p { color: #555; line-height: 1.6; font-size: 1.05rem; }
+    }
+}
+.pain-conclusion-box {
+    background: rgba(253, 141, 118, 0.1); padding: 2rem; border-radius: 12px;
+    text-align: center; max-width: 800px; margin: 0 auto;
+    p { color: $color-primary; font-size: 1.2rem; margin: 0; b { color: $color-accent; } }
+}
+
+// --- 3. PILARES ---
+.pillars-section { padding: 5rem 0; }
+.pillars-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    @media(max-width:768px){ grid-template-columns: 1fr; }
+    
+    .pillar-card {
+        background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s;
+        &:hover { transform: translateY(-10px); }
+        &.highlight { border: 2px solid $color-accent; transform: scale(1.05); @media(max-width:768px){ transform: none; } }
+        
+        .pillar-image { height: 200px; background-size: cover; background-position: center; }
+        .pillar-content { padding: 2rem; text-align: center; }
+        h3 { font-family: $font-cinzel; color: $color-primary; margin-bottom: 1rem; font-size: 1.3rem; }
+        p { color: #666; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+    }
+}
+
+// --- 4. ENTREGÁVEIS ---
+.deliverables-section { padding: 6rem 0; background: white; }
+.deliverables-content { flex: 1; }
+.deliverables-list {
+    list-style: none; padding: 0;
+    li {
+        display: flex; gap: 1.5rem; margin-bottom: 2rem;
+        .check-icon {
+            min-width: 40px; height: 40px; background: $color-accent; color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; margin-top: 5px;
+        }
+        strong { display: block; font-size: 1.2rem; color: $color-primary; margin-bottom: 0.3rem; }
+        p { color: #666; margin: 0; line-height: 1.5; }
+    }
+}
+.deliverables-image {
+    flex: 1; 
+    img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0px rgba(116, 73, 114, 0.1); }
+}
+
+// --- 5. BÔNUS ---
+.bonus-section { padding: 5rem 0; background-color: $color-primary; }
+.section-subtitle { text-align: center; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+.bonus-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    @media(max-width:992px){ grid-template-columns: repeat(2, 1fr); }
+    @media(max-width:600px){ grid-template-columns: 1fr; }
+    
+    .bonus-card {
+        background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+        padding: 2rem 1.5rem; border-radius: 12px; text-align: center; position: relative;
+        transition: background 0.3s;
+        &:hover { background: rgba(255,255,255,0.2); }
+        
+        .bonus-icon { font-size: 2.5rem; color: $color-accent; margin-bottom: 1rem; }
+        h3 { font-family: $font-cinzel; font-size: 1rem; margin-bottom: 0.8rem; color: white; height: 40px; display: flex; align-items: center; justify-content: center; }
+        p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; height: 60px; }
+        .bonus-value {
+            display: inline-block; background: white; color: $color-primary;
+            padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 0.8rem;
+        }
+    }
+}
+
+// --- 6. BIO ---
+.bio-section { padding: 6rem 0; background: white; }
+.bio-image { 
+    flex: 1; display: flex; justify-content: center;
+    img { width: 100%; max-width: 450px; border-radius: 8rem; box-shadow: -20px 20px 0 rgba(253, 141, 118, 0.2); }
+}
+.bio-text {
+    flex: 1; 
+    .pre-title { color: $color-accent; font-size: 0.9rem; letter-spacing: 2px; font-weight: bold; }
+    .main-title { font-family: $font-cinzel; font-size: 2.5rem; color: $color-primary; margin: 0 0 1rem 0; }
+    p { margin-bottom: 1rem; line-height: 1.8; color: #555; font-size: 1.05rem; }
+}
+
+// --- 7. DEPOIMENTOS ---
+.testimonials-section { padding: 6rem 0; }
+.testimonial-card {
+    text-align: center; padding: 3rem; background: white; border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto;
+    
+    .quote-icon { font-size: 2rem; color: $color-accent; margin-bottom: 1.5rem; opacity: 0.5; }
+    .testimonial-text { font-size: 1.2rem; font-style: italic; color: #444; margin-bottom: 2rem; line-height: 1.6; }
+    .testimonial-author {
+        font-family: $font-cinzel; color: $color-primary;
+        strong { display: block; font-size: 1.2rem; }
+        span { font-size: 0.9rem; color: #999; }
+    }
+}
+
+// --- 8. PREÇOS ---
+.pricing-section { padding: 6rem 0; background: white; }
+.pricing-cards {
+    display: flex; justify-content: center; gap: 2rem; align-items: center;
+    @media(max-width:850px){ flex-direction: column; }
+}
+.price-card {
+    background: white; padding: 2.5rem; border-radius: 15px; border: 1px solid #eee; text-align: center; width: 100%; max-width: 380px; position: relative;
+    &.featured {
+        transform: scale(1.1); border: 2px solid $color-primary; box-shadow: 0 15px 50px rgba(116, 73, 114, 0.2); z-index: 2;
+        @media(max-width:850px){ transform: scale(1); }
+        .badge {
+            background: $color-accent; color: white; padding: 8px; font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;
+            position: absolute; top: 0; left: 0; width: 100%; border-radius: 13px 13px 0 0;
+        }
+        h3 { margin-top: 1.5rem; }
+    }
+    
+    h3 { font-family: $font-cinzel; font-size: 1.5rem; margin-bottom: 0.5rem; color: $color-primary; }
+    .access-time { color: #888; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    
+    // CORREÇÃO AQUI: Removemos o line-through global para controlar no HTML
+    .old-price { 
+        color: #ccc; 
+        margin-bottom: 0.5rem; 
+        font-size: 0.9rem; 
+        // text-decoration: line-through; <- REMOVIDO PARA NÃO RISCAR A FRASE TODA
+    }
+    
+    .price {
+        display: flex; justify-content: center; align-items: baseline; color: $color-primary; margin-bottom: 0.5rem;
+        .currency { font-size: 1.2rem; font-weight: bold; margin-right: 5px; }
+        .value { font-size: 3rem; font-weight: 700; }
+    }
+    .cash-price { color: $color-accent; font-weight: bold; margin-bottom: 2rem; }
+    
+    .benefits {
+        list-style: none; padding: 0; margin-bottom: 2rem; text-align: left;
+        li {
+            padding: 0.8rem 0; border-bottom: 1px solid #f9f9f9; display: flex; align-items: center; gap: 10px; color: #555;
+            i { color: $color-accent; }
+        }
+    }
+}
+
+// --- 9. FAQ ---
+.faq-section { padding: 6rem 0; background: #fdfdfd; }
+::ng-deep .custom-accordion {
+    .p-accordion-header-link {
+        background: white !important; color: $color-primary !important; border: none !important;
+        border-bottom: 1px solid #eee !important; font-weight: 600; padding: 1.5rem !important; font-size: 1.1rem;
+        &:hover { background: #fafafa !important; }
+    }
+    .p-accordion-content { background: white; border: none; padding: 1.5rem 2rem; color: #555; line-height: 1.6; }
+}

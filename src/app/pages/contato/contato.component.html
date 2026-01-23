@@ -1,110 +1,98 @@
-<div class="div-body">
-    <!-- <div class="display-mobile">
-        <div style="width: 100%;">
-            <span>
-                <img class="image-container" src="../../../assets/Butterfly.jpg">
-            </span>
-        </div>
-    </div> -->
-    <div class="text-name" style="padding-top: 7rem;">
-        <div class="div-calculo-dose-2">
-            <span class="spam-flex-justify name-home">CONTATO</span>
-            <hr class="style-hr">
-            <div style="text-align: center; padding-top: 2rem;">
-                <p class="name-home" style="font-size: 20px;color: #744972;">Mande aqui suas dúvidas que em breve estarei entrando em
-                    contato</p>
+<div class="contact-page">
+
+    <div class="page-header">
+        <h1 class="page-title">CONTATO</h1>
+        <div class="header-line"></div>
+        <p class="page-subtitle">
+            Mande suas dúvidas ou agende sua consulta. Em breve entrarei em contato.
+        </p>
+    </div>
+
+    <div class="channels-section bio-curve">
+        <div class="channels-container">
+
+            <div class="info-card">
+                <i class="pi pi-whatsapp"></i>
+                <h3>Agendamento</h3>
+                <p>Agende sua sessão de forma rápida</p>
+                <button pButton label="CHAMAR NO WHATSAPP" class="p-button-rounded btn-action"
+                    (click)="whatsapp()"></button>
             </div>
+
+            <div class="info-card">
+                <i class="pi pi-envelope"></i>
+                <h3>E-mail</h3>
+                <p>Dúvidas e parcerias</p>
+                <a href="mailto:wsvercosa@gmail.com" class="link-text">wsvercosa@gmail.com</a>
+            </div>
+
+            <div class="info-card">
+                <i class="pi pi-instagram"></i>
+                <h3>Redes Sociais</h3>
+                <p>Acompanhe meu trabalho</p>
+                <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank"
+                    class="link-text">@waleskasilveirapsi</a>
+            </div>
+
         </div>
     </div>
 
-    <div style="display: flex; padding: 4rem 2rem 0rem 2rem; " class="div-sobre div-curva">
-        <div>
-            <p class="name-home no-margin" style="font-size: 25px; text-align: center; padding-bottom: 1rem;color: #744972;">SIGA-ME NAS REDES SOCIAIS</p>
-        </div>
-        <div style="display: flex;justify-content: center;">
-            <a href="https://www.facebook.com/waleska.vercosa" target="_blank"
-                class="share-button facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank"
-                class="share-button whatsapp">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-    </div>
+    <div class="form-section">
+        <div class="form-wrapper">
+            <h2 class="form-title">ENVIE UMA MENSAGEM</h2>
 
-    <div class="div-sobre div-curva">
-        <div class="text-container div-info" style="color: #744972;">
-            <div style="padding-bottom: 1rem; display: flex; flex-direction: column;">
-                <div style="padding-bottom: 1rem;">
-                    <p class="name-home no-margin" style="font-size: 25px;">SESSÕES VIA AGENDAMENTO</p>
-                </div>
-                <div class="div-flex-center marg-text-wpp" style="background-color: #744972; margin-bottom: 2rem; border-radius: 4px;">
-                    <p class="div-calculo-dose-cards text-wpp"
-                        style="font-size: 12px;color: #FAEBE8; padding-left: 15px;" (click)="whatsapp()">AGENDAR VIA WHATSAPP</p>
-                </div>
-                <div style="padding-bottom: 1rem;">
-                    <p class="name-home no-margin" style="font-size: 25px;"><b>E-MAIL:</b></p>
-                    <p class="name-home no-margin" style="font-size: 25px;">wsvercosa@gmail.com</p>
-                </div>
-                <div style="padding-bottom: 1rem;">
-                    <p class="name-home no-margin" style="font-size: 25px;"><b>INSTAGRAM:</b></p>
-                    <p class="name-home no-margin" style="font-size: 25px;">@waleskasilveirapsi</p>
-                </div>
-            </div>
-        </div>
-        <div class="div-calculo-dose-cards">
-            <div class="form-container">
-                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                    <input style="padding-bottom: 0.5rem;" type="text" id="name" formControlName="name"
-                        placeholder="Seu nome">
-                    <div style="padding-bottom: 0.5rem;display: flex;"
-                        *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-                        <small class="error">O campo é obrigatório.</small>
-                    </div>
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
 
-                    <input style="padding-bottom: 0.5rem;" type="email" id="email" formControlName="email"
-                        placeholder="Seu e-mail">
-                    <div style="padding-bottom: 0.5rem;display: flex;"
-                        *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                        <small class="error" *ngIf="contactForm.get('email')?.errors?.['required']">O campo é
-                            obrigatório.</small>
-                        <small class="error" *ngIf="contactForm.get('email')?.errors?.['email']">Email inválido.</small>
-                    </div>
+                <div class="field">
+                    <input type="text" formControlName="name" placeholder="Seu Nome *" class="custom-input">
+                    <small class="error" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                        Nome obrigatório
+                    </small>
+                </div>
 
-                    <input style="padding-bottom: 0.5rem;" type="tel" id="number" formControlName="number"
-                        placeholder="Seu WhatsApp">
-                    <div style="padding-bottom: 0.5rem;display: flex;"
+                <div class="field">
+                    <input type="email" formControlName="email" placeholder="Seu E-mail *" class="custom-input">
+                    <small class="error" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                        E-mail inválido
+                    </small>
+                </div>
+
+                <div class="field">
+                    <p-inputMask mask="(99) 99999-9999" formControlName="number" placeholder="Seu WhatsApp *"
+                        styleClass="custom-input" [unmask]="true">
+                    </p-inputMask>
+                    <small class="error"
                         *ngIf="contactForm.get('number')?.invalid && contactForm.get('number')?.touched">
-                        <small class="error" *ngIf="contactForm.get('number')?.errors?.['required']">O campo é
-                            obrigatório.</small>
-                        <small class="error" *ngIf="contactForm.get('number')?.errors?.['pattern']">Formato de número
-                            inválido.</small>
-                    </div>
+                        Telefone obrigatório
+                    </small>
+                </div>
 
-                    <textarea style="padding-bottom: 0.5rem;" id="message" formControlName="message" rows="8"
-                        placeholder="Mensagem"></textarea>
-                    <div style="display: flex;margin-top: -11px;margin-bottom: 1rem;" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-                        <small class="error">Mensagem é obrigatória.</small>
-                    </div>
+                <div class="field">
+                    <textarea formControlName="message" rows="5" placeholder="Sua Mensagem *"
+                        class="custom-input"></textarea>
+                    <small class="error"
+                        *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                        Mensagem obrigatória
+                    </small>
+                </div>
 
-                    <button type="submit">Enviar Mensagem</button>
-                </form>
-            </div>
-        </div>
-        
-    </div>
-    <div style="padding-bottom: 3rem;; background-color: #FAEBE8; color: #744972;">
-        <div class="div-flex-center marg-text-wpp" style="padding-bottom: 1rem">
-            <p class="name-home no-margin" style="font-size: 32px;"><b>ENDEREÇO</b></p>
-        </div>
-        <div class="div-flex-center marg-text-wpp" style="text-align: center;">
-            <p class="name-home no-margin" style="font-size: 25px;">R. ESTRADA, 25 - JARDIM LIMOEIRO, CAMAÇARI - BA</p>
+                <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">
+                    ENVIAR MENSAGEM
+                </button>
+            </form>
         </div>
     </div>
-    <!-- <div>
-        <google-map height="450px" width="1000px" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
-            (mapMousemove)="move($event)">
-        </google-map>
-    </div> -->
+
+    <div class="location-section">
+        <div class="location-content">
+            <i class="pi pi-map-marker"></i>
+            <h3>ONDE ESTOU</h3>
+            <p>R. Estr. 25, 10b - Jardim Limoeiro, Camaçari - BA</p>
+            <iframe width="100%" height="300" style="border:0;" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Waleska+Silveira+Psicanalista,+R.+Estr.+25,+10b+-+Jardim+Limoeiro,+Camaçari+-+BA&output=embed">
+            </iframe>
+        </div>
+    </div>
+
 </div>
