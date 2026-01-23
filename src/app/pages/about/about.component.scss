@@ -174,37 +174,72 @@ $font-cinzel: 'Cinzel', serif;
     margin: 0;
 }
 
+.header-line {
+    width: 60px;
+    height: 3px;
+    background-color: $color-primary;
+    margin: 1rem auto 3rem auto;
+}
+
 .specialties-list-wrapper {
-    max-width: 800px;
+    max-width: 1000px; // Aumentei um pouco a largura total para caber a imagem maior
     margin: 3rem auto 0;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center; // Centraliza o conjunto
+    gap: 2rem; // Espaço entre o texto e a imagem
     position: relative;
+
+    // Ajuste para Celular (Mobile)
+    @media (max-width: 768px) {
+        flex-direction: column; // Um embaixo do outro no celular
+        gap: 3rem;
+    }
 }
 
 .specialties-list {
     list-style: none;
     padding: 0;
     text-align: left;
+    flex: 1; // Ocupa o espaço necessário
     
     li {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
+        font-size: 1.2rem; // Aumentei levemente a fonte para equilibrar
+        margin-bottom: 1.2rem;
         display: flex;
         align-items: center;
         color: $color-primary;
         
-        i { margin-right: 1rem; font-weight: bold; color: $color-accent; font-size: 1.3rem; }
+        i { 
+            margin-right: 1rem; 
+            font-weight: bold; 
+            color: $color-accent; // Coral
+            font-size: 1.4rem; 
+        }
     }
 }
 
 .decoration-img {
-    margin-top: 2rem;
+    flex: 0 0 auto; // Impede que a imagem encolha
+    
     img {
-        width: 200px;
-        transform: rotate(-19deg);
-        opacity: 0.8;
+        // --- AQUI ESTÁ A MUDANÇA ---
+        width: 37rem;           // Bem maior (era 200px)
+         
+        opacity: 1;             // Totalmente visível (era 0.8)
+        filter: drop-shadow(0 10px 15px rgba(116, 73, 114, 0.2)); // Sombra suave roxa para destacar
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: rotate(0deg) scale(1.05); // Efeito legal ao passar o mouse
+        }
+
+        // Ajuste da imagem no celular
+        @media (max-width: 768px) {
+            width: 25rem
+           
+        }
     }
 }
 
