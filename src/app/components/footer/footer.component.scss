@@ -1,12 +1,12 @@
 // Variáveis
-$color-primary: #744972;  // Roxo
-$color-accent: #fd8d76;   // Coral
-$bg-light: #fdfdfd;       // Fundo bem clarinho
+$color-primary: #744972; // Roxo
+$color-accent: #fd8d76; // Coral
+$bg-light: #fdfdfd; // Fundo bem clarinho
 $font-cinzel: 'Cinzel', serif;
 
 .footer-section {
     background-color: $bg-light;
-    border-top: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
     padding-top: 4rem;
     color: $color-primary;
 }
@@ -28,8 +28,9 @@ $font-cinzel: 'Cinzel', serif;
 // --- COLUNA 1: INFO ---
 .info-column {
     .logo-area img {
-        height: 6rem;
+        height: 8rem;
         margin-bottom: 1.5rem;
+        margin-left: 7.5rem;
     }
 
     .intro-text {
@@ -43,7 +44,7 @@ $font-cinzel: 'Cinzel', serif;
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
-        
+
         i {
             color: $color-accent;
             font-size: 1.2rem;
@@ -52,7 +53,9 @@ $font-cinzel: 'Cinzel', serif;
             text-align: center;
         }
 
-        span { font-weight: 500; }
+        span {
+            font-weight: 500;
+        }
     }
 }
 
@@ -61,20 +64,22 @@ $font-cinzel: 'Cinzel', serif;
     .specialties-list {
         list-style: none;
         padding: 0;
-        
+
         li {
             padding: 0.8rem 0;
             border-bottom: 1px solid rgba(116, 73, 114, 0.1);
             display: flex;
             align-items: center;
-            
+
             i {
                 color: $color-accent;
                 margin-right: 10px;
                 font-size: 0.8rem;
             }
 
-            &:last-child { border-bottom: none; }
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 }
@@ -84,7 +89,7 @@ $font-cinzel: 'Cinzel', serif;
     background: white;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 
     .field {
         margin-bottom: 1rem;
@@ -105,7 +110,7 @@ $font-cinzel: 'Cinzel', serif;
             background-color: #f9f9f9;
             border: 1px solid #eee;
             color: $color-primary;
-            
+
             &:focus {
                 border-color: $color-primary;
                 box-shadow: 0 0 0 2px rgba(116, 73, 114, 0.2);
@@ -117,7 +122,7 @@ $font-cinzel: 'Cinzel', serif;
             color: $color-primary !important;
             border-color: $color-primary !important;
             font-weight: 600;
-            
+
             &:hover {
                 background-color: $color-primary !important;
                 color: white !important;
@@ -144,8 +149,10 @@ $font-cinzel: 'Cinzel', serif;
     color: white;
     text-align: center;
     font-size: 0.9rem;
-    
-    p { margin: 0; }
+
+    p {
+        margin: 0;
+    }
 }
 
 $color-primary: #744972; // Roxo
@@ -157,9 +164,10 @@ $color-error: #e74c3c;
     gap: 1rem;
     width: 100%;
     max-width: 400px; // Limita a largura para ficar bonito
-    margin: 0 auto;   // Centraliza
+    margin: 0 auto; // Centraliza
 
-    .form-group, .input-group {
+    .form-group,
+    .input-group {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -167,7 +175,7 @@ $color-error: #e74c3c;
 
     // --- ESTILO UNIFICADO PARA TODOS OS INPUTS ---
     // Targeta inputs normais, textareas e o input de dentro do p-inputMask
-    .custom-input, 
+    .custom-input,
     ::ng-deep .custom-input {
         width: 100%;
         padding: 12px 15px !important; // Espaçamento interno confortável
