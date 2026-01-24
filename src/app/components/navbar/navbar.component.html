@@ -3,12 +3,12 @@
     
     <div class="nav-container">
         
-        <div class="logo-area cursor-pointer" (click)="navigate('/')">
-            <img src="assets/logo-wspsi-white.svg" 
+        <div style="padding-top: 1rem;" class="logo-area cursor-pointer" (click)="navigate('/')">
+            <img src="assets/logowhite.svg" 
                  class="logo-white" 
                  *ngIf="isHomePage && !isScrolled">
             
-            <img src="assets/logo-wspsi.svg" 
+            <img src="assets/logonew.svg" 
                  class="logo-color" 
                  *ngIf="!isHomePage || isScrolled">
         </div>
@@ -35,7 +35,7 @@
     
     <div class="mobile-container">
         
-        <img src="assets/logo-png-ws.png" class="mobile-logo" (click)="navigate('/')">
+        <img src="assets/logonew.svg" class="mobile-logo" (click)="navigate('/')">
         
         <div class="mobile-links-area">
             <button pButton pRipple label="HOME" 

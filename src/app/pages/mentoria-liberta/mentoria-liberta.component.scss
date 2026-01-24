@@ -33,13 +33,13 @@ $font-body: 'Roboto', sans-serif;
 }
 
 // --- Botão WhatsApp Flutuante ---
-.floating-whatsapp {
-    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
-    background-color: #25d366; color: white; width: 60px; height: 60px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s;
-    &:hover { transform: scale(1.1); background-color: #20b858; }
-}
+// .floating-whatsapp {
+//     position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+//     background-color: #25d366; color: white; width: 60px; height: 60px;
+//     border-radius: 50%; display: flex; align-items: center; justify-content: center;
+//     font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s;
+//     &:hover { transform: scale(1.1); background-color: #20b858; }
+// }
 
 // --- 1. HERO ---
 .hero-section {
@@ -61,7 +61,7 @@ $font-body: 'Roboto', sans-serif;
 
     .hero-text {
         max-width: 900px; margin: 0 auto;
-        .pre-headline { color: $color-accent; letter-spacing: 3px; font-weight: bold; display: block; margin-bottom: 1rem; }
+        .pre-headline { color: $color-accent; letter-spacing: 3px; font-weight: bold; display: block; margin-bottom: 1rem; font-size: 2rem }
         h1 { font-family: $font-cinzel; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; color: white; @media(max-width:768px){ font-size: 2.2rem; } }
         .sub-headline { font-size: 1.3rem; opacity: 0.9; margin-bottom: 2.5rem; line-height: 1.6; }
     }
