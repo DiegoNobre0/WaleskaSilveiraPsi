@@ -8,7 +8,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./contato.component.scss']
 })
 export class ContatoComponent {
-  
+
   contactForm: FormGroup;
   loading: boolean = false;
 
@@ -20,44 +20,45 @@ export class ContatoComponent {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required]], 
+      number: ['', [Validators.required]],
       message: ['', Validators.required]
     });
   }
 
-  onSubmit(): void {
+  async onSubmit() {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
       return;
     }
 
     this.loading = true; // Ativa loading
-this.emailService.postEmail(this.contactForm.value).subscribe({
-  next: () => {
-    // SUCESSO
-    this.messageService.add({
-      severity: 'success', 
-      summary: 'Sucesso!', 
-      detail: 'Mensagem enviada. Em breve entrarei em contato.'
-    });
-    
-    this.contactForm.reset();
-    this.loading = false;
-  },
-  error: (error) => {
-    console.error('Erro:', error);
-    // ERRO
-    this.messageService.add({
-      severity: 'error', 
-      summary: 'Erro', 
-      detail: 'Falha ao enviar. Tente novamente ou me chame no WhatsApp.'
-    });
-    this.loading = false;
-  }
-});
+    this.emailService.sendEmail(this.contactForm.value)
+      .then(() => {
+        // SUCESSO (equivalente ao next)
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Sucesso!',
+          detail: 'Mensagem enviada. Em breve entrarei em contato.'
+        });
+
+        this.contactForm.reset();
+      })
+      .catch((error) => {
+        // ERRO (equivalente ao error)
+        console.error('Erro:', error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: 'Falha ao enviar. Tente novamente ou me chame no WhatsApp.'
+        });
+      })
+      .finally(() => {
+        // FINALIZAÇÃO (Roda sempre, dando certo ou errado)
+        this.loading = false;
+      });
   }
 
-  whatsapp(): void {    
+  whatsapp(): void {
     const phoneNumber = '71992117598';
     const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');

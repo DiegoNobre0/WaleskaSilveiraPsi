@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommentService } from '../../services/comment.service'; 
-import { MessageService } from 'primeng/api'; 
+import { CommentService } from '../../services/comment.service';
+import { MessageService } from 'primeng/api'; // Se estiver usando PrimeNG
 
 @Component({
   selector: 'app-approve-comment',
   template: `
-    <div style="text-align: center; padding: 50px;">
-      <h2>Processando aprovação...</h2>
-      <p>Aguarde um momento.</p>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50vh;">
+      <h2><i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i></h2>
+      <p>Processando aprovação do comentário...</p>
     </div>
   `
 })
@@ -22,28 +22,33 @@ export class ApproveCommentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // 1. Pega os parâmetros da URL
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
       const token = params['token'];
 
       if (id && token) {
+        // 2. Chama o Backend
         this.commentService.approveComment(id, token).subscribe({
-          next: (response) => {
+          next: (response: any) => {
+            // Sucesso!
             this.messageService.add({severity:'success', summary:'Sucesso', detail:'Comentário aprovado!'});
             
+            // 3. Redireciona para o post (o backend devolveu o id_post)
             if (response.id_post) {
-              this.router.navigate(['/post', response.id_post]); 
+              this.router.navigate(['/post', response.id_post]);
             } else {
-              this.router.navigate(['/']); 
+              this.router.navigate(['/']);
             }
           },
           error: (err) => {
-            this.messageService.add({severity:'error', summary:'Erro', detail:'Erro ao aprovar.'});
-            this.router.navigate(['/']); 
+            console.error(err);
+            this.messageService.add({severity:'error', summary:'Erro', detail:'Falha ao aprovar. Token inválido ou expirado.'});
+            this.router.navigate(['/']);
           }
         });
       } else {
-        this.router.navigate(['/']);
+        this.router.navigate(['/']); // Link inválido
       }
     });
   }

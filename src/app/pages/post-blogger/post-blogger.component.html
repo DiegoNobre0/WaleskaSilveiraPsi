@@ -110,13 +110,14 @@
     <div class="comments-section">
         <div class="content-container">
             
-            <h3 class="section-heading">{{ commentsPost.length }} COMENTÁRIOS</h3>
+            <h3 class="section-heading" >{{ commentsPost.length }} COMENTÁRIOS</h3>
+            
             <div class="header-line"></div>
 
             <div class="comments-list">
                 <div *ngFor="let comment of commentsPost; let i = index" class="comment-wrapper">
                     
-                    <ng-container *ngIf="comment.status === 'approved' || comment.status === 'pending'">
+                    <ng-container *ngIf="comment.status === 'approved'">
                         
                         <div class="comment-item">
                             <div class="comment-avatar">

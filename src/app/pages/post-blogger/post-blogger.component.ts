@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BloggerService } from '../../services/blogger.service';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'app-post-blogger',
@@ -13,7 +14,7 @@ export class PostBloggerComponent implements OnInit {
 
   bloggerPost: any;
   postId: any;
-  
+  status:any;
   // Navegação e Listas
   blogPosts: any[] = [];
   filteredPosts: any[] = [];
@@ -44,6 +45,7 @@ export class PostBloggerComponent implements OnInit {
     private router: Router,
     private viewportScroller: ViewportScroller,
     private bloggerService: BloggerService,
+    private emailService: EmailService
   
   ) {
     // Inicializa Forms
@@ -70,6 +72,7 @@ export class PostBloggerComponent implements OnInit {
   }
 
   loadPageData() {
+    
     this.contactForm.patchValue({ id_post: this.postId });
     this.getPosts(); // Carrega todos posts (local ou serviço)
     this.getComments(this.postId);
@@ -82,12 +85,14 @@ export class PostBloggerComponent implements OnInit {
   }
 
   getPosts() {
+    
     const dataString = localStorage.getItem('bloggerPosts');
     this.blogPosts = dataString ? JSON.parse(dataString) : [];
     if(this.blogPosts.length > 0) this.setupCurrentPost();
   }
 
   setupCurrentPost() {
+    
     this.bloggerPost = this.blogPosts.find(p => p.id === this.postId);
     if (this.bloggerPost) {
         this.tags = this.bloggerPost.labels || [];
@@ -170,12 +175,22 @@ export class PostBloggerComponent implements OnInit {
   }
 
   // --- COMENTÁRIOS ---
-  getComments(id: string) {
-    this.bloggerService.getCommentsById(id).subscribe((res: any) => this.commentsPost = res);
-  }
+ getComments(id: string) {  
+  this.bloggerService.getCommentsById(id).subscribe((res: any) => {
+    // 1. A resposta chegou!
+    this.commentsPost = res;
+    
+    // 2. AGORA você pode ver os dados
+    console.log('Dados carregados:', this.commentsPost); 
+  });
 
-  getCommentsRepost() {
+  // Se você deixar aqui fora, vai dar vazio/undefined, pois o código passa aqui antes da resposta chegar.
+  console.log('Aqui fora ainda é vazio:', this.commentsPost); 
+}
+
+  getCommentsRepost() {    
     this.bloggerService.getCommentsRepost().subscribe((res: any) => this.commentsRepostPost = res);
+
   }
 
   getRepliesForComment(commentId: string): any[] {
@@ -194,12 +209,22 @@ export class PostBloggerComponent implements OnInit {
 
   onSubmit() {    
     if (this.contactForm.valid) {
-      this.bloggerService.postComment(this.contactForm.value).subscribe(() => {
-        this.contactForm.reset();
-        this.contactForm.patchValue({ id_post: this.postId });
-        this.getComments(this.postId);
-        alert('Comentário enviado!');
-      });
+      this.bloggerService.postComment(this.contactForm.value).subscribe({
+  next: async (res: any) => {
+    // 'res' é exatamente o 'commentData' que você retornou no backend!
+    
+    // O Backend fez o trabalho dele, agora o Front faz o envio:
+    const idDoComentario = res.id;
+    const tokenGerado = res.approvalToken; 
+
+    // Chama o EmailJS usando os dados que vieram do Backend
+    await this.emailService.sendCommentNotification(
+        this.contactForm.value, 
+        tokenGerado, 
+        idDoComentario
+    );
+  }
+});
     }
   }
 
