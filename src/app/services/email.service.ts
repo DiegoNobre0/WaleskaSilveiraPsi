@@ -67,7 +67,7 @@ export class EmailService {
         templateParams
       );
 
-      console.log('Email enviado!', response.status, response.text);
+      // console.log('Email enviado!', response.status, response.text);
       
     } catch (error) {
       console.error('Erro no EmailJS:', error);

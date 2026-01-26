@@ -184,11 +184,11 @@ export class PostBloggerComponent implements OnInit {
     this.commentsPost = res;
     
     // 2. AGORA você pode ver os dados
-    console.log('Dados carregados:', this.commentsPost); 
+    // console.log('Dados carregados:', this.commentsPost); 
   });
 
   // Se você deixar aqui fora, vai dar vazio/undefined, pois o código passa aqui antes da resposta chegar.
-  console.log('Aqui fora ainda é vazio:', this.commentsPost); 
+  // console.log('Aqui fora ainda é vazio:', this.commentsPost); 
 }
 
   getCommentsRepost() {    
