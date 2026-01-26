@@ -47,7 +47,7 @@ export class BloggerService {
   }
 
   getCommentsRepost(): Observable<any> {    
-    const url = "https://app-wspsi-backend-v2.vercel.app/commentsRepost";
+    const url = "https://app-wspsi-backend-v2.vercel.app/comments/replies";
     // const url = `${this.URL_LOCAL}/comments/replies`;
     return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
