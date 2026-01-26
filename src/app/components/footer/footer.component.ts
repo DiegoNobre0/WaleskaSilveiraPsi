@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { EmailService } from 'src/app/services/email.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class FooterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private emailService: EmailService  
+    private emailService: EmailService,
+    private messageService: MessageService  
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
@@ -33,17 +35,28 @@ export class FooterComponent {
       
     this.loading = true; // Ativa loading
 
-    this.emailService.postEmail(this.contactForm.value).subscribe({
-      next: () => {         
-        alert('E-mail enviado com sucesso!');
-        this.contactForm.reset(); 
-        this.loading = false;
-      },
-      error: (error) => {
-        console.error('Erro ao enviar:', error);
-        alert('Erro ao enviar o e-mail. Tente novamente mais tarde.');
-        this.loading = false;
-      }
+ this.emailService.postEmail(this.contactForm.value).subscribe({
+  next: () => {
+    // SUCESSO
+    this.messageService.add({
+      severity: 'success', 
+      summary: 'Sucesso!', 
+      detail: 'Mensagem enviada. Em breve entrarei em contato.'
     });
+    
+    this.contactForm.reset();
+    this.loading = false;
+  },
+  error: (error) => {
+    console.error('Erro:', error);
+    // ERRO
+    this.messageService.add({
+      severity: 'error', 
+      summary: 'Erro', 
+      detail: 'Falha ao enviar. Tente novamente ou me chame no WhatsApp.'
+    });
+    this.loading = false;
+  }
+});
   }
 }

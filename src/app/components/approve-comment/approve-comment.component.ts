@@ -1,40 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommentService } from 'src/app/services/comment.service';
-
+import { CommentService } from '../../services/comment.service'; 
+import { MessageService } from 'primeng/api'; 
 
 @Component({
   selector: 'app-approve-comment',
-  templateUrl: './approve-comment.component.html',
-  styleUrls: ['./approve-comment.component.scss']
+  template: `
+    <div style="text-align: center; padding: 50px;">
+      <h2>Processando aprovação...</h2>
+      <p>Aguarde um momento.</p>
+    </div>
+  `
 })
-export class ApproveCommentComponent  {
+export class ApproveCommentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private commentService: CommentService,
-    private router: Router
-  ) {
-    this.approve();
-  }
+    private messageService: MessageService
+  ) {}
 
-  approve(): void {    
+  ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
       const token = params['token'];
+
       if (id && token) {
-        this.commentService.approveComment(id, token).subscribe(response => {
-          if (response.success) {
-            const id_post = response.id_post; // Verifique se a resposta inclui id_post
-            this.router.navigate(['/post', id_post]);
-          } else {
-            alert("Erro ao aprovar o comentário.");
+        this.commentService.approveComment(id, token).subscribe({
+          next: (response) => {
+            this.messageService.add({severity:'success', summary:'Sucesso', detail:'Comentário aprovado!'});
+            
+            if (response.id_post) {
+              this.router.navigate(['/post', response.id_post]); 
+            } else {
+              this.router.navigate(['/']); 
+            }
+          },
+          error: (err) => {
+            this.messageService.add({severity:'error', summary:'Erro', detail:'Erro ao aprovar.'});
+            this.router.navigate(['/']); 
           }
-        }, error => {
-          alert("Erro ao comunicar com o servidor.");
         });
       } else {
-        alert("Parâmetros inválidos.");
+        this.router.navigate(['/']);
       }
     });
   }

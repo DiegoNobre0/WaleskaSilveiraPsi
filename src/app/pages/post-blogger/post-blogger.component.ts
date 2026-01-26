@@ -193,6 +193,7 @@ export class PostBloggerComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger
     if (this.contactForm.valid) {
       this.bloggerService.postComment(this.contactForm.value).subscribe(() => {
         this.contactForm.reset();

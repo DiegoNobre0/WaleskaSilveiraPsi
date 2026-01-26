@@ -7,16 +7,22 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmailService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
- 
-  postEmail(data: any): Observable<any> {       
-    const url = "https://app-wspsi-backend-v2.vercel.app/send-form";
-    // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.httpClient
+
+postEmail(data: any): Observable<any> {  
+  // 1. Mude para http (sem 's')
+  // 2. Adicione o nome da rota que você criou no Fastify (ex: /send-email)
+  const url = 'https://app-wspsi-backend-v2.vercel.app/send-form';
+  // const url = `${this.apiUrl}/send-form`;
+
+  // Opcional: headers explícitos, mas o Angular costuma inferir
+  // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
+  return this.httpClient
     .post(url, data)
     .pipe(catchError(this.handleError));
-  } 
+}
 
   private handleError(error: HttpErrorResponse): Observable<any> {
     let errorMessage = '';
