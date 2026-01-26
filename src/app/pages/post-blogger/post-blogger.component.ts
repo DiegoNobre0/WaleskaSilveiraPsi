@@ -4,6 +4,7 @@ import { ViewportScroller } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BloggerService } from '../../services/blogger.service';
 import { EmailService } from 'src/app/services/email.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-post-blogger',
@@ -12,6 +13,7 @@ import { EmailService } from 'src/app/services/email.service';
 })
 export class PostBloggerComponent implements OnInit {
 
+  loading: boolean = false;
   bloggerPost: any;
   postId: any;
   status:any;
@@ -45,7 +47,8 @@ export class PostBloggerComponent implements OnInit {
     private router: Router,
     private viewportScroller: ViewportScroller,
     private bloggerService: BloggerService,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private messageService: MessageService
   
   ) {
     // Inicializa Forms
@@ -206,27 +209,87 @@ export class PostBloggerComponent implements OnInit {
     this.selectedCommentIndex = null;
     this.isComment = false;
   }
+// Certifique-se de importar o MessageService se estiver usando PrimeNG
+// import { MessageService } from 'primeng/api';
 
-  onSubmit() {    
-    if (this.contactForm.valid) {
-      this.bloggerService.postComment(this.contactForm.value).subscribe({
-  next: async (res: any) => {
-    // 'res' é exatamente o 'commentData' que você retornou no backend!
-    
-    // O Backend fez o trabalho dele, agora o Front faz o envio:
-    const idDoComentario = res.id;
-    const tokenGerado = res.approvalToken; 
-
-    // Chama o EmailJS usando os dados que vieram do Backend
-    await this.emailService.sendCommentNotification(
-        this.contactForm.value, 
-        tokenGerado, 
-        idDoComentario
-    );
+onSubmit() {
+  // 1. Validação inicial: Se o form estiver inválido, mostra os erros vermelhos e para.
+  if (this.contactForm.invalid) {
+    this.contactForm.markAllAsTouched();
+    return;
   }
-});
+
+  // 2. Ativa o estado de carregamento (trava o botão)
+  this.loading = true;
+
+  // 3. Envia para o Backend salvar no banco
+  this.bloggerService.postComment(this.contactForm.value).subscribe({
+    next: async (res: any) => {
+      // O Backend salvou com sucesso! Agora tentamos avisar por e-mail.
+      
+      try {
+        // Pega os dados retornados pelo backend
+        const idDoComentario = res.id;
+        const tokenGerado = res.approvalToken;
+
+        // Chama o EmailJS (Frontend)
+        await this.emailService.sendCommentNotification(
+          this.contactForm.value,
+          tokenGerado,
+          idDoComentario
+        );
+
+        // SUCESSO TOTAL
+        // Se usar PrimeNG (Recomendado):
+        this.messageService.add({
+          severity: 'success', 
+          summary: 'Enviado!', 
+          detail: 'Comentário enviado para aprovação.'
+        });
+        
+        // Se usar Alert simples:
+        // alert('Comentário enviado para aprovação!');
+
+      } catch (error) {
+        console.error('Erro no EmailJS:', error);
+        
+        // AVISO DE FALHA PARCIAL
+        // O comentário foi salvo, mas o e-mail falhou. Não diga ao usuário que deu erro total.
+        this.messageService.add({
+          severity: 'warn', 
+          summary: 'Atenção', 
+          detail: 'Comentário salvo, mas houve uma falha na notificação.'
+        });
+      } finally {
+        // 4. LIMPEZA (Roda dando certo ou erro no email)
+        
+        // Limpa os campos
+        this.contactForm.reset(); 
+        
+        // RECOLOCA O ID DO POST (Muito importante! O reset apaga isso também)
+        this.contactForm.patchValue({ id_post: this.postId }); 
+        
+        // Atualiza a lista de comentários na tela
+        this.getComments(this.postId);
+        
+        // Libera o botão novamente
+        this.loading = false;
+      }
+    },
+    error: (err) => {
+      // 5. ERRO NO BACKEND (Nem salvou no banco)
+      console.error('Erro ao salvar:', err);
+      
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Erro', 
+        detail: 'Não foi possível enviar o comentário. Tente novamente.'
+      });
+      
+      this.loading = false;
     }
-  }
+  });
+}
 
   onSubmitComment(commentId: string) {
     this.commentForm.patchValue({ id_comment: commentId });
