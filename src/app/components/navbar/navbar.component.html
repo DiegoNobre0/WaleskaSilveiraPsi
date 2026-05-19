@@ -1,62 +1,56 @@
-<nav class="navbar" 
-     [ngClass]="{'navbar-scrolled': isScrolled, 'navbar-dark': !isHomePage}">
-    
+<nav class="navbar" [ngClass]="{'navbar-scrolled': isScrolled, 'navbar-dark': !isHomePage}">
+
     <div class="nav-container">
-        
+
         <div style="padding-top: 1rem;" class="logo-area cursor-pointer" (click)="navigate('/')">
-            <img src="assets/logowhite.svg" 
-                 class="logo-white" 
-                 *ngIf="isHomePage && !isScrolled">
-            
-            <img src="assets/logonew.svg" 
-                 class="logo-color" 
-                 *ngIf="!isHomePage || isScrolled">
+            <img src="assets/logowhite.svg" class="logo-white" *ngIf="isHomePage && !isScrolled">
+
+            <img src="assets/logonew.svg" class="logo-color" *ngIf="!isHomePage || isScrolled">
         </div>
 
         <div class="desktop-menu">
             <button pButton pRipple label="HOME" class="p-button-text nav-btn" (click)="navigate('/')"></button>
             <button pButton pRipple label="SOBRE" class="p-button-text nav-btn" (click)="navigate('/sobre')"></button>
-            <button pButton pRipple label="SERVIÇOS" class="p-button-text nav-btn" (click)="navigate('/servicos')"></button>
-            <button pButton pRipple label="MENTORIA" class="p-button-text nav-btn" (click)="navigate('/mentoria')"></button>
+            <button pButton pRipple label="SERVIÇOS" class="p-button-text nav-btn"
+                (click)="navigate('/servicos')"></button>
+            <button pButton pRipple label="MENTORIA" class="p-button-text nav-btn"
+                (click)="navigate('/mentoria')"></button>
             <button pButton pRipple label="BLOG" class="p-button-text nav-btn" (click)="navigate('/blog')"></button>
-            <button pButton pRipple label="CONTATO" class="p-button-outlined nav-btn-contact" (click)="navigate('/contato')"></button>
+            <button pButton pRipple label="CONTATO" class="p-button-outlined nav-btn-contact"
+                (click)="navigate('/contato')"></button>
         </div>
 
         <div class="mobile-trigger">
-            <button pButton pRipple icon="pi pi-bars" 
-                    class="p-button-rounded p-button-text mobile-trigger-btn"
-                    (click)="sidebarVisible = true"></button>
+            <button pButton pRipple icon="pi pi-bars" class="p-button-rounded p-button-text mobile-trigger-btn"
+                (click)="sidebarVisible = true"></button>
         </div>
 
     </div>
 </nav>
 
 <p-sidebar [(visible)]="sidebarVisible" position="right" [baseZIndex]="10000" styleClass="custom-sidebar">
-    
+
     <div class="mobile-container">
-        
+
         <img src="assets/logonew.svg" class="mobile-logo" (click)="navigate('/')">
-        
+
         <div class="mobile-links-area">
-            <button pButton pRipple label="HOME" 
-                    class="p-button-text mobile-nav-btn" 
-                    (click)="navigate('/')"></button>
-                    
-            <button pButton pRipple label="SOBRE" 
-                    class="p-button-text mobile-nav-btn" 
-                    (click)="navigate('/sobre')"></button>
-                    
-            <button pButton pRipple label="SERVIÇOS" 
-                    class="p-button-text mobile-nav-btn" 
-                    (click)="navigate('/servicos')"></button>
-            
-            <button pButton pRipple label="BLOG" 
-                    class="p-button-text mobile-nav-btn" 
-                    (click)="navigate('/blog')"></button>
-                    
-            <button pButton pRipple label="CONTATO" 
-                    class="p-button-text mobile-nav-btn highlight" 
-                    (click)="navigate('/contato')"></button>
+            <button pButton pRipple label="HOME" class="p-button-text mobile-nav-btn" (click)="navigate('/')"></button>
+
+            <button pButton pRipple label="SOBRE" class="p-button-text mobile-nav-btn"
+                (click)="navigate('/sobre')"></button>
+
+            <button pButton pRipple label="SERVIÇOS" class="p-button-text mobile-nav-btn"
+                (click)="navigate('/servicos')"></button>
+
+            <button pButton pRipple label="MENTORIA" class="p-button-text mobile-nav-btn"
+                (click)="navigate('/mentoria')"></button>
+
+            <button pButton pRipple label="BLOG" class="p-button-text mobile-nav-btn"
+                (click)="navigate('/blog')"></button>
+
+            <button pButton pRipple label="CONTATO" class="p-button-text mobile-nav-btn highlight"
+                (click)="navigate('/contato')"></button>
         </div>
     </div>
 </p-sidebar>
