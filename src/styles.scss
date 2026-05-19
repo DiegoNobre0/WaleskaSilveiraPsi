@@ -1,4 +1,81 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. IMPORTAÇÃO DE FONTES */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* 2. VARIÁVEIS GLOBAIS */
+:root {
+    --primary-color: #744972;  /* Roxo */
+    --accent-color: #fd8d76;   /* Coral */
+    --text-color: #333333;     
+    --bg-light: #f9f9f9;       
+    --bg-input: #fdfdfd;       
+    
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* 3. RESET BÁSICO */
+* {
+    box-sizing: border-box; 
+}
+
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;
+}
+
+body { 
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. TIPOGRAFIA */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+    font-weight: 500;
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* ========================================= */
+/* 5. OVERRIDES GLOBAIS DO PRIMENG (A SOLUÇÃO) */
+/* ========================================= */
+
+/* Força TODOS os inputs de texto e áreas de texto a terem largura total */
+.p-inputtext {
+    width: 100%;                
+    padding: 1rem !important;   
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #333;
+    background-color: var(--bg-input);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+/* Efeito de Foco (Roxo) */
+.p-inputtext:enabled:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(116, 73, 114, 0.2); 
+}
+
+/* Correção para o componente de Máscara (WhatsApp) */
+p-inputmask {
+    display: block;
+    width: 100%;
+}
+
+/* Correção para Textarea */
+textarea.p-inputtext {
+    resize: vertical;
+}

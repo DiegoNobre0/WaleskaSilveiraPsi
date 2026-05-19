@@ -47,8 +47,8 @@ export class BloggerService {
   }
 
   getCommentsRepost(): Observable<any> {    
-    const url = "https://app-wspsi-backend-v2.vercel.app/commentsRepost";
-    // const url = `${this.URL_LOCAL}/commentsRepost`;
+    const url = "https://app-wspsi-backend-v2.vercel.app/comments/replies";
+    // const url = `${this.URL_LOCAL}/comments/replies`;
     return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         return res || {};
@@ -58,8 +58,8 @@ export class BloggerService {
   }
 
   postComment(data: any): Observable<any> {       
-    const url = "https://app-wspsi-backend-v2.vercel.app/comment";
-    // const url = `${this.URL_LOCAL}/comment`;
+    const url = "https://app-wspsi-backend-v2.vercel.app/comments";
+    // const url = `${this.URL_LOCAL}/comments`;
     // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient
     .post(url, data)
@@ -67,8 +67,8 @@ export class BloggerService {
   }
 
   postCommentRepost(data: any): Observable<any> {    
-    const url = "https://app-wspsi-backend-v2.vercel.app/commentRepost";
-    // const url = `${this.URL_LOCAL}/commentRepost`;
+    const url = "https://app-wspsi-backend-v2.vercel.app/comments/reply";
+    // const url = `${this.URL_LOCAL}/comments/reply`;
 
     // const httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     return this.httpClient

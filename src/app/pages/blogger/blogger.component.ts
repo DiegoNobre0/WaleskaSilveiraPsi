@@ -1,129 +1,105 @@
-import { Component, HostListener, ElementRef, OnInit, OnDestroy, ApplicationRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-
-import { instagramService } from 'src/app/services/instagram.service';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-blogger',
   templateUrl: './blogger.component.html',
   styleUrls: ['./blogger.component.scss']
 })
-export class BloggerComponent {
+export class BloggerComponent implements OnInit {
 
-  constructor(
-    public dialog: MatDialog,
-    private route: ActivatedRoute,
-    private appRef: ApplicationRef,
-    private router: Router,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,    
-    private instagramService: instagramService
-  ) {
-    this.getPosts();
-    this.getPostInstagram();
-    this.updatePaginatedPosts();
-    this.matIconRegistry.addSvgIcon(
-      'whatsapp',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/whatsapp.svg')
-    );
-  }
-
-  atendimento: any;
-  imagem: any;
-  exibirModal: boolean = false;
   instagramPosts: any[] = [];
   bloggerPosts: any[] = [];
   paginatedPost: any[] = [];
   currentPage: number = 1;
   postsPerPage: number = 4;
- 
- 
-  postBloger(): void{
-    this.router.navigate(['/blogPost'], { relativeTo: this.route });  
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    // Carrega dados iniciais
+    this.getPosts();
+    this.getPostInstagram();
+    this.updatePaginatedPosts();
   }
 
-  ngOnInit(){   
-    
+  ngOnInit() {}
+
+  // --- NAVEGAÇÃO BLOG ---
+  getPostBlogger(id: any) {
+    this.router.navigate(['/post', id], { relativeTo: this.route });
   }
 
-  
+  openInstagramPost(url: string) {
+    window.open(url, "_blank");
+  }
+
+  // --- LÓGICA DE DADOS ---
+  getPosts() {
+    const dataString = localStorage.getItem('bloggerPosts');
+    if (dataString) {
+      this.bloggerPosts = JSON.parse(dataString);
+    }
+  }
+
+  getPostInstagram() {
+    const dataString = localStorage.getItem('instagramPosts');
+    if (dataString) {
+      const allPosts = JSON.parse(dataString);
+      // Filtra apenas imagens e carrosséis para o grid ficar bonito (opcional, removi o filtro de video para mostrar tudo)
+      this.instagramPosts = allPosts.slice(0, 8); // Pega apenas os 8 primeiros para não poluir
+    }
+  }
+
+  // --- PAGINAÇÃO ---
   nextPageBlog() {
     if ((this.currentPage * this.postsPerPage) < this.bloggerPosts.length) {
       this.currentPage++;
       this.updatePaginatedPosts();
+      this.scrollToTop();
     }
   }
-  
+
   prevPageBlog() {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.updatePaginatedPosts();
+      this.scrollToTop();
     }
   }
-  
+
   updatePaginatedPosts() {
     const startIndex = (this.currentPage - 1) * this.postsPerPage;
     this.paginatedPost = this.bloggerPosts.slice(startIndex, startIndex + this.postsPerPage);
   }
 
-  openInstagramPost(id: string) {
-    window.open(`${id}`, "_blank");
+  scrollToTop() {
+    const element = document.querySelector('.blog-section');
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  getPosts() {    
-    const dataString = localStorage.getItem('bloggerPosts');
-    this.bloggerPosts = dataString ? JSON.parse(dataString) : null;       
-  }  
-  getPostBlogger(id:any) {   
-    this.router.navigate(['/post', id], { relativeTo: this.route });    
-  }  
-
-  getPostInstagram() {
-    const dataString = localStorage.getItem('instagramPosts');
-    if (dataString) {
-      const instagramPosts = JSON.parse(dataString);
-      this.instagramPosts = instagramPosts.filter((post: any) => post.media_type !== "VIDEO");
-    } else {
-      this.instagramPosts = [];
-    }
-  }
-
-
+  // --- HELPERS DE TEXTO E DATA ---
   extractImageUrl(content: string): string {
-    // Lógica para extrair o URL da imagem do conteúdo HTML
-    let match = content.match(/src="([^"]+)"/);
-    return match ? match[1] : '';
-}
+    const div = document.createElement('div');
+    div.innerHTML = content;
+    const img = div.querySelector('img');
+    return img ? img.src : 'assets/logo-wspsi.svg'; // Retorna logo se não tiver imagem
+  }
 
-extractTitle(content: string): string {
-    // Lógica para extrair o título do conteúdo HTML
-    let title = content.replace(/<[^>]+>/g, '').trim();
-    title = title.replace(/&nbsp;/g, ''); // Remove todos os &nbsp; do texto
-    return title.length > 100 ? title.substring(0, 100) + '...' : title; // Limita o tamanho se necessário
-}
+  extractTitle(title: string): string {
+    return title.length > 60 ? title.substring(0, 60) + '...' : title;
+  }
 
-extractSummary(content: string): string {
-  // Remover tags HTML e caracteres não visíveis do início
-  let plainText = content.replace(/<[^>]+>/g, '').replace(/^&nbsp;/, '').trim();
+  extractSummary(content: string): string {
+    const div = document.createElement('div');
+    div.innerHTML = content;
+    const text = div.textContent || div.innerText || '';
+    return text.length > 150 ? text.substring(0, 150) + '...' : text;
+  }
 
-  // Limitar o texto extraído a 200 caracteres
-  let summary = plainText.substring(0, 195);
-
-  // Retornar o resumo com reticências no final, se necessário
-  return summary.length < plainText.length ? summary + '...' : summary;
-}
-
-formatDate(dateString: string): string {
-    // Lógica para formatar a data de publicação
-    let date = new Date(dateString);
-    let day = ('0' + date.getDate()).slice(-2); // Adiciona zero à esquerda se necessário
-    let month = ('0' + (date.getMonth() + 1)).slice(-2); // Adiciona zero à esquerda se necessário
-    let year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-}
-
-  
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR');
+  }
 }
