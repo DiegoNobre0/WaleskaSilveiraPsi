@@ -2,13 +2,13 @@
 
     <header class="post-header-section">
         <div class="header-container">
-            
+
             <nav class="breadcrumbs" aria-label="Navegação">
                 <span class="back-link" (click)="goBack()">
                     <i class="pi pi-arrow-left"></i> Voltar ao Blog
                 </span>
                 <span class="separator">/</span>
-                <span (click)="goToHome()" class="crumb-link">Início</span> 
+                <span (click)="goToHome()" class="crumb-link">Início</span>
                 <span class="separator">/</span>
                 <span class="current">Artigo</span>
             </nav>
@@ -38,7 +38,8 @@
         <div class="content-container">
 
             <div class="featured-image">
-                <img [src]="extractImageUrl(bloggerPost.content)" alt="Imagem em destaque do artigo" onerror="this.style.display='none'">
+                <img [src]="extractImageUrl(bloggerPost.content)" alt="Imagem em destaque do artigo"
+                    onerror="this.style.display='none'">
             </div>
 
             <article class="post-content" [innerHTML]="extractSummary(bloggerPost.content)"></article>
@@ -46,10 +47,16 @@
             <div class="share-section">
                 <span class="share-label">Compartilhe esta reflexão:</span>
                 <div class="share-buttons">
-                    <a href="https://wa.me/?text=Confira este post: {{bloggerPost.url}}" target="_blank" class="share-btn whatsapp" title="Compartilhar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{bloggerPost.url}}" target="_blank" class="share-btn facebook" title="Compartilhar no Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/intent/tweet?url={{bloggerPost.url}}" target="_blank" class="share-btn twitter" title="Compartilhar no Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://pinterest.com/pin/create/button/?url={{bloggerPost.url}}&media={{extractImageUrl(bloggerPost.content)}}" target="_blank" class="share-btn pinterest" title="Salvar no Pinterest"><i class="fab fa-pinterest"></i></a>
+                    <a href="https://wa.me/?text=Confira este post: {{bloggerPost.url}}" target="_blank"
+                        class="share-btn whatsapp" title="Compartilhar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{bloggerPost.url}}" target="_blank"
+                        class="share-btn facebook" title="Compartilhar no Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url={{bloggerPost.url}}" target="_blank"
+                        class="share-btn twitter" title="Compartilhar no Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com/pin/create/button/?url={{bloggerPost.url}}&media={{extractImageUrl(bloggerPost.content)}}"
+                        target="_blank" class="share-btn pinterest" title="Salvar no Pinterest"><i
+                            class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
@@ -68,15 +75,18 @@
 
             <section class="author-box">
                 <div class="author-img">
-                    <img src="assets/waleska-about.jpeg" alt="Waleska Silveira - Psicanalista e Hipnoterapeuta">
+                    <img src="assets/ws2.png" alt="Waleska Silveira - Psicanalista e Hipnoterapeuta">
                 </div>
                 <div class="author-info">
                     <span class="author-eyebrow">Sobre a Autora</span>
                     <h3>Waleska Silveira</h3>
-                    <p>Psicanalista Clínica, Hipnoterapeuta e Mentora de Desenvolvimento Emocional. Dedica-se a acolher mulheres e casais na reconstrução de vínculos afetivos e conquista da autonomia emocional.</p>
+                    <p>Psicanalista Clínica, Hipnoterapeuta e Mentora de Desenvolvimento Emocional. Dedica-se a acolher
+                        mulheres e casais na reconstrução de vínculos afetivos e conquista da autonomia emocional.</p>
                     <div class="author-social">
-                        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" title="Instagram"><i class="fab fa-instagram"></i> @waleskasilveirapsi</a>
-                        <a href="https://www.facebook.com/waleska.vercosa" target="_blank" title="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" title="Instagram"><i
+                                class="fab fa-instagram"></i> @waleskasilveirapsi</a>
+                        <a href="https://www.facebook.com/waleska.vercosa" target="_blank" title="Facebook"><i
+                                class="fab fa-facebook"></i> Facebook</a>
                     </div>
                 </div>
             </section>
@@ -93,7 +103,8 @@
             <div class="related-grid">
                 <div class="related-card" *ngFor="let related of paginatedPosts" (click)="getPostBloggerId(related.id)">
                     <div class="related-img">
-                        <img [src]="extractImageUrl(related.content)" alt="Artigo relacionado" onerror="this.src='assets/foto17.jpeg'">
+                        <img [src]="extractImageUrl(related.content)" alt="Artigo relacionado"
+                            onerror="this.src='assets/foto17.jpeg'">
                     </div>
                     <div class="related-title">
                         {{ extractTitle(related.title) }}
@@ -102,25 +113,27 @@
             </div>
 
             <div class="pagination-controls" *ngIf="filteredPosts && filteredPosts.length > postsPerPage">
-                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="btn-nav" title="Anterior"><i class="pi pi-angle-left"></i></button>
-                <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= filteredPosts.length" class="btn-nav" title="Próximo"><i class="pi pi-angle-right"></i></button>
+                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="btn-nav" title="Anterior"><i
+                        class="pi pi-angle-left"></i></button>
+                <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= filteredPosts.length"
+                    class="btn-nav" title="Próximo"><i class="pi pi-angle-right"></i></button>
             </div>
         </div>
     </section>
 
     <section class="comments-section">
         <div class="content-container">
-            
+
             <span class="section-eyebrow">Comunidade</span>
             <h3 class="section-heading">{{ commentsPost.length }} COMENTÁRIOS</h3>
-            
+
             <div class="header-line gold-line"></div>
 
             <div class="comments-list" *ngIf="commentsPost.length > 0">
                 <div *ngFor="let comment of commentsPost; let i = index" class="comment-wrapper">
-                    
+
                     <ng-container *ngIf="comment.status === 'approved'">
-                        
+
                         <div class="comment-item">
                             <div class="comment-avatar">
                                 <img src="assets/unnamed.png" alt="Avatar do leitor">
@@ -129,7 +142,8 @@
                                 <div class="comment-header">
                                     <strong>{{ comment.name }}</strong>
                                     <span class="date">• {{ formatDate(comment.created_comment) }}</span>
-                                    <span *ngIf="comment.status === 'pending'" class="badge-pending">(Aguardando aprovação)</span>
+                                    <span *ngIf="comment.status === 'pending'" class="badge-pending">(Aguardando
+                                        aprovação)</span>
                                 </div>
                                 <p class="comment-text">{{ comment.comment }}</p>
                                 <button class="btn-reply-link" (click)="selectComment(i)">Responder</button>
@@ -154,23 +168,34 @@
                         <div class="reply-form-container" *ngIf="selectedCommentIndex === i">
                             <div class="reply-header-info">
                                 <span>Respondendo para: <b>{{ comment.name }}</b></span>
-                                <span class="cancel-reply" (click)="cancelResponse()"><i class="pi pi-times"></i> Cancelar</span>
+                                <span class="cancel-reply" (click)="cancelResponse()"><i class="pi pi-times"></i>
+                                    Cancelar</span>
                             </div>
-                            
-                            <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment(comment.id)" class="styled-form">
+
+                            <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment(comment.id)"
+                                class="styled-form">
                                 <div class="form-row">
                                     <div class="input-group">
-                                        <input type="text" formControlName="name" placeholder="Seu Nome *" class="input-field">
-                                        <small class="error" *ngIf="commentForm.get('name')?.invalid && commentForm.get('name')?.touched">Nome obrigatório</small>
+                                        <input type="text" formControlName="name" placeholder="Seu Nome *"
+                                            class="input-field">
+                                        <small class="error"
+                                            *ngIf="commentForm.get('name')?.invalid && commentForm.get('name')?.touched">Nome
+                                            obrigatório</small>
                                     </div>
                                     <div class="input-group">
-                                        <input type="email" formControlName="email" placeholder="Seu E-mail *" class="input-field">
-                                        <small class="error" *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">E-mail inválido</small>
+                                        <input type="email" formControlName="email" placeholder="Seu E-mail *"
+                                            class="input-field">
+                                        <small class="error"
+                                            *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">E-mail
+                                            inválido</small>
                                     </div>
                                 </div>
-                                <textarea formControlName="commentRepost" rows="3" placeholder="Sua resposta..." class="input-field"></textarea>
-                                <small class="error" *ngIf="commentForm.get('commentRepost')?.invalid && commentForm.get('commentRepost')?.touched">Escreva sua resposta</small>
-                                
+                                <textarea formControlName="commentRepost" rows="3" placeholder="Sua resposta..."
+                                    class="input-field"></textarea>
+                                <small class="error"
+                                    *ngIf="commentForm.get('commentRepost')?.invalid && commentForm.get('commentRepost')?.touched">Escreva
+                                    sua resposta</small>
+
                                 <button type="submit" class="btn-submit">ENVIAR RESPOSTA</button>
                             </form>
                         </div>
@@ -182,25 +207,35 @@
             <div class="new-comment-area" *ngIf="!isComment">
                 <h3 class="sub-title">DEIXE SEU COMENTÁRIO</h3>
                 <p class="sub-desc">Compartilhe sua percepção, reflexão ou dúvida sobre este tema.</p>
-                
+
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="styled-form">
                     <div class="form-row">
                         <div class="input-group">
-                            <input type="text" formControlName="name" placeholder="Seu Nome Completo *" class="input-field">
-                            <small class="error" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Nome obrigatório</small>
+                            <input type="text" formControlName="name" placeholder="Seu Nome Completo *"
+                                class="input-field">
+                            <small class="error"
+                                *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Nome
+                                obrigatório</small>
                         </div>
                         <div class="input-group">
-                            <input type="email" formControlName="email" placeholder="Seu Melhor E-mail *" class="input-field">
-                            <small class="error" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">E-mail inválido</small>
+                            <input type="email" formControlName="email" placeholder="Seu Melhor E-mail *"
+                                class="input-field">
+                            <small class="error"
+                                *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">E-mail
+                                inválido</small>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <textarea formControlName="comment" rows="5" placeholder="Escreva seu comentário aqui..." class="input-field"></textarea>
-                        <small class="error" *ngIf="contactForm.get('comment')?.invalid && contactForm.get('comment')?.touched">Comentário obrigatório</small>
+                        <textarea formControlName="comment" rows="5" placeholder="Escreva seu comentário aqui..."
+                            class="input-field"></textarea>
+                        <small class="error"
+                            *ngIf="contactForm.get('comment')?.invalid && contactForm.get('comment')?.touched">Comentário
+                            obrigatório</small>
                     </div>
 
-                    <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">PUBLICAR COMENTÁRIO</button>
+                    <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">PUBLICAR
+                        COMENTÁRIO</button>
                 </form>
             </div>
 
