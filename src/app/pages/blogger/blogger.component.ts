@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BloggerService } from 'src/app/services/blogger.service';
 
 @Component({
   selector: 'app-blogger',
@@ -12,19 +13,19 @@ export class BloggerComponent implements OnInit {
   bloggerPosts: any[] = [];
   paginatedPost: any[] = [];
   currentPage: number = 1;
-  postsPerPage: number = 4;
+  postsPerPage: number = 6;
+  loading: boolean = true;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) {
-    // Carrega dados iniciais
+    private route: ActivatedRoute,
+    private bloggerService: BloggerService
+  ) { }
+
+  ngOnInit() {
     this.getPosts();
     this.getPostInstagram();
-    this.updatePaginatedPosts();
   }
-
-  ngOnInit() {}
 
   // --- NAVEGAÇÃO BLOG ---
   getPostBlogger(id: any) {
@@ -39,8 +40,30 @@ export class BloggerComponent implements OnInit {
   getPosts() {
     const dataString = localStorage.getItem('bloggerPosts');
     if (dataString) {
-      this.bloggerPosts = JSON.parse(dataString);
+      try {
+        this.bloggerPosts = JSON.parse(dataString);
+        this.updatePaginatedPosts();
+        this.loading = false;
+      } catch (e) {
+        console.error(e);
+      }
     }
+
+    // Sempre faz fallback / refresh para garantir que o usuário veja posts mesmo acessando direto
+    this.bloggerService.getAllPosts().subscribe({
+      next: (response: any) => {
+        if (response && response.items) {
+          this.bloggerPosts = response.items;
+          localStorage.setItem('bloggerPosts', JSON.stringify(response.items));
+          this.updatePaginatedPosts();
+        }
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar posts:', err);
+        this.loading = false;
+      }
+    });
   }
 
   getPostInstagram() {
@@ -84,7 +107,7 @@ export class BloggerComponent implements OnInit {
     const div = document.createElement('div');
     div.innerHTML = content;
     const img = div.querySelector('img');
-    return img ? img.src : 'assets/logo-wspsi.svg'; // Retorna logo se não tiver imagem
+    return img ? img.src : 'assets/logo-nova.svg';
   }
 
   extractTitle(title: string): string {

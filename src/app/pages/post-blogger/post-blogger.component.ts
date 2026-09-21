@@ -88,19 +88,44 @@ export class PostBloggerComponent implements OnInit {
   }
 
   getPosts() {
-    
     const dataString = localStorage.getItem('bloggerPosts');
     this.blogPosts = dataString ? JSON.parse(dataString) : [];
-    if(this.blogPosts.length > 0) this.setupCurrentPost();
+    if (this.blogPosts.length > 0) {
+      this.setupCurrentPost();
+    } else {
+      this.bloggerService.getAllPosts().subscribe({
+        next: (res: any) => {
+          if (res && res.items) {
+            this.blogPosts = res.items;
+            localStorage.setItem('bloggerPosts', JSON.stringify(res.items));
+            this.setupCurrentPost();
+          }
+        },
+        error: () => {
+          this.bloggerService.getPostById(this.postId).subscribe((singlePost: any) => {
+            if (singlePost) {
+              this.bloggerPost = singlePost;
+              this.tags = this.bloggerPost.labels || [];
+            }
+          });
+        }
+      });
+    }
   }
 
   setupCurrentPost() {
-    
     this.bloggerPost = this.blogPosts.find(p => p.id === this.postId);
     if (this.bloggerPost) {
-        this.tags = this.bloggerPost.labels || [];
-        this.getPostsNextPrevious(this.postId);
-        this.filterPostsByTag();
+      this.tags = this.bloggerPost.labels || [];
+      this.getPostsNextPrevious(this.postId);
+      this.filterPostsByTag();
+    } else {
+      this.bloggerService.getPostById(this.postId).subscribe((singlePost: any) => {
+        if (singlePost) {
+          this.bloggerPost = singlePost;
+          this.tags = this.bloggerPost.labels || [];
+        }
+      });
     }
   }
 

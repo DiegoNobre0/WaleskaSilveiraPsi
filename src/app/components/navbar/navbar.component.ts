@@ -35,6 +35,12 @@ export class NavbarComponent implements OnInit {
     this.isScrolled = window.scrollY > 50;
   }
 
+  whatsapp(): void {
+    const phoneNumber = '71992117598';
+    const message = encodeURIComponent('Olá Waleska! Gostaria de agendar uma sessão.');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  }
+
   navigate(path: string) {
     this.router.navigate([path]);
     this.sidebarVisible = false;

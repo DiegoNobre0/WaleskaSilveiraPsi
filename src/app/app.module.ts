@@ -8,9 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaskedTextBoxModule } from '@progress/kendo-angular-inputs';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -19,7 +18,6 @@ import { ServicesComponent } from './pages/services/services.component';
 import { BloggerComponent } from './pages/blogger/blogger.component';
 import { PostBloggerComponent } from './pages/post-blogger/post-blogger.component';
 import { ContatoComponent } from './pages/contato/contato.component';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 import { ApproveCommentComponent } from './components/approve-comment/approve-comment.component';
 import { RejectCommentComponent } from './components/reject-comment/reject-comment.component';
@@ -32,7 +30,6 @@ import { MentoriaLibertaComponent } from './pages/mentoria-liberta/mentoria-libe
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-
 
 @NgModule({
   declarations: [
@@ -52,7 +49,6 @@ import { MessageService } from 'primeng/api';
   ],
   imports: [
     BrowserModule,
-    GoogleMapsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
@@ -60,7 +56,6 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaskedTextBoxModule,
     SidebarModule,
     ButtonModule,
     RippleModule,
@@ -68,15 +63,12 @@ import { MessageService } from 'primeng/api';
     CdkAccordionModule,
     AccordionModule,
     CarouselModule,
-    ToastModule,
-    
+    ToastModule
   ],
   providers: [
     {
-      provide: { MAT_DIALOG_DEFAULT_OPTIONS, HTTP_INTERCEPTORS },
-      useValue: { hasBackdrop: true },
-      // useClass: AuthInterceptor,      
-      multi: true
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { hasBackdrop: true }
     },
     MessageService
   ],

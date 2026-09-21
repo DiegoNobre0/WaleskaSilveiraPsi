@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ServicesComponent {
 
-  whatsapp(): void {    
+  whatsapp(customMessage?: string): void {    
     const phoneNumber = '71992117598';
-    const message = encodeURIComponent('Olá! Gostaria de mais informações sobre os atendimentos.');
+    const text = customMessage || 'Olá! Gostaria de mais informações sobre os atendimentos.';
+    const message = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   }

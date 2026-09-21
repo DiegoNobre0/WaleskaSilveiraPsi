@@ -11,7 +11,8 @@ import { EmailService } from 'src/app/services/email.service';
 export class FooterComponent {
   
   contactForm: FormGroup;
-  loading: boolean = false; // Controle de carregamento
+  loading: boolean = false;
+  currentYear: number = new Date().getFullYear();
 
   constructor(
     private fb: FormBuilder,

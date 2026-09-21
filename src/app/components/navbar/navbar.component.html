@@ -1,56 +1,62 @@
-<nav class="navbar" [ngClass]="{'navbar-scrolled': isScrolled, 'navbar-dark': !isHomePage}">
+<nav class="luxury-navbar" [ngClass]="{'scrolled': isScrolled, 'page-interior': !isHomePage}">
+  <div class="nav-container">
 
-    <div class="nav-container">
+    <a routerLink="/" class="logo-link">
+      <img src="assets/logo-nova.svg" alt="Waleska Silveira - Psicanalista" class="brand-logo">
+    </a>
 
-        <div style="padding-top: 1rem;" class="logo-area cursor-pointer" (click)="navigate('/')">
-            <img src="assets/logowhite.svg" class="logo-white" *ngIf="isHomePage && !isScrolled">
+    <div class="desktop-menu">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">HOME</a>
+      <a routerLink="/sobre" routerLinkActive="active" class="nav-link">SOBRE</a>
+      <a routerLink="/servicos" routerLinkActive="active" class="nav-link">SERVIÇOS</a>
+      <a routerLink="/mentoria" routerLinkActive="active" class="nav-link">MENTORIA</a>
+      <a routerLink="/blog" routerLinkActive="active" class="nav-link">BLOG</a>
+      <a routerLink="/contato" routerLinkActive="active" class="nav-link">CONTATO</a>
 
-            <img src="assets/logonew.svg" class="logo-color" *ngIf="!isHomePage || isScrolled">
-        </div>
-
-        <div class="desktop-menu">
-            <button pButton pRipple label="HOME" class="p-button-text nav-btn" (click)="navigate('/')"></button>
-            <button pButton pRipple label="SOBRE" class="p-button-text nav-btn" (click)="navigate('/sobre')"></button>
-            <button pButton pRipple label="SERVIÇOS" class="p-button-text nav-btn"
-                (click)="navigate('/servicos')"></button>
-            <button pButton pRipple label="MENTORIA" class="p-button-text nav-btn"
-                (click)="navigate('/mentoria')"></button>
-            <button pButton pRipple label="BLOG" class="p-button-text nav-btn" (click)="navigate('/blog')"></button>
-            <button pButton pRipple label="CONTATO" class="p-button-outlined nav-btn-contact"
-                (click)="navigate('/contato')"></button>
-        </div>
-
-        <div class="mobile-trigger">
-            <button pButton pRipple icon="pi pi-bars" class="p-button-rounded p-button-text mobile-trigger-btn"
-                (click)="sidebarVisible = true"></button>
-        </div>
-
+      <button class="nav-cta-btn" (click)="whatsapp()">
+        AGENDAR SESSÃO
+      </button>
     </div>
+
+    <div class="mobile-trigger">
+      <button (click)="sidebarVisible = true" class="mobile-toggle-btn" aria-label="Abrir Menu de Navegação">
+        <i class="pi pi-bars"></i>
+      </button>
+    </div>
+
+  </div>
 </nav>
 
-<p-sidebar [(visible)]="sidebarVisible" position="right" [baseZIndex]="10000" styleClass="custom-sidebar">
-
-    <div class="mobile-container">
-
-        <img src="assets/logonew.svg" class="mobile-logo" (click)="navigate('/')">
-
-        <div class="mobile-links-area">
-            <button pButton pRipple label="HOME" class="p-button-text mobile-nav-btn" (click)="navigate('/')"></button>
-
-            <button pButton pRipple label="SOBRE" class="p-button-text mobile-nav-btn"
-                (click)="navigate('/sobre')"></button>
-
-            <button pButton pRipple label="SERVIÇOS" class="p-button-text mobile-nav-btn"
-                (click)="navigate('/servicos')"></button>
-
-            <button pButton pRipple label="MENTORIA" class="p-button-text mobile-nav-btn"
-                (click)="navigate('/mentoria')"></button>
-
-            <button pButton pRipple label="BLOG" class="p-button-text mobile-nav-btn"
-                (click)="navigate('/blog')"></button>
-
-            <button pButton pRipple label="CONTATO" class="p-button-text mobile-nav-btn highlight"
-                (click)="navigate('/contato')"></button>
-        </div>
+<p-sidebar [(visible)]="sidebarVisible" position="right" [baseZIndex]="10000" styleClass="luxury-sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">
+      <img src="assets/logo-nova.svg" alt="Waleska Silveira" class="sidebar-logo">
+      <span class="sidebar-subtitle">PSICANALISTA CLÍNICA</span>
     </div>
+
+    <div class="sidebar-links">
+      <a routerLink="/" (click)="sidebarVisible = false" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}" class="sidebar-item">HOME</a>
+      <a routerLink="/sobre" (click)="sidebarVisible = false" routerLinkActive="active" class="sidebar-item">SOBRE</a>
+      <a routerLink="/servicos" (click)="sidebarVisible = false" routerLinkActive="active"
+        class="sidebar-item">SERVIÇOS</a>
+      <a routerLink="/mentoria" (click)="sidebarVisible = false" routerLinkActive="active" class="sidebar-item">MENTORIA
+        LIBERTA</a>
+      <a routerLink="/blog" (click)="sidebarVisible = false" routerLinkActive="active" class="sidebar-item">BLOG &
+        ARTIGOS</a>
+      <a routerLink="/contato" (click)="sidebarVisible = false" routerLinkActive="active"
+        class="sidebar-item">CONTATO</a>
+    </div>
+
+    <div class="sidebar-action">
+      <button class="sidebar-cta-btn" (click)="whatsapp(); sidebarVisible = false">
+        <i class="pi pi-whatsapp"></i> AGENDAR SESSÃO
+      </button>
+      <div class="sidebar-social">
+        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" rel="noopener noreferrer">
+          <i class="pi pi-instagram"></i> @waleskasilveirapsi
+        </a>
+      </div>
+    </div>
+  </div>
 </p-sidebar>

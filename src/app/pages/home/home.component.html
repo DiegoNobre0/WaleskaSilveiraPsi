@@ -1,81 +1,302 @@
-<div class="home-container">
+<div class="luxury-home">
 
-    <div class="hero-section">
-        <div class="hero-overlay"></div>        
-        <div class="hero-content fadeinup animation-duration-1000">
-            <h1 class="hero-title">WALESKA SILVEIRA</h1>
-            <div class="hero-divider"></div>
-            <span class="hero-subtitle">Psicanalista e Hipnoterapeuta</span>
+  <!-- 1. HERO SECTION (INSPIRED BY ASCEND & CO) -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <!-- Coluna Direita: Retrato Editorial de Waleska -->
+      <div class="hero-visual-col">
+        <div class="portrait-art-frame">
+          <div class="watercolor-halo"></div>
+          <div class="portrait-img-box">
+            <img src="assets/ws1.jpg" alt=" Waleska Silveira - Psicanalista" class="hero-portrait">
+          </div>
+          <div class="portrait-accent-tag">
+            <span class="tag-title">Waleska Silveira</span>
+            <span class="tag-sub">Psicanalista & Hipnoterapeuta</span>
+          </div>
         </div>
-    </div>
+      </div>
+      <!-- Coluna Esquerda: Texto Editorial & Ação -->
+      <div class="hero-text-col">
+        <span class="eyebrow eyebrow-terracotta">PSICANÁLISE CLÍNICA & HIPNOTERAPIA</span>
 
-    <div class="cards-section">
-        
-        <div class="cards-grid">
-            
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="pi pi-desktop"></i>
-                </div>
-                <span class="card-title">ATENDIMENTO ON-LINE</span>
-            </div>
+        <h1 class="hero-heading font-editorial">
+          Aproprie-se do Seu Poder. <br>
+          <span class="editorial-italic">Transforme</span> Sua História.
+        </h1>
 
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="pi pi-users"></i>
-                </div>
-                <span class="card-title">ATENDIMENTO PRESENCIAL</span>
-            </div>
+        <p class="hero-description">
+          Especialista em relacionamento, autoestima e neurociência. Um espaço terapêutico acolhedor e integrativo para
+          guiar você em direção ao autoconhecimento, libertação emocional e paz interior.
+        </p>
 
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="pi pi-clock"></i>
-                </div>
-                <span class="card-title">HORÁRIO FLEXÍVEL</span>
-            </div>
-
-            <div class="service-card">
-                <div class="card-icon">
-                    <i class="pi pi-heart"></i>
-                </div>
-                <span class="card-title">ACESSÍVEL</span>
-            </div>
-
+        <div class="hero-actions">
+          <button class="btn-terracotta-luxury" (click)="whatsapp('Olá Waleska! Gostaria de agendar uma consulta.')">
+            <i class="pi pi-whatsapp"></i> AGENDAR CONSULTA
+          </button>
+          <button class="btn-outline-luxury" (click)="mentoria()">
+            CONHECER A MENTORIA
+          </button>
         </div>
-    </div>
 
-    <div class="about-section">
-        <div class="about-container">
-            
-            <div class="about-image-wrapper">
-                <img src="assets/WhatsApp Image 2026-01-22 at 19.47.22.jpeg" alt="Waleska Silveira">
-            </div>
-
-            <div class="about-content">
-                <p class="greeting">Olá! Meu nome é</p>
-                <h2 class="about-title">WALESKA SILVEIRA</h2>
-                
-                <p class="about-text">
-                    Sou Waleska Silveira, psicanalista e hipnoterapeuta, especialista em sexualidade e neurociência, com vasta experiência em atendimento clínico.
-                </p>
-                <p class="about-text">
-                    Minha paixão é guiar pessoas em suas jornadas de autoconhecimento e transformação pessoal. Foco em promover a saúde mental e o bem-estar emocional utilizando técnicas inovadoras para tratar uma ampla gama de questões.
-                </p>
-
-                <div class="about-actions">
-                    <button pButton pRipple label="AGENDAR VIA WHATSAPP" 
-                            icon="pi pi-whatsapp" 
-                            style="color: #744972;"
-                            class="p-button-rounded action-btn whatsapp-btn"
-                            (click)="whatsapp()"></button>
-
-                    <button pButton pRipple label="CONHEÇA MAIS" 
-                            class="p-button-rounded p-button-outlined action-btn more-btn"
-                            (click)="about()"></button>
-                </div>
-            </div>
-
+        <div class="hero-badges">
+          <div class="badge-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Atendimento Presencial</span>
+          </div>
+          <div class="badge-item">
+            <i class="pi pi-globe"></i>
+            <span>Terapia Online </span>
+          </div>
         </div>
+      </div>
+
+
+
     </div>
+  </section>
+
+  <!-- 2. THE VISIONARY / A PSICANALISTA -->
+  <section class="visionary-section">
+    <div class="visionary-container">
+
+      <div class="visionary-image-col">
+        <div class="visionary-frame">
+          <div class="frame-gold-border"></div>
+          <img src="assets/ws5.jpg" alt="Waleska Silveira" class="visionary-img">
+        </div>
+      </div>
+
+      <div class="visionary-content-col">
+        <span class="eyebrow">A TERAPEUTA</span>
+        <h2 class="visionary-title font-editorial">
+          Cuidar de Si é um <br>
+          <span class="editorial-italic">Ato de Coragem</span> & Amor.
+        </h2>
+
+        <div class="quote-pill">
+          <i class="pi pi-sparkles"></i>
+          <span>"A mulher que se cura, cura gerações antes e depois dela."</span>
+        </div>
+
+        <p class="visionary-bio">
+          Sou Waleska Silveira, psicanalista clínica, hipnoterapeuta e especialista em sexualidade humana e
+          neurociência. Há anos dedico minha prática clínica a conduzir mulheres e pacientes ao encontro de sua mais
+          genuína autenticidade.
+        </p>
+
+        <p class="visionary-bio">
+          Minha abordagem une a profundidade da psicanálise com ferramentas transformadoras como a hipnoterapia e as
+          Barras de Access®, criando uma experiência clínica segura, respeitosa e verdadeiramente libertadora.
+        </p>
+
+        <div class="visionary-action">
+          <button class="btn-primary-luxury" (click)="about()">
+            CONHEÇA MINHA TRAJETÓRIA
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. SIGNATURE PROGRAMS / SERVIÇOS EXCLUSIVOS -->
+  <section class="programs-section">
+    <div class="programs-container">
+
+      <div class="section-header-centered">
+        <span class="eyebrow">PROGRAMAS & ATENDIMENTOS</span>
+        <h2 class="section-title font-editorial">Cuidado Terapêutico de Excelência</h2>
+        <div class="ornament-divider">
+          <i class="pi pi-star-fill ornament-icon"></i>
+        </div>
+        <p class="section-subtitle">
+          Modalidades desenhadas para atender às suas necessidades com profundo rigor ético e acolhimento humano.
+        </p>
+      </div>
+
+      <div class="programs-grid">
+
+        <!-- Card 1: Psicanálise Clínica -->
+        <div class="luxury-program-card">
+          <div class="card-crest">
+            <i class="pi pi-compass"></i>
+          </div>
+          <span class="card-category">ATENDIMENTO CLÍNICO</span>
+          <h3 class="card-title font-editorial">Psicanálise Clínica</h3>
+          <p class="card-desc">
+            Investigação profunda das causas inconscientes de angústias, traumas e padrões repetitivos. Atendimento
+            presencial com divã em Camaçari - BA ou sessões online com total sigilo.
+          </p>
+          <ul class="card-features">
+            <li><i class="pi pi-check"></i> Sessões individuais e confidenciais</li>
+            <li><i class="pi pi-check"></i> Tratamento de ansiedade e depressão</li>
+            <li><i class="pi pi-check"></i> Resgate do equilíbrio emocional</li>
+          </ul>
+          <button class="btn-card-action" (click)="servicos()">
+            SAIBA MAIS
+          </button>
+        </div>
+
+        <!-- Card 2: Mentoria Liberta (Destaque) -->
+        <div class="luxury-program-card featured">
+          <div class="card-badge">EXCLUSIVO</div>
+          <div class="card-crest">
+            <i class="pi pi-heart-fill"></i>
+          </div>
+          <span class="card-category">MENTORIA FEMININA</span>
+          <h3 class="card-title font-editorial">Mentoria Liberta</h3>
+          <p class="card-desc">
+            Um programa transformador de empoderamento e autonomia emocional para mulheres que desejam superar a
+            dependência afetiva, estabelecer limites e viver sua verdade sem culpa.
+          </p>
+          <ul class="card-features">
+            <li><i class="pi pi-check"></i> Encontros com ferramentas práticas</li>
+            <li><i class="pi pi-check"></i> Fortalecimento do amor-próprio</li>
+            <li><i class="pi pi-check"></i> Acompanhamento personalizado</li>
+          </ul>
+          <button class="btn-card-action btn-featured-action" (click)="mentoria()">
+            CONHECER O PROGRAMA
+          </button>
+        </div>
+
+        <!-- Card 3: Hipnoterapia & PNL -->
+        <div class="luxury-program-card">
+          <div class="card-crest">
+            <i class="pi pi-sun"></i>
+          </div>
+          <span class="card-category">NEUROCIÊNCIA</span>
+          <h3 class="card-title font-editorial">Hipnoterapia & PNL</h3>
+          <p class="card-desc">
+            Ferramentas modernas que acessam o subconsciente para ressignificar bloqueios, crenças limitantes e medos de
+            forma acelerada, integrando mente e emoção.
+          </p>
+          <ul class="card-features">
+            <li><i class="pi pi-check"></i> Desbloqueio de memórias traumáticas</li>
+            <li><i class="pi pi-check"></i> Alívio de crises de pânico e estresse</li>
+            <li><i class="pi pi-check"></i> Técnicas validadas pela neurociência</li>
+          </ul>
+          <button class="btn-card-action" (click)="servicos()">
+            SAIBA MAIS
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. TRANSFORMATIONS (WARM TERRACOTTA SECTION - IDENTICAL TO ASCEND & CO) -->
+  <section class="transformations-section">
+    <div class="transformations-container">
+
+      <div class="transformations-header">
+        <span class="eyebrow eyebrow-white">HISTÓRIAS REAIS</span>
+        <h2 class="transformations-title font-editorial">
+          Transformações Que Inspiram
+        </h2>
+        <p class="transformations-subtitle">
+          O relato de quem deu o primeiro passo e resgatou sua paz e força interior.
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card" *ngFor="let item of testimonials">
+          <div class="quote-symbol">“</div>
+          <p class="testimonial-text">{{ item.quote }}</p>
+          <div class="testimonial-author-box">
+            <span class="author-name">{{ item.author }}</span>
+            <span class="author-detail">{{ item.detail }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="transformation-quote-banner">
+        <p class="banner-quote font-editorial">
+          "Acho chique quem faz análise. A mente humana merece esse cuidado."
+        </p>
+        <span class="banner-author">— Waleska Silveira</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. THE EDIT / BLOG & REFLEXÕES -->
+  <section class="the-edit-section">
+    <div class="the-edit-container">
+
+      <div class="the-edit-header">
+        <div>
+          <span class="eyebrow">ARTIGOS & REFLEXÕES</span>
+          <h2 class="the-edit-title font-editorial">O Editorial Psicanalítico</h2>
+        </div>
+        <button class="btn-outline-luxury view-all-btn" routerLink="/blog">
+          VER TODOS OS ARTIGOS
+        </button>
+      </div>
+
+      <div class="posts-grid" *ngIf="recentPosts.length > 0">
+        <article class="post-card" *ngFor="let post of recentPosts" (click)="openPost(post.id)">
+          <div class="post-thumb-wrapper">
+            <img [src]="extractImageUrl(post.content)" [alt]="post.title" class="post-thumb">
+            <span class="post-category-tag">Psicanálise</span>
+          </div>
+          <div class="post-info">
+            <span class="post-date">{{ formatDate(post.published) }}</span>
+            <h3 class="post-headline font-editorial">{{ extractTitle(post.title) }}</h3>
+            <p class="post-excerpt">{{ extractSummary(post.content) }}</p>
+            <span class="read-more-link">
+              Ler Artigo Completo <i class="pi pi-arrow-right"></i>
+            </span>
+          </div>
+        </article>
+      </div>
+
+      <div class="loading-posts-state" *ngIf="loadingPosts && recentPosts.length === 0">
+        <i class="pi pi-spin pi-spinner"></i>
+        <p>Carregando artigos mais recentes...</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. INSTAGRAM SHOWCASE -->
+  <section class="instagram-section">
+    <div class="instagram-container">
+      <div class="instagram-card">
+        <div class="instagram-info">
+          <i class="pi pi-instagram insta-icon"></i>
+          <span class="eyebrow">CONECTE-SE</span>
+          <h2 class="insta-title font-editorial">@waleskasilveirapsi</h2>
+          <p class="insta-desc">
+            Acompanhe reflexões diárias, vídeos e orientações práticas para sua saúde mental, relacionamentos e
+            autodesenvolvimento no Instagram.
+          </p>
+          <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" rel="noopener noreferrer"
+            class="btn-gold-luxury">
+            SEGUIR NO INSTAGRAM
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONSULTÓRIO & CTA FINAL -->
+  <section class="clinic-cta-section">
+    <div class="clinic-cta-container">
+      <div class="cta-box">
+        <span class="eyebrow eyebrow-terracotta">PRONTA PARA O PRIMEIRO PASSO?</span>
+        <h2 class="cta-heading font-editorial">Sua Jornada de Autoconhecimento Começa Agora</h2>
+        <p class="cta-text">
+          Agende sua sessão e permita-se viver com mais clareza, equilíbrio e amor próprio. Atendimento acolhedor
+          presencial em Camaçari - BA ou online para todo o Brasil e exterior.
+        </p>
+        <button class="btn-terracotta-luxury cta-btn-large"
+          (click)="whatsapp('Olá Waleska! Gostaria de agendar minha sessão inicial.')">
+          <i class="pi pi-whatsapp"></i> CONVERSAR DIRETAMENTE NO WHATSAPP
+        </button>
+      </div>
+    </div>
+  </section>
 
 </div>

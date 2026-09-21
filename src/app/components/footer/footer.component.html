@@ -1,98 +1,102 @@
-<footer class="footer-section">
+<footer class="luxury-footer">
 
-    <div class="footer-container">
+  <div class="footer-container">
 
-        <div class="footer-column info-column">
-            <div class="logo-area">
-                <img src="assets/logonew.svg" alt="Logo WS Psicologia">
-            </div>
+    <!-- Coluna 1: Marca & Bio -->
+    <div class="footer-col brand-col">
+      <div class="footer-logo-area">
+        <img src="assets/logo-nova.svg" alt="Waleska Silveira - Psicanalista" class="footer-logo">
+      </div>
 
-            <p class="intro-text">
-                Estou dedicada a ajudar você a alcançar seu bem-estar emocional e mental através de uma abordagem
-                personalizada e integrativa. Meu objetivo é facilitar seu processo de cura e autodescoberta.
-            </p>
+      <p class="footer-bio">
+        Espaço dedicado ao seu bem-estar emocional, autoconhecimento e empoderamento pessoal através da Psicanálise
+        Clínica, Hipnoterapia e Terapias Integrativas.
+      </p>
 
-            <div class="contact-list">
-                <div class="contact-item">
-                    <i class="pi pi-phone"></i>
-                    <span>(71) 99211-7598</span>
-                </div>
-                <div class="contact-item">
-                    <i class="pi pi-envelope"></i>
-                    <span>wsvercosa@gmail.com</span>
-                </div>
-                <div class="contact-item">
-                    <i class="pi pi-map-marker"></i>
-                    <span>R. Estr. 25, 10b - Jardim Limoeiro, Camaçari - BA</span>
-                </div>
-            </div>
+      <div class="footer-contact-details">
+        <div class="contact-line">
+          <i class="pi pi-whatsapp"></i>
+          <span>(71) 99211-7598</span>
         </div>
-
-        <div class="footer-column specialties-column">
-            <h3 class="column-title">ESPECIALIDADES</h3>
-
-            <ul class="specialties-list">
-                <li><i class="pi pi-check"></i> Tratamento de Depressão</li>
-                <li><i class="pi pi-check"></i> Tratamento de Ansiedade</li>
-                <li><i class="pi pi-check"></i> Transtornos de Humor</li>
-                <li><i class="pi pi-check"></i> Relacionamentos</li>
-                <li><i class="pi pi-check"></i> Sexualidade</li>
-                <li><i class="pi pi-check"></i> Autoconhecimento</li>
-                <li><i class="pi pi-check"></i> Outros</li>
-            </ul>
+        <div class="contact-line">
+          <i class="pi pi-envelope"></i>
+          <span>wsvercosa@gmail.com</span>
         </div>
-
-        <div class="footer-column form-column">
-            <h3 class="column-title">FALE COMIGO</h3>
-
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="footer-form">
-
-                <div class="form-group">
-                    <input type="text" formControlName="name" placeholder="Seu nome" class="custom-input">
-                    <small class="error-msg"
-                        *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-                        Obrigatório
-                    </small>
-                </div>
-
-                <div class="form-group">
-                    <input type="email" formControlName="email" placeholder="Seu e-mail" class="custom-input">
-                    <small class="error-msg"
-                        *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                        E-mail inválido
-                    </small>
-                </div>
-
-                <div class="input-group">
-                    <p-inputMask mask="(99) 99999-9999" formControlName="number" placeholder="Seu WhatsApp"
-                        styleClass="custom-input" [unmask]="true">
-                    </p-inputMask>
-                    <small class="error-msg"
-                        *ngIf="contactForm.get('number')?.invalid && contactForm.get('number')?.touched">
-                        Número inválido
-                    </small>
-                </div>
-
-                <div class="form-group">
-                    <textarea formControlName="message" rows="4" placeholder="Sua mensagem"
-                        class="custom-input"></textarea>
-                    <small class="error-msg"
-                        *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-                        Escreva uma mensagem
-                    </small>
-                </div>
-
-                <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">
-                    ENVIAR MENSAGEM
-                </button>
-            </form>
+        <div class="contact-line">
+          <i class="pi pi-map-marker"></i>
+          <span>R. Estr. 25, 10b - Jardim Limoeiro, Camaçari - BA</span>
         </div>
-
+      </div>
     </div>
 
-    <div class="copyright-bar">
-        <p>© 2024 Waleska Silveira. Todos os Direitos Reservados.</p>
+    <!-- Coluna 2: Navegação & Especialidades -->
+    <div class="footer-col links-col">
+      <h4 class="col-heading font-editorial">NAVEGAÇÃO</h4>
+      <ul class="footer-nav-list">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/sobre">Sobre Waleska</a></li>
+        <li><a routerLink="/servicos">Serviços & Terapias</a></li>
+        <li><a routerLink="/mentoria">Mentoria Liberta</a></li>
+        <li><a routerLink="/blog">Blog & Reflexões</a></li>
+        <li><a routerLink="/contato">Fale Comigo</a></li>
+      </ul>
     </div>
+
+    <!-- Coluna 3: Especialidades -->
+    <div class="footer-col specialties-col">
+      <h4 class="col-heading font-editorial">ÁREAS DE CUIDADO</h4>
+      <ul class="specialties-nav-list">
+        <li><i class="pi pi-sparkles"></i> Autoestima e Poder Pessoal</li>
+        <li><i class="pi pi-sparkles"></i> Relacionamentos Afetivos</li>
+        <li><i class="pi pi-sparkles"></i> Ansiedade e Crises de Pânico</li>
+        <li><i class="pi pi-sparkles"></i> Depressão e Humor</li>
+        <li><i class="pi pi-sparkles"></i> Sexualidade Humana</li>
+        <li><i class="pi pi-sparkles"></i> Barras de Access®</li>
+      </ul>
+    </div>
+
+    <!-- Coluna 4: Mensagem Rápida -->
+    <div class="footer-col form-col">
+      <h4 class="col-heading font-editorial">ENVIE UMA MENSAGEM</h4>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="luxury-footer-form">
+        <div class="form-item">
+          <input type="text" formControlName="name" placeholder="Seu nome *" class="footer-input">
+        </div>
+
+        <div class="form-item">
+          <input type="email" formControlName="email" placeholder="Seu e-mail *" class="footer-input">
+        </div>
+
+        <div class="form-item">
+          <p-inputMask mask="(99) 99999-9999" formControlName="number" placeholder="Seu WhatsApp *"
+            styleClass="footer-input" [unmask]="true"></p-inputMask>
+        </div>
+
+        <div class="form-item">
+          <textarea formControlName="message" rows="3" placeholder="Sua mensagem *" class="footer-input"></textarea>
+        </div>
+
+        <button type="submit" class="btn-footer-submit" [disabled]="contactForm.invalid || loading">
+          <span *ngIf="!loading">ENVIAR MENSAGEM</span>
+          <span *ngIf="loading"><i class="pi pi-spin pi-spinner"></i> ENVIANDO...</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom-bar">
+    <div class="bottom-container">
+      <p class="copyright-text">
+        © {{ currentYear }} Waleska Silveira. Todos os Direitos Reservados.
+      </p>
+      <div class="footer-social-links">
+        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" rel="noopener noreferrer">
+          <i class="pi pi-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </div>
 
 </footer>
-<p-toast></p-toast>

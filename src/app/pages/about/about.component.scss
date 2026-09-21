@@ -1,272 +1,336 @@
-// Variáveis
-$color-primary: #744972;  // Roxo
-$color-accent: #fd8d76;   // Coral
-$bg-light: #FAEBE8;       // Rosa Claro
-$font-cinzel: 'Cinzel', serif;
-
-.about-page {
-    background-color: white;
+.luxury-about-page {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-linen);
 }
 
-// HEADER
-.page-header {
-    text-align: center;
-    padding: 8rem 1rem 2rem 1rem;
-    background-color: white;
-}
-.page-title {
-    font-family: $font-cinzel;
-    color: $color-primary;
-    font-size: 3.5rem;
-    margin: 0;
-}
-.header-line {
-    width: 100px;
-    height: 2px;
-    background-color: $color-primary;
-    margin: 1rem auto;
-    
-    &.white-line { background-color: white; margin: 1rem 0; opacity: 0.5; }
-}
+/* Header */
+.about-hero-header {
+  padding: 140px 1.5rem 50px 1.5rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 30%, rgba(228, 200, 158, 0.2) 0%, rgba(249, 246, 240, 1) 70%);
 
-// --- BIO SECTION COM A CURVA ---
-.bio-section {
-    background-color: $color-primary; // Fundo Roxo
-    color: white;
-    padding: 4rem 1rem 10rem 1rem; // Padding extra embaixo p/ curva
-    position: relative;
-
-    // APLICANDO A CURVA GEOMÉTRICA
-    &.bio-curve {
-        border-bottom-right-radius: 41rem;
-        border-bottom-left-radius: 13rem;
-        clip-path: polygon(0% 0%, 100% 0%, 100% 98%, -4% 100%, 0% 102%);
-        
-        @media (max-width: 992px) {
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-            clip-path: none; 
-            padding-bottom: 4rem;
-        }
-    }
-}
-
-.bio-container {
-    max-width: 1200px;
+  .header-inner {
+    max-width: 760px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column-reverse; // Mobile: Texto embaixo
-    align-items: flex-start; // Alinha itens ao topo
-    gap: 4rem;
 
-    @media (min-width: 992px) {
-        flex-direction: row; // Desktop: Lado a lado
-    }
-}
+    .about-hero-title {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
 
-// CONTEÚDO DE TEXTO
-.bio-content {
-    flex: 1;
-    
-    .title-block {
-        margin-bottom: 3rem;
-        .pre-title { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; opacity: 0.8; }
-        .main-title { font-family: $font-cinzel; font-size: 2.5rem; margin: 0; font-weight: 400; line-height: 1.2;  color: $bg-light;}
+      @media (min-width: 768px) {
+        font-size: 3.8rem;
+      }
     }
 
-    .bio-text-block {
-        margin-bottom: 2.5rem;
-        
-        h3 { 
-            font-size: 1.3rem; 
-            color: $color-accent; 
-            margin-bottom: 1rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
-        
-        p { 
-            font-size: 1rem;
-            line-height: 1.8; 
-            text-align: justify; 
-            opacity: 0.95;
-            margin-bottom: 1rem;
-        }
+    .about-hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.65;
     }
-
-    .education-list {
-        list-style: none;
-        padding: 0;
-        
-        li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            line-height: 1.5;
-            
-            &::before {
-                content: '•';
-                color: $color-accent;
-                font-size: 1.5rem;
-                line-height: 1.2rem;
-                margin-right: 0.5rem;
-            }
-        }
-    }
+  }
 }
 
-// IMAGEM (FOTO)
-.bio-image-wrapper {
-    flex: 0 0 400px; // Largura fixa no desktop
-    display: flex;
-    justify-content: center;
-    position: sticky;
-    top: 9rem; // Fica fixa ao rolar se o texto for longo
+/* Bio Section */
+.about-bio-section {
+  padding: 60px 1.5rem 100px 1.5rem;
 
-    @media (max-width: 992px) {
-        flex: auto;
-        width: 100%;
-        position: static;
-        margin-bottom: 2rem;
-    }
-
-    img {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        border-radius: 12px;
-        border: 8px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    }
+  @media (min-width: 992px) {
+    padding: 80px 3rem 120px 3rem;
+  }
 }
 
-// BOTÃO DE AÇÃO
-::ng-deep .btn-gold-action {
-    background-color: $color-accent !important;
-    border: none !important;
-    color: white !important;
-    font-weight: 600;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    margin-top: 1rem;
-    transition: all 0.3s;
-    
-    &:hover {
-        background-color: white !important;
-        color: $color-primary !important;
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
+.bio-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 5rem;
+  }
 }
 
-// --- ESPECIALIDADES ---
-.specialties-section {
-    padding: 5rem 1rem;
-    background-color: white;
-    text-align: center;
+.bio-portrait-col {
+  display: flex;
+  justify-content: center;
 }
 
-.section-title {
-    font-family: $font-cinzel;
-    font-size: 2rem;
-    color: $color-primary;
-    margin: 0;
-}
+.portrait-wrapper {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
 
-.header-line {
-    width: 60px;
-    height: 3px;
-    background-color: $color-primary;
-    margin: 1rem auto 3rem auto;
-}
-
-.specialties-list-wrapper {
-    max-width: 1000px; // Aumentei um pouco a largura total para caber a imagem maior
-    margin: 3rem auto 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; // Centraliza o conjunto
-    gap: 2rem; // Espaço entre o texto e a imagem
-    position: relative;
-
-    // Ajuste para Celular (Mobile)
-    @media (max-width: 768px) {
-        flex-direction: column; // Um embaixo do outro no celular
-        gap: 3rem;
-    }
-}
-
-.specialties-list {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    flex: 1; // Ocupa o espaço necessário
-    
-    li {
-        font-size: 1.2rem; // Aumentei levemente a fonte para equilibrar
-        margin-bottom: 1.2rem;
-        display: flex;
-        align-items: center;
-        color: $color-primary;
-        
-        i { 
-            margin-right: 1rem; 
-            font-weight: bold; 
-            color: $color-accent; // Coral
-            font-size: 1.4rem; 
-        }
-    }
-}
-
-.decoration-img {
-    flex: 0 0 auto; // Impede que a imagem encolha
-    
-    img {
-        // --- AQUI ESTÁ A MUDANÇA ---
-        width: 37rem;           // Bem maior (era 200px)
-         
-        opacity: 1;             // Totalmente visível (era 0.8)
-        filter: drop-shadow(0 10px 15px rgba(116, 73, 114, 0.2)); // Sombra suave roxa para destacar
-        transition: transform 0.3s ease;
-
-        &:hover {
-            transform: rotate(0deg) scale(1.05); // Efeito legal ao passar o mouse
-        }
-
-        // Ajuste da imagem no celular
-        @media (max-width: 768px) {
-            width: 25rem
-           
-        }
-    }
-}
-
-// --- CONSULTÓRIO (GALERIA) ---
-.gallery-section {
-    padding: 5rem 1rem;
-    text-align: center;
-    background-color: $bg-light; // Rosa Claro
-}
-
-.gallery-grid {
-    max-width: 1200px;
-    margin: 3rem auto 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-
-    @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); }
-}
-
-.gallery-item img {
+  .gold-offset-frame {
+    position: absolute;
+    top: -16px;
+    left: -16px;
     width: 100%;
-    height: 300px;
+    height: 100%;
+    border: 2px solid var(--gold-color);
+    border-radius: 4px;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .bio-photo {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 500px;
     object-fit: cover;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-    
-    &:hover { transform: scale(1.03); }
+    border-radius: 4px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .portrait-label {
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    z-index: 3;
+    background: #FFFFFF;
+    padding: 0.9rem 1.4rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--terracotta-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    .label-name {
+      display: block;
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .label-title {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}
+
+.bio-text-col {
+  .bio-headline {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 3.1rem;
+    }
+
+    .editorial-italic {
+      font-style: italic;
+      color: var(--terracotta-color);
+    }
+  }
+
+  .bio-quote-callout {
+    background: rgba(197, 155, 99, 0.12);
+    border-left: 3px solid var(--gold-color);
+    padding: 1rem 1.4rem;
+    margin-bottom: 1.8rem;
+    border-radius: 0 4px 4px 0;
+
+    p {
+      margin: 0;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--primary-color);
+      line-height: 1.6;
+    }
+  }
+
+  .bio-paragraph {
+    font-size: 1.02rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .bio-cta {
+    margin-top: 2rem;
+  }
+}
+
+/* Credentials Section (Vinho Nobre) */
+.credentials-section {
+  padding: 100px 1.5rem;
+  background-color: #3F111E; /* Vinho Profundo */
+  color: #FFFFFF;
+
+  @media (min-width: 992px) {
+    padding: 120px 3rem;
+  }
+}
+
+.credentials-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.credentials-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 4rem auto;
+
+  .credentials-title {
+    font-size: 2.8rem;
+    color: #FFFFFF;
+    margin-bottom: 0.8rem;
+
+    @media (min-width: 768px) {
+      font-size: 3.4rem;
+    }
+  }
+
+  .credentials-subtitle {
+    font-size: 1.05rem;
+    color: #D8CCC0;
+  }
+}
+
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.credential-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(197, 155, 99, 0.3);
+  padding: 2.5rem 2rem;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-5px);
+    border-color: var(--gold-light);
+  }
+
+  .cred-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(197, 155, 99, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+    i {
+      font-size: 1.3rem;
+      color: var(--gold-light);
+    }
+  }
+
+  .cred-title {
+    font-size: 1.6rem;
+    color: #FFFFFF;
+    margin-bottom: 0.8rem;
+  }
+
+  .cred-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #DDD2C7;
+    margin: 0;
+
+    strong {
+      color: var(--gold-light);
+    }
+  }
+}
+
+/* Clinic Gallery Section */
+.clinic-gallery-section {
+  padding: 100px 1.5rem;
+  background-color: var(--bg-warm);
+
+  @media (min-width: 992px) {
+    padding: 120px 3rem;
+  }
+}
+
+.clinic-gallery-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.clinic-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.clinic-card {
+  border-radius: 4px;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid var(--border-delicate);
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+
+    .clinic-img {
+      transform: scale(1.04);
+    }
+  }
+
+  .clinic-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .clinic-caption {
+    padding: 1.2rem;
+    text-align: center;
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    color: var(--primary-color);
+  }
+}
+
+.clinic-action-box {
+  text-align: center;
+
+  .clinic-location-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+
+    i {
+      color: var(--terracotta-color);
+      margin-right: 0.4rem;
+    }
+  }
 }

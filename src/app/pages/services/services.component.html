@@ -1,128 +1,178 @@
-<div class="services-page">
-    
-    <div class="page-header">
-        <h1 class="page-title">SERVIÇOS</h1>
-        <div class="header-line"></div>
+<div class="luxury-services-page">
+
+  <!-- Header Editorial -->
+  <header class="services-hero-header">
+    <div class="header-inner">
+      <span class="eyebrow eyebrow-terracotta">CUIDADO & ESCUTA CLÍNICA</span>
+      <h1 class="services-hero-title font-editorial">Serviços & Terapias</h1>
+      <div class="ornament-divider">
+        <i class="pi pi-compass ornament-icon"></i>
+      </div>
+      <p class="services-hero-lead">
+        Abordagens terapêuticas integrativas, profundas e personalizadas para acompanhar sua jornada de cura e autonomia.
+      </p>
     </div>
+  </header>
 
-    <div class="scope-section">
-        <div class="scope-container">
-            <h2 class="section-title">EU TRABALHO COM</h2>
-            <div class="header-line gold-line"></div>
+  <!-- Modalidades de Atendimento -->
+  <section class="modalities-section">
+    <div class="modalities-container">
 
-            <div class="scope-grid">
-                <div class="scope-item">
-                    <i class="pi pi-check-circle"></i>
-                    <span>Tratamento para Ansiedade</span>
-                </div>
-                <div class="scope-item">
-                    <i class="pi pi-check-circle"></i>
-                    <span>Tratamento para Depressão</span>
-                </div>
-                <div class="scope-item">
-                    <i class="pi pi-check-circle"></i>
-                    <span>Transtornos de Humor</span>
-                </div>
-                <div class="scope-item">
-                    <i class="pi pi-check-circle"></i>
-                    <span>Relacionamentos</span>
-                </div>
-                <div class="scope-item">
-                    <i class="pi pi-check-circle"></i>
-                    <span>Sexualidade</span>
-                </div>
-                <div class="scope-item">
-                    <i class="pi pi-check-circle"></i>
-                    <span>Autoconhecimento</span>
-                </div>
-            </div>
+      <div class="section-header-centered">
+        <span class="eyebrow">MODALIDADES</span>
+        <h2 class="section-title font-editorial">Como Posso Ajudar Você</h2>
+        <p class="section-subtitle">
+          Escolha o formato que melhor se adapta à sua rotina, com a mesma entrega ética, atenção e confidencialidade.
+        </p>
+      </div>
+
+      <div class="modalities-grid">
+
+        <!-- Presencial -->
+        <div class="modality-card">
+          <div class="modality-icon-box">
+            <i class="pi pi-home"></i>
+          </div>
+          <span class="modality-tag">CONSULTÓRIO FÍSICO</span>
+          <h3 class="modality-title font-editorial">Terapia Presencial com Divã</h3>
+          <p class="modality-text">
+            Sessões de 40 a 60 minutos em consultório aconchegante e reservado em Camaçari - BA. O divã tradicional é um elemento potente para favorecer a associação livre de ideias e o aprofundamento psicanalítico.
+          </p>
+          <button class="btn-card-action" (click)="whatsapp('Olá Waleska! Gostaria de agendar uma consulta presencial.')">
+            AGENDAR PRESENCIAL
+          </button>
         </div>
-    </div>
 
-    <div class="special-section">
-        <div class="special-container">
-            
-            <div class="special-content">
-                <h2 class="special-title">BARRAS DE ACCESS COM OLHAR PSICANALÍTICO</h2>
-                <p class="special-intro">
-                    Como psicanalista e praticante de Barras de Access, acredito que o cuidado verdadeiro acontece quando olhamos para a pessoa em sua totalidade: corpo, mente e emoção.
-                </p>
-
-                <div class="info-block">
-                    <h3>O que é a técnica?</h3>
-                    <p>As Barras de Access são uma técnica corporal que trabalha por meio de toques suaves em 32 pontos específicos da cabeça, liberando memórias e crenças limitantes.</p>
-                </div>
-
-                <div class="info-block">
-                    <h3>Quais os benefícios?</h3>
-                    <p>Diminuição da ansiedade, alívio do estresse, melhora do sono e fortalecimento da autoestima. Muitos relatam mais clareza mental e confiança na vida.</p>
-                </div>
-
-                <p class="note">
-                    * Vale lembrar que esta prática é complementar, não substituindo tratamentos médicos ou psicológicos.
-                </p>
-            </div>
-
-            <div class="special-image">
-                <img src="assets/barras-de-access.jpg" alt="Sessão de Barras de Access">
-            </div>
-
+        <!-- Online -->
+        <div class="modality-card featured">
+          <div class="modality-badge">GLOBAL</div>
+          <div class="modality-icon-box">
+            <i class="pi pi-globe"></i>
+          </div>
+          <span class="modality-tag">CONFORTO & FLEXIBILIDADE</span>
+          <h3 class="modality-title font-editorial">Terapia Online</h3>
+          <p class="modality-text">
+            Atendimento seguro por videochamada para pacientes em qualquer lugar do Brasil e no exterior. A mesma eficácia clínica com a praticidade de estar no conforto e na privacidade do seu próprio espaço.
+          </p>
+          <button class="btn-card-action btn-featured-action" (click)="whatsapp('Olá Waleska! Gostaria de agendar uma consulta online.')">
+            AGENDAR ONLINE
+          </button>
         </div>
-    </div>
 
-    <div class="modalities-section">
-        <div class="modalities-container">
-            
-            <div class="modality-card">
-                <div class="modality-icon">
-                    <i class="pi pi-home"></i>
-                </div>
-                <div class="modality-content">
-                    <h3 class="modality-title">TERAPIA PRESENCIAL</h3>
-                    <p>
-                        O paciente se desloca até o consultório em horário combinado. Sessões de 40 a 60 minutos. No meu consultório você encontrará o divã, essencial na abordagem psicanalítica.
-                    </p>
-                </div>
-            </div>
-
-            <div class="modality-card">
-                <div class="modality-icon">
-                    <i class="pi pi-wifi"></i>
-                </div>
-                <div class="modality-content">
-                    <h3 class="modality-title">TERAPIA ON-LINE</h3>
-                    <p>
-                        Ideal para quem busca conforto, tem agenda cheia ou mora longe. Utiliza tecnologias de vídeo chamada para promover bem-estar mental onde quer que você esteja.
-                    </p>
-                </div>
-            </div>
-
-            <div class="modality-card highlight-card">
-                <div class="modality-icon">
-                    <i class="pi pi-heart"></i>
-                </div>
-                <div class="modality-content">
-                    <h3 class="modality-title">ATENDIMENTO SOCIAL</h3>
-                    <p>
-                        Busca democratizar a psicanálise para pessoas com dificuldades de acesso. Promove dignidade, igualdade e qualidade de vida.
-                    </p>
-                    <p class="small-note">* Sujeito à disponibilidade de vagas e avaliação do perfil social.</p>
-                </div>
-            </div>
-
+        <!-- Social -->
+        <div class="modality-card">
+          <div class="modality-icon-box">
+            <i class="pi pi-heart"></i>
+          </div>
+          <span class="modality-tag">ACESSIBILIDADE</span>
+          <h3 class="modality-title font-editorial">Atendimento Social</h3>
+          <p class="modality-text">
+            Iniciativa comprometida em democratizar o acesso à psicanálise e à saúde mental de qualidade para pessoas em situação de vulnerabilidade social. Vagas limitadas sob análise prévia.
+          </p>
+          <button class="btn-card-action" (click)="whatsapp('Olá Waleska! Gostaria de informações sobre o atendimento social.')">
+            CONSULTAR VAGAS
+          </button>
         </div>
-    </div>
 
-    <div class="cta-section">
-        <div class="cta-content">
-            <h2 class="cta-title">GOSTARIA DE AGENDAR UM ENCONTRO?</h2>
-            <div class="header-line white-line"></div>
-            
-            <button pButton pRipple label="SOLICITAR INFORMAÇÕES" 
-                    icon="pi pi-whatsapp" 
-                    class="btn-gold-action"
-                    (click)="whatsapp()"></button>
-        </div>
+      </div>
+
     </div>
+  </section>
+
+  <!-- Escopo de Tratamento -->
+  <section class="scope-section">
+    <div class="scope-container">
+
+      <div class="section-header-centered">
+        <span class="eyebrow eyebrow-white">DIAGNÓSTICO & TRATAMENTO</span>
+        <h2 class="section-title font-editorial text-white">Demandas Atendidas em Clínica</h2>
+        <div class="ornament-divider">
+          <i class="pi pi-sparkles ornament-icon"></i>
+        </div>
+      </div>
+
+      <div class="scope-grid">
+        <div class="scope-item">
+          <i class="pi pi-check-circle"></i>
+          <span class="scope-name">Ansiedade & Pânico</span>
+          <p class="scope-desc">Alívio de sintomas físicos e emocionais, regulação do estresse e controle de pensamentos intrusivos.</p>
+        </div>
+
+        <div class="scope-item">
+          <i class="pi pi-check-circle"></i>
+          <span class="scope-name">Depressão & Vazio</span>
+          <p class="scope-desc">Ressignificação da dor, acolhimento de perdas e recuperação gradual do sentido e do prazer de viver.</p>
+        </div>
+
+        <div class="scope-item">
+          <i class="pi pi-check-circle"></i>
+          <span class="scope-name">Relacionamentos</span>
+          <p class="scope-desc">Superação de dependência afetiva, resolução de conflitos conjugais e construção de vínculos saudáveis.</p>
+        </div>
+
+        <div class="scope-item">
+          <i class="pi pi-check-circle"></i>
+          <span class="scope-name">Sexualidade Humana</span>
+          <p class="scope-desc">Compreensão de bloqueios, resgate do desejo, disfunções e autoconhecimento com base em sexologia.</p>
+        </div>
+
+        <div class="scope-item">
+          <i class="pi pi-check-circle"></i>
+          <span class="scope-name">Autoestima & Limites</span>
+          <p class="scope-desc">Aprender a dizer não sem culpa, superar a necessidade de validação externa e tomar posse da própria voz.</p>
+        </div>
+
+        <div class="scope-item">
+          <i class="pi pi-check-circle"></i>
+          <span class="scope-name">Traumas & Fobias</span>
+          <p class="scope-desc">Reprocessamento de memórias dolorosas através de hipnoterapia e técnicas integrativas de neurociência.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Destaque: Barras de Access -->
+  <section class="access-bars-section">
+    <div class="access-bars-container">
+
+      <div class="access-content">
+        <span class="eyebrow">TERAPIA INTEGRATIVA</span>
+        <h2 class="access-title font-editorial">
+          Barras de Access® com <br>
+          <span class="editorial-italic">Olhar Psicanalítico</span>
+        </h2>
+        
+        <p class="access-intro">
+          Como psicanalista e praticante de Barras de Access®, acredito que o verdadeiro bem-estar surge da harmonia integral entre corpo, mente e inconsciente.
+        </p>
+
+        <div class="access-info-box">
+          <h4 class="font-editorial">Como funciona a técnica?</h4>
+          <p>
+            Trata-se de um toque suave em 32 pontos específicos da cabeça onde se acumulam crenças, memórias traumáticas e condicionamentos. Ao serem ativados, esses pontos desaceleram as ondas cerebrais e liberam cargas eletromagnéticas estagnadas.
+          </p>
+        </div>
+
+        <div class="access-info-box">
+          <h4 class="font-editorial">Principais Benefícios</h4>
+          <p>
+            Alívio imediato da sobrecarga mental, melhora comprovada no padrão de sono, redução do estresse acumulado e uma sensação libertadora de clareza e paz mental.
+          </p>
+        </div>
+
+        <button class="btn-terracotta-luxury" (click)="whatsapp('Olá Waleska! Gostaria de agendar uma sessão de Barras de Access.')">
+          <i class="pi pi-whatsapp"></i> AGENDAR SESSÃO DE BARRAS DE ACCESS
+        </button>
+      </div>
+
+      <div class="access-visual">
+        <div class="access-img-frame">
+          <img src="assets/barras-de-access.jpg" alt="Sessão de Barras de Access" class="access-img">
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 </div>

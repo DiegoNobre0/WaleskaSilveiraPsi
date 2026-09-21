@@ -1,24 +1,24 @@
 <div class="single-post-page" *ngIf="bloggerPost">
 
-    <div class="post-header-section header-curve">
+    <header class="post-header-section">
         <div class="header-container">
             
-            <div class="breadcrumbs">
+            <nav class="breadcrumbs" aria-label="Navegação">
                 <span class="back-link" (click)="goBack()">
-                    <i class="pi pi-arrow-left"></i> Voltar
+                    <i class="pi pi-arrow-left"></i> Voltar ao Blog
                 </span>
-                <span class="separator">|</span>
+                <span class="separator">/</span>
                 <span (click)="goToHome()" class="crumb-link">Início</span> 
-                <i class="pi pi-angle-right"></i>
-                <span class="current">Blog</span>
-            </div>
+                <span class="separator">/</span>
+                <span class="current">Artigo</span>
+            </nav>
 
             <h1 class="post-title">{{ extractTitle(bloggerPost.title) }}</h1>
 
             <div class="post-meta">
                 <div class="meta-item">
                     <i class="pi pi-user"></i>
-                    <span>Por <strong>{{ bloggerPost.author.displayName }}</strong></span>
+                    <span>Por <strong>{{ bloggerPost.author?.displayName || 'Waleska Silveira' }}</strong></span>
                 </div>
                 <div class="meta-item">
                     <i class="pi pi-calendar"></i>
@@ -27,35 +27,35 @@
             </div>
 
             <div class="post-tags" *ngIf="tags && tags.length > 0">
-                <span class="tag-label">TAGS:</span>
+                <span class="tag-label">TEMAS:</span>
                 <span *ngFor="let tag of tags" class="tag-pill">{{ tag }}</span>
             </div>
 
         </div>
-    </div>
+    </header>
 
-    <div class="post-body-section">
+    <main class="post-body-section">
         <div class="content-container">
 
             <div class="featured-image">
-                <img [src]="extractImageUrl(bloggerPost.content)" alt="Imagem do Post" onerror="this.style.display='none'">
+                <img [src]="extractImageUrl(bloggerPost.content)" alt="Imagem em destaque do artigo" onerror="this.style.display='none'">
             </div>
 
-            <div class="post-content" [innerHTML]="extractSummary(bloggerPost.content)"></div>
+            <article class="post-content" [innerHTML]="extractSummary(bloggerPost.content)"></article>
 
             <div class="share-section">
-                <h3>Gostou? Compartilhe:</h3>
+                <span class="share-label">Compartilhe esta reflexão:</span>
                 <div class="share-buttons">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{bloggerPost.url}}" target="_blank" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/intent/tweet?url={{bloggerPost.url}}" target="_blank" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://pinterest.com/pin/create/button/?url={{bloggerPost.url}}&media={{extractImageUrl(bloggerPost.content)}}" target="_blank" class="share-btn pinterest"><i class="fab fa-pinterest"></i></a>
-                    <a href="https://wa.me/?text=Confira este post: {{bloggerPost.url}}" target="_blank" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/?text=Confira este post: {{bloggerPost.url}}" target="_blank" class="share-btn whatsapp" title="Compartilhar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{bloggerPost.url}}" target="_blank" class="share-btn facebook" title="Compartilhar no Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url={{bloggerPost.url}}" target="_blank" class="share-btn twitter" title="Compartilhar no Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com/pin/create/button/?url={{bloggerPost.url}}&media={{extractImageUrl(bloggerPost.content)}}" target="_blank" class="share-btn pinterest" title="Salvar no Pinterest"><i class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
             <hr class="divider">
 
-            <div class="post-navigation">
+            <nav class="post-navigation" aria-label="Navegação entre posts">
                 <div class="nav-item prev" *ngIf="titlePrevious" (click)="PreviousPage()">
                     <span><i class="pi pi-arrow-left"></i> Artigo Anterior</span>
                     <p>{{ titlePrevious }}</p>
@@ -64,35 +64,36 @@
                     <span>Próximo Artigo <i class="pi pi-arrow-right"></i></span>
                     <p>{{ titleNext }}</p>
                 </div>
-            </div>
+            </nav>
 
-            <div class="author-box">
+            <section class="author-box">
                 <div class="author-img">
-                    <img src="assets/foto6.jpeg" alt="Waleska Silveira">
+                    <img src="assets/waleska-about.jpeg" alt="Waleska Silveira - Psicanalista e Hipnoterapeuta">
                 </div>
                 <div class="author-info">
-                    <h3>Psicanalista Waleska Silveira</h3>
-                    <a href="https://waleskasilveirapsi.com.br">https://waleskasilveirapsi.com.br</a>
-                    <p>Sou Waleska Silveira, psicanalista e hipnoterapeuta. Minha paixão é guiar pessoas em suas jornadas de autoconhecimento.</p>
+                    <span class="author-eyebrow">Sobre a Autora</span>
+                    <h3>Waleska Silveira</h3>
+                    <p>Psicanalista Clínica, Hipnoterapeuta e Mentora de Desenvolvimento Emocional. Dedica-se a acolher mulheres e casais na reconstrução de vínculos afetivos e conquista da autonomia emocional.</p>
                     <div class="author-social">
-                        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/waleska.vercosa" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" title="Instagram"><i class="fab fa-instagram"></i> @waleskasilveirapsi</a>
+                        <a href="https://www.facebook.com/waleska.vercosa" target="_blank" title="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
                     </div>
                 </div>
-            </div>
+            </section>
 
         </div>
-    </div>
+    </main>
 
-    <div class="related-section">
+    <section class="related-section" *ngIf="paginatedPosts && paginatedPosts.length > 0">
         <div class="content-container">
+            <span class="section-eyebrow">Continue Lendo</span>
             <h3 class="section-heading">ARTIGOS RELACIONADOS</h3>
             <div class="header-line gold-line"></div>
 
             <div class="related-grid">
                 <div class="related-card" *ngFor="let related of paginatedPosts" (click)="getPostBloggerId(related.id)">
                     <div class="related-img">
-                        <img [src]="extractImageUrl(related.content)" onerror="this.src='assets/placeholder.jpg'">
+                        <img [src]="extractImageUrl(related.content)" alt="Artigo relacionado" onerror="this.src='assets/foto17.jpeg'">
                     </div>
                     <div class="related-title">
                         {{ extractTitle(related.title) }}
@@ -100,33 +101,34 @@
                 </div>
             </div>
 
-            <div class="pagination-controls">
-                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="btn-nav"><i class="pi pi-angle-left"></i></button>
-                <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= filteredPosts.length" class="btn-nav"><i class="pi pi-angle-right"></i></button>
+            <div class="pagination-controls" *ngIf="filteredPosts && filteredPosts.length > postsPerPage">
+                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="btn-nav" title="Anterior"><i class="pi pi-angle-left"></i></button>
+                <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= filteredPosts.length" class="btn-nav" title="Próximo"><i class="pi pi-angle-right"></i></button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="comments-section">
+    <section class="comments-section">
         <div class="content-container">
             
-            <h3 class="section-heading" >{{ commentsPost.length }} COMENTÁRIOS</h3>
+            <span class="section-eyebrow">Comunidade</span>
+            <h3 class="section-heading">{{ commentsPost.length }} COMENTÁRIOS</h3>
             
-            <div class="header-line"></div>
+            <div class="header-line gold-line"></div>
 
-            <div class="comments-list">
+            <div class="comments-list" *ngIf="commentsPost.length > 0">
                 <div *ngFor="let comment of commentsPost; let i = index" class="comment-wrapper">
                     
                     <ng-container *ngIf="comment.status === 'approved'">
                         
                         <div class="comment-item">
                             <div class="comment-avatar">
-                                <img src="assets/unnamed.png" alt="Avatar">
+                                <img src="assets/unnamed.png" alt="Avatar do leitor">
                             </div>
                             <div class="comment-body">
                                 <div class="comment-header">
                                     <strong>{{ comment.name }}</strong>
-                                    <span class="date">- {{ formatDate(comment.created_comment) }}</span>
+                                    <span class="date">• {{ formatDate(comment.created_comment) }}</span>
                                     <span *ngIf="comment.status === 'pending'" class="badge-pending">(Aguardando aprovação)</span>
                                 </div>
                                 <p class="comment-text">{{ comment.comment }}</p>
@@ -142,7 +144,7 @@
                                 <div class="comment-body">
                                     <div class="comment-header">
                                         <strong>{{ reply.name }}</strong>
-                                        <span class="date">- {{ formatDate(reply.createdAt) }}</span>
+                                        <span class="date">• {{ formatDate(reply.createdAt) }}</span>
                                     </div>
                                     <p class="comment-text">{{ reply.commentRepost }}</p>
                                 </div>
@@ -158,11 +160,11 @@
                             <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment(comment.id)" class="styled-form">
                                 <div class="form-row">
                                     <div class="input-group">
-                                        <input type="text" formControlName="name" placeholder="Nome *" class="input-field">
+                                        <input type="text" formControlName="name" placeholder="Seu Nome *" class="input-field">
                                         <small class="error" *ngIf="commentForm.get('name')?.invalid && commentForm.get('name')?.touched">Nome obrigatório</small>
                                     </div>
                                     <div class="input-group">
-                                        <input type="email" formControlName="email" placeholder="E-mail *" class="input-field">
+                                        <input type="email" formControlName="email" placeholder="Seu E-mail *" class="input-field">
                                         <small class="error" *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">E-mail inválido</small>
                                     </div>
                                 </div>
@@ -178,30 +180,31 @@
             </div>
 
             <div class="new-comment-area" *ngIf="!isComment">
-                <h3 class="sub-title">DEIXE UM COMENTÁRIO</h3>
+                <h3 class="sub-title">DEIXE SEU COMENTÁRIO</h3>
+                <p class="sub-desc">Compartilhe sua percepção, reflexão ou dúvida sobre este tema.</p>
                 
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="styled-form">
                     <div class="form-row">
                         <div class="input-group">
-                            <input type="text" formControlName="name" placeholder="Nome *" class="input-field">
+                            <input type="text" formControlName="name" placeholder="Seu Nome Completo *" class="input-field">
                             <small class="error" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Nome obrigatório</small>
                         </div>
                         <div class="input-group">
-                            <input type="email" formControlName="email" placeholder="E-mail *" class="input-field">
+                            <input type="email" formControlName="email" placeholder="Seu Melhor E-mail *" class="input-field">
                             <small class="error" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">E-mail inválido</small>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <textarea formControlName="comment" rows="5" placeholder="Digite seu comentário aqui..." class="input-field"></textarea>
+                        <textarea formControlName="comment" rows="5" placeholder="Escreva seu comentário aqui..." class="input-field"></textarea>
                         <small class="error" *ngIf="contactForm.get('comment')?.invalid && contactForm.get('comment')?.touched">Comentário obrigatório</small>
                     </div>
 
-                    <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">POSTAR COMENTÁRIO</button>
+                    <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">PUBLICAR COMENTÁRIO</button>
                 </form>
             </div>
 
         </div>
-    </div>
+    </section>
 
 </div>

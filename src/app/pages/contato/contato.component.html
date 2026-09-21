@@ -1,100 +1,109 @@
-
 <div class="contact-page">
 
-    <div class="page-header">
-        <h1 class="page-title">CONTATO</h1>
+    <header class="page-header">
+        <span class="page-eyebrow">Atendimento & Consultas</span>
+        <h1 class="page-title">ENTRE EM CONTATO</h1>
         <div class="header-line"></div>
         <p class="page-subtitle">
-            Mande suas dúvidas ou agende sua consulta. Em breve entrarei em contato.
+            Dê o primeiro passo em direção ao seu processo de transformação pessoal. Estamos prontas para acolher sua história.
         </p>
-    </div>
+    </header>
 
-    <div class="channels-section bio-curve">
+    <section class="channels-section">
         <div class="channels-container">
 
             <div class="info-card">
-                <i class="pi pi-whatsapp"></i>
-                <h3>Agendamento</h3>
-                <p>Agende sua sessão de forma rápida</p>
-                <button pButton label="CHAMAR NO WHATSAPP" class="p-button-rounded btn-action"
+                <div class="info-icon"><i class="pi pi-whatsapp"></i></div>
+                <h3>Agendamento WhatsApp</h3>
+                <p>Atendimento direto e personalizado para agendamento de consultas presenciais ou online.</p>
+                <button pButton label="FALAR NO WHATSAPP" class="btn-action"
                     (click)="whatsapp()"></button>
             </div>
 
             <div class="info-card">
-                <i class="pi pi-envelope"></i>
-                <h3>E-mail</h3>
-                <p>Dúvidas e parcerias</p>
+                <div class="info-icon"><i class="pi pi-envelope"></i></div>
+                <h3>E-mail Direto</h3>
+                <p>Para dúvidas aprofundadas, palestras corporativas e propostas de parcerias.</p>
                 <a href="mailto:wsvercosa@gmail.com" class="link-text">wsvercosa@gmail.com</a>
             </div>
 
             <div class="info-card">
-                <i class="pi pi-instagram"></i>
-                <h3>Redes Sociais</h3>
-                <p>Acompanhe meu trabalho</p>
+                <div class="info-icon"><i class="pi pi-instagram"></i></div>
+                <h3>Instagram Oficial</h3>
+                <p>Conteúdos diários sobre psicanálise, autoconhecimento, vínculos e bem-estar feminino.</p>
                 <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank"
                     class="link-text">@waleskasilveirapsi</a>
             </div>
 
         </div>
-    </div>
+    </section>
 
-    <div class="form-section">
+    <section class="form-section">
         <div class="form-wrapper">
+            <span class="form-eyebrow">Mensagem Privada</span>
             <h2 class="form-title">ENVIE UMA MENSAGEM</h2>
+            <p class="form-desc">Preencha o formulário abaixo e retornaremos o mais breve possível com sigilo absoluto.</p>
 
             <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
 
                 <div class="field">
-                    <input type="text" formControlName="name" placeholder="Seu Nome *" class="custom-input">
+                    <label for="contact-name">Seu Nome Completo</label>
+                    <input id="contact-name" type="text" formControlName="name" placeholder="Como prefere ser chamada(o)?" class="custom-input">
                     <small class="error" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-                        Nome obrigatório
+                        Por favor, informe seu nome.
                     </small>
                 </div>
 
                 <div class="field">
-                    <input type="email" formControlName="email" placeholder="Seu E-mail *" class="custom-input">
+                    <label for="contact-email">Seu Melhor E-mail</label>
+                    <input id="contact-email" type="email" formControlName="email" placeholder="exemplo@email.com" class="custom-input">
                     <small class="error" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                        E-mail inválido
+                        Informe um e-mail válido para receber nosso retorno.
                     </small>
                 </div>
 
                 <div class="field">
-                    <p-inputMask mask="(99) 99999-9999" formControlName="number" placeholder="Seu WhatsApp *"
+                    <label for="contact-phone">WhatsApp com DDD</label>
+                    <p-inputMask id="contact-phone" mask="(99) 99999-9999" formControlName="number" placeholder="(00) 00000-0000"
                         styleClass="custom-input" [unmask]="true">
                     </p-inputMask>
                     <small class="error"
                         *ngIf="contactForm.get('number')?.invalid && contactForm.get('number')?.touched">
-                        Telefone obrigatório
+                        Informe um número de WhatsApp válido para contato.
                     </small>
                 </div>
 
                 <div class="field">
-                    <textarea formControlName="message" rows="5" placeholder="Sua Mensagem *"
+                    <label for="contact-message">Sua Mensagem</label>
+                    <textarea id="contact-message" formControlName="message" rows="5" placeholder="Conte brevemente o que você busca na psicoterapia ou mentoria..."
                         class="custom-input"></textarea>
                     <small class="error"
                         *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-                        Mensagem obrigatória
+                        Por favor, escreva sua mensagem ou dúvida.
                     </small>
                 </div>
 
-                <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">
-                    ENVIAR MENSAGEM
+                <button type="submit" class="btn-submit" [disabled]="contactForm.invalid || loading">
+                    <span *ngIf="!loading">ENVIAR MENSAGEM</span>
+                    <span *ngIf="loading"><i class="pi pi-spin pi-spinner"></i> ENVIANDO...</span>
                 </button>
             </form>
         </div>
-    </div>
+    </section>
 
-    <div class="location-section">
+    <section class="location-section">
         <div class="location-content">
-            <i class="pi pi-map-marker"></i>
+            <div class="location-badge"><i class="pi pi-map-marker"></i> CONSULTÓRIO PRESENCIAL</div>
             <h3>ONDE ESTOU</h3>
             <p>R. Estr. 25, 10b - Jardim Limoeiro, Camaçari - BA</p>
-            <iframe width="100%" height="300" style="border:0;" loading="lazy" allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Waleska+Silveira+Psicanalista,+R.+Estr.+25,+10b+-+Jardim+Limoeiro,+Camaçari+-+BA&output=embed">
-            </iframe>
+            <div class="map-frame">
+                <iframe width="100%" height="340" style="border:0;" loading="lazy" allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localização do consultório de Waleska Silveira"
+                    src="https://www.google.com/maps?q=Waleska+Silveira+Psicanalista,+R.+Estr.+25,+10b+-+Jardim+Limoeiro,+Camaçari+-+BA&output=embed">
+                </iframe>
+            </div>
         </div>
-    </div>
+    </section>
 
 </div>
-<p-toast></p-toast>

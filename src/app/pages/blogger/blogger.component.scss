@@ -1,271 +1,402 @@
-// Variáveis
-$color-primary: #744972;  // Roxo
-$color-accent: #fd8d76;   // Coral
-$bg-light: #FAEBE8;
+// --- Variáveis de Marca & Editorial ---
+$color-primary: #5C1D2E;       // Borgonha Profundo (Logo)
+$color-primary-dark: #380E1A;  // Vinho Nobre
+$color-accent: #C59B63;        // Dourado Champagne (Logo)
+$color-terracotta: #A8583E;    // Terracota Quente (Logo)
+$color-light: #F9F6F0;         // Linho Natural
+$color-white: #FFFFFF;
+$color-text: #2C2623;
+$color-muted: #6E675F;
 $font-cinzel: 'Cinzel', serif;
+$font-editorial: 'Cormorant Garamond', Georgia, serif;
+$font-body: 'Inter', sans-serif;
 
 .blog-page {
-    background-color: white;
+  background-color: $color-light;
+  font-family: $font-body;
+  color: $color-text;
 }
 
 // HEADER
 .page-header {
-    text-align: center;
-    padding: 8rem 1rem 2rem 1rem;
-    background-color: white;
-}
-.page-title {
+  text-align: center;
+  padding: 8rem 1.5rem 4rem 1.5rem;
+  background-color: #FFFDF9;
+  border-bottom: 1px solid rgba($color-accent, 0.2);
+
+  .page-eyebrow {
     font-family: $font-cinzel;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $color-terracotta;
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+
+  .page-title {
+    font-family: $font-editorial;
     color: $color-primary;
     font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
     margin: 0;
-}
-.header-line {
-    width: 100px;
-    height: 2px;
-    background-color: $color-primary;
-    margin: 1rem auto;
-    
-    &.white-line { background-color: rgba(255,255,255,0.3); margin: 2rem auto; }
-    &.gold-line { background-color: $color-accent; margin-bottom: 3rem; }
-}
 
-// --- SOCIAL SECTION (A CURVA) ---
-.social-section {
-    background-color: $color-primary;
-    color: white;
-    padding: 4rem 1rem 8rem 1rem;
-    position: relative;
-
-    // APLICANDO A CURVA
-    &.bio-curve {
-        border-bottom-right-radius: 48rem;
-        border-bottom-left-radius: 48rem;
-        // clip-path: polygon(0% 0%, 100% 0%, 100% 98%, -4% 100%, 0% 102%);
-        
-        @media (max-width: 992px) {
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-            clip-path: none; 
-            padding-bottom: 4rem;
-        }
+    @media(max-width: 768px) {
+      font-size: 2.5rem;
     }
+  }
+
+  .header-line {
+    width: 80px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, $color-accent, transparent);
+    margin: 1.2rem auto;
+  }
+
+  .page-subtitle {
+    color: $color-muted;
+    font-size: 1.1rem;
+    max-width: 640px;
+    margin: 1rem auto 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+}
+
+// --- SOCIAL SECTION ---
+.social-section {
+  background: linear-gradient(180deg, $color-primary-dark 0%, $color-primary 100%);
+  color: white;
+  padding: 5rem 1.5rem;
+  position: relative;
 }
 
 .social-container {
-    max-width: 1000px;
-    margin: 0 auto;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .social-header {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  @media(max-width: 768px) {
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
     text-align: center;
+  }
 
-    .profile-info {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        
-        i { font-size: 2rem; }
-        .profile-name { font-family: $font-cinzel; font-size: 1.8rem; margin: 0; font-weight: 400; color: white; }
+  .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    i {
+      font-size: 1.8rem;
+      color: $color-accent;
     }
 
-    .btn-follow {
-        background-color: transparent;
-        border: 1px solid white;
-        color: white;
-        padding: 0.5rem 1.5rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        transition: all 0.3s;
-        text-decoration: none;
-        letter-spacing: 1px;
-
-        &:hover {
-            background-color: white;
-            color: $color-primary;
-        }
+    .profile-name {
+      font-family: $font-cinzel;
+      font-size: 1.4rem;
+      margin: 0;
+      font-weight: 500;
+      color: #FFFDF9;
+      letter-spacing: 1px;
     }
+  }
+
+  .btn-follow {
+    background: transparent;
+    border: 1px solid $color-accent;
+    color: $color-accent;
+    padding: 0.6rem 1.8rem;
+    border-radius: 0px;
+    font-family: $font-cinzel;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      background: $color-accent;
+      color: #1A0D07;
+      box-shadow: 0 8px 20px rgba(197, 155, 99, 0.3);
+    }
+  }
+}
+
+.header-line.white-line {
+  background: rgba(255, 255, 255, 0.15);
+  height: 1px;
+  width: 100%;
+  margin: 0 0 2.5rem 0;
 }
 
 // Grid do Instagram
 .instagram-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 
-    @media (min-width: 768px) { grid-template-columns: repeat(4, 1fr); }
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .insta-item {
-    position: relative;
-    aspect-ratio: 1 / 1; // Quadrado perfeito
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: rgba(0,0,0,0.2);
-    border: 2px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba($color-accent, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-    &:hover { transform: scale(1.03); border-color: $color-accent; }
+  &:hover {
+    transform: translateY(-4px);
+    border-color: $color-accent;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 
-    .media-content {
-        width: 100%;
-        height: 100%;
-        
-        img, video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .media-content img,
+    .media-content video {
+      transform: scale(1.05);
     }
+  }
 
-    .play-icon {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2rem;
-        color: white;
-        opacity: 0.8;
+  .media-content {
+    width: 100%;
+    height: 100%;
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
+  }
+
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: rgba($color-primary-dark, 0.75);
+    border: 1px solid $color-accent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-accent;
+    font-size: 1.2rem;
+  }
 }
 
 // --- BLOG SECTION ---
 .blog-section {
-    padding: 4rem 1rem;
-    background-color: white;
+  padding: 6rem 1.5rem;
+  background-color: $color-light;
 }
 
 .blog-container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
+  max-width: 1200px;
+  margin: 0 auto;
 
-.section-title {
+  .section-eyebrow {
+    display: block;
     text-align: center;
     font-family: $font-cinzel;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: $color-terracotta;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    text-align: center;
+    font-family: $font-editorial;
     color: $color-primary;
-    font-size: 2rem;
+    font-size: 2.6rem;
+    font-weight: 500;
     margin: 0;
+  }
+
+  .header-line.gold-line {
+    width: 70px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, $color-accent, transparent);
+    margin: 1.2rem auto 3.5rem auto;
+  }
 }
 
 .posts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
 
-    @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 // Card do Post
 .post-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    border: 1px solid #f0f0f0;
-    display: flex;
-    flex-direction: column;
+  background: #FFFDF9;
+  border: 1px solid rgba($color-accent, 0.25);
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(56, 14, 26, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        
-        .read-more { color: $color-accent; }
-        .post-image img { transform: scale(1.05); }
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(56, 14, 26, 0.1);
+    border-color: $color-accent;
+
+    .read-more {
+      color: $color-terracotta;
+
+      i {
+        transform: translateX(4px);
+      }
     }
+
+    .post-image img {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .post-image {
-    height: 250px;
-    overflow: hidden;
-    
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-    }
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(92, 29, 46, 0.05);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
 }
 
 .post-content {
-    padding: 1.5rem;
-    flex: 1;
+  padding: 2rem 1.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .post-date {
+    font-family: $font-cinzel;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $color-terracotta;
+    margin-bottom: 0.8rem;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
 
-    .post-date {
-        font-size: 0.85rem;
-        color: #999;
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
+    i {
+      font-size: 0.75rem;
     }
+  }
 
-    .post-title {
-        font-family: $font-cinzel;
-        color: $color-primary;
-        font-size: 1.3rem;
-        margin: 0 0 1rem 0;
-        line-height: 1.4;
-    }
+  .post-title {
+    font-family: $font-editorial;
+    color: $color-primary;
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    line-height: 1.35;
+  }
 
-    .post-excerpt {
-        font-size: 0.95rem;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        flex: 1;
-        
-        // Trunca texto com ... se for muito longo (CSS moderno)
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+  .post-excerpt {
+    font-size: 0.95rem;
+    color: $color-muted;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-    .post-footer {
-        border-top: 1px solid #f0f0f0;
-        padding-top: 1rem;
-        
-        .read-more {
-            font-weight: 600;
-            color: $color-primary;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+  .post-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 1.2rem;
+
+    .read-more {
+      font-family: $font-cinzel;
+      font-weight: 600;
+      color: $color-primary;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      i {
+        font-size: 0.75rem;
+        transition: transform 0.3s;
+      }
     }
+  }
 }
 
 // Paginação
 .pagination-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 4rem;
 
-    .page-number {
-        font-family: $font-cinzel;
-        color: $color-primary;
-        font-weight: 600;
-        font-size: 1.1rem;
+  .page-number {
+    font-family: $font-cinzel;
+    color: $color-primary;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  ::ng-deep .btn-nav {
+    color: $color-primary !important;
+    border-color: $color-accent !important;
+    background: transparent !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease;
+
+    &:disabled {
+      opacity: 0.3;
+      border-color: #ccc !important;
+      color: #999 !important;
     }
 
-    ::ng-deep .btn-nav {
-        color: $color-primary !important;
-        border-color: $color-primary !important;
-        &:disabled { opacity: 0.3; }
-        &:hover:not(:disabled) { background-color: rgba(116, 73, 114, 0.1) !important; }
+    &:hover:not(:disabled) {
+      background: $color-accent !important;
+      color: #1A0D07 !important;
     }
+  }
 }

@@ -1,11 +1,13 @@
 <div class="blog-page">
     
-    <div class="page-header">
-        <h1 class="page-title">BLOG</h1>
+    <header class="page-header">
+        <span class="page-eyebrow">Artigos & Reflexões</span>
+        <h1 class="page-title">THE EDITORIAL</h1>
         <div class="header-line"></div>
-    </div>
+        <p class="page-subtitle">Ensaios sobre psicanálise, autoconhecimento, vínculos afetivos e a jornada de cura interior.</p>
+    </header>
 
-    <div class="social-section bio-curve">
+    <section class="social-section">
         <div class="social-container">
             
             <div class="social-header">
@@ -39,18 +41,19 @@
             </div>
 
         </div>
-    </div>
+    </section>
 
-    <div class="blog-section">
+    <section class="blog-section">
         <div class="blog-container">
+            <span class="section-eyebrow">Acervo Clínico</span>
             <h2 class="section-title">ÚLTIMAS PUBLICAÇÕES</h2>
             <div class="header-line gold-line"></div>
 
             <div class="posts-grid">
-                <div class="post-card" *ngFor="let post of paginatedPost" (click)="getPostBlogger(post.id)">
+                <article class="post-card" *ngFor="let post of paginatedPost" (click)="getPostBlogger(post.id)">
                     
                     <div class="post-image">
-                        <img [src]="extractImageUrl(post.content)" alt="Post Cover" onerror="this.src='assets/placeholder.jpg'">
+                        <img [src]="extractImageUrl(post.content)" alt="Capa da publicação" onerror="this.src='assets/foto17.jpeg'">
                     </div>
 
                     <div class="post-content">
@@ -63,13 +66,13 @@
                         <p class="post-excerpt" [innerHTML]="extractSummary(post.content)"></p>
                         
                         <div class="post-footer">
-                            <span class="read-more">LER MAIS <i class="pi pi-arrow-right"></i></span>
+                            <span class="read-more">LER ARTIGO COMPLETO <i class="pi pi-arrow-right"></i></span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
 
-            <div class="pagination-controls">
+            <div class="pagination-controls" *ngIf="bloggerPosts && bloggerPosts.length > postsPerPage">
                 <button pButton pRipple icon="pi pi-angle-left" 
                         class="p-button-rounded p-button-outlined btn-nav"
                         (click)="prevPageBlog()" 
@@ -84,6 +87,6 @@
             </div>
 
         </div>
-    </div>
+    </section>
 
 </div>
