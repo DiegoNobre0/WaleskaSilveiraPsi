@@ -9,6 +9,7 @@ import { ContatoComponent } from './pages/contato/contato.component';
 import { ApproveCommentComponent } from './components/approve-comment/approve-comment.component';
 import { RejectCommentComponent } from './components/reject-comment/reject-comment.component';
 import { MentoriaLibertaComponent } from './pages/mentoria-liberta/mentoria-liberta.component';
+import { MetodoOrigemComponent } from './pages/metodo-origem/metodo-origem.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -19,8 +20,9 @@ const routes: Routes = [
   { path: 'contato', component: ContatoComponent },
   { path: 'approve-comment', component: ApproveCommentComponent },
   { path: 'reject-comment', component: RejectCommentComponent },
-  { path: 'mentoria', component: MentoriaLibertaComponent }
-
+  { path: 'mentoria', component: MentoriaLibertaComponent },
+  { path: 'metodo-origem', component: MetodoOrigemComponent },
+  { path: 'origem', redirectTo: 'metodo-origem', pathMatch: 'full' }
 ];
 
 @NgModule({

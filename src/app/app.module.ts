@@ -27,6 +27,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { InputMaskModule } from 'primeng/inputmask';
 import { MentoriaLibertaComponent } from './pages/mentoria-liberta/mentoria-liberta.component';
+import { MetodoOrigemComponent } from './pages/metodo-origem/metodo-origem.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -45,7 +46,8 @@ import { MessageService } from 'primeng/api';
     WhatsappComponent,
     ApproveCommentComponent,
     RejectCommentComponent,
-    MentoriaLibertaComponent
+    MentoriaLibertaComponent,
+    MetodoOrigemComponent
   ],
   imports: [
     BrowserModule,

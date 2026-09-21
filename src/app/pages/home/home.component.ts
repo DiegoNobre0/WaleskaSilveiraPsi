@@ -79,6 +79,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/mentoria']);
   }
 
+  metodoOrigem(): void {
+    this.router.navigate(['/metodo-origem']);
+  }
+
   contato(): void {
     this.router.navigate(['/contato']);
   }

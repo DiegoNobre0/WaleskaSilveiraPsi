@@ -1,0 +1,1622 @@
+// --- Paleta Editorial & Identidade Visual Waleska Silveira ---
+$color-primary: #5C1D2E;         // Marsala Profundo Nobre
+$color-primary-dark: #380E1A;    // Vinho Escuro
+$color-accent: #C59B63;          // Dourado Champagne da Logo
+$color-accent-light: #E4C89E;    // Dourado Iluminado
+$color-terracotta: #A8583E;      // Terracota Quente
+$color-terracotta-dark: #8C442E;
+$color-linen: #F9F6F0;           // Linho Suave Acolhedor
+$color-warm: #F3ECE2;            // Bege Aveludado
+$color-white: #FFFFFF;
+$color-text: #241D1A;            // Espresso Intenso
+$color-muted: #6B6159;           // Taupe Elegante
+
+$font-editorial: 'Cormorant Garamond', Georgia, serif;
+$font-title: 'Cinzel', serif;
+$font-sans: 'Montserrat', sans-serif;
+$font-body: 'Inter', -apple-system, sans-serif;
+
+// --- Configuração Geral ---
+.luxury-origem-page {
+  font-family: $font-body;
+  color: $color-text;
+  background-color: $color-linen;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  &.narrow {
+    max-width: 860px;
+  }
+}
+
+.bg-linen {
+  background-color: $color-warm;
+}
+
+.font-editorial {
+  font-family: $font-editorial;
+}
+
+.editorial-italic {
+  font-family: $font-editorial;
+  font-style: italic;
+  color: $color-terracotta;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: $color-white !important;
+}
+
+.text-light {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.eyebrow {
+  font-family: $font-sans;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: $color-accent;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.85rem;
+
+  &.eyebrow-terracotta {
+    color: $color-terracotta;
+  }
+
+  &.eyebrow-white {
+    color: $color-accent-light;
+  }
+}
+
+.section-title {
+  font-family: $font-editorial;
+  font-size: 2.8rem;
+  line-height: 1.2;
+  color: $color-primary;
+  font-weight: 500;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2.1rem;
+  }
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: $color-muted;
+  line-height: 1.8;
+  max-width: 760px;
+  margin: 0 auto;
+
+  strong {
+    color: $color-primary;
+  }
+}
+
+.section-header-centered {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.25rem auto 1.75rem auto;
+
+  &::before, &::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background: $color-accent;
+    opacity: 0.5;
+  }
+
+  .ornament-icon {
+    color: $color-accent;
+    font-size: 0.85rem;
+  }
+
+  &.ornament-gold {
+    &::before, &::after {
+      background: $color-accent-light;
+      opacity: 0.7;
+    }
+    .ornament-icon {
+      color: $color-accent-light;
+    }
+  }
+}
+
+// --- 1. HERO SECTION ---
+.origem-hero-section {
+  position: relative;
+  padding: 130px 0 90px 0;
+  background: radial-gradient(circle at top right, rgba(197, 155, 99, 0.12) 0%, rgba(249, 246, 240, 1) 60%),
+              linear-gradient(180deg, #FBF8F3 0%, #F5ECE0 100%);
+  border-bottom: 1px solid rgba(197, 155, 99, 0.25);
+  overflow: hidden;
+
+  .origem-hero-glow {
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(197, 155, 99, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 4.5rem;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      text-align: center;
+    }
+  }
+
+  .hero-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(92, 29, 46, 0.06);
+    border: 1px solid rgba(92, 29, 46, 0.15);
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    margin-bottom: 1.75rem;
+
+    @media (max-width: 992px) {
+      margin: 0 auto 1.75rem auto;
+    }
+
+    .gold-badge {
+      background: $color-terracotta;
+      color: $color-white;
+      font-family: $font-sans;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .method-tag {
+      font-family: $font-title;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      color: $color-primary;
+      font-weight: 600;
+    }
+  }
+
+  .hero-title {
+    font-size: 3.4rem;
+    line-height: 1.15;
+    color: $color-primary;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 2.3rem;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: $color-muted;
+    margin-bottom: 2rem;
+    max-width: 620px;
+
+    strong {
+      color: $color-primary;
+      font-family: $font-editorial;
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    @media (max-width: 992px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .hero-quote-badge {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border-left: 3px solid $color-accent;
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 15px rgba(92, 29, 46, 0.04);
+
+    i {
+      color: $color-accent;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-family: $font-editorial;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: $color-primary;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 992px) {
+      text-align: left;
+    }
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+
+    @media (max-width: 992px) {
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .btn-origem-cta {
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+    color: $color-white;
+    border: 1px solid $color-accent;
+    font-family: $font-sans;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 10px 25px rgba(92, 29, 46, 0.25);
+    transition: all 0.35s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, $color-terracotta 0%, $color-terracotta-dark 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(168, 88, 62, 0.35);
+    }
+
+    @media (max-width: 600px) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .btn-origem-outline {
+    background: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    font-family: $font-sans;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 1.1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .hero-highlights {
+    display: flex;
+    gap: 1.8rem;
+
+    @media (max-width: 992px) {
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: $color-muted;
+
+      i {
+        color: $color-accent;
+      }
+    }
+  }
+
+  // Visual da coluna direita
+  .origem-portrait-card {
+    position: relative;
+    max-width: 440px;
+    margin: 0 auto;
+
+    .portrait-halo {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1.5px solid $color-accent;
+      border-radius: 8px;
+      z-index: 0;
+      opacity: 0.75;
+    }
+
+    .portrait-frame {
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(56, 14, 26, 0.15);
+      background: $color-white;
+
+      .portrait-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
+    }
+
+    .portrait-caption {
+      position: absolute;
+      bottom: 25px;
+      left: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(197, 155, 99, 0.4);
+      padding: 1rem 1.4rem;
+      border-radius: 6px;
+      z-index: 2;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      text-align: left;
+
+      .caption-title {
+        display: block;
+        font-family: $font-editorial;
+        font-size: 1.35rem;
+        color: $color-primary;
+        font-weight: 600;
+      }
+
+      .caption-sub {
+        font-size: 0.78rem;
+        color: $color-terracotta;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// --- 2. MANIFESTO SECTION ---
+.manifesto-section {
+  padding: 6.5rem 0;
+  background-color: $color-white;
+  border-bottom: 1px solid rgba(197, 155, 99, 0.2);
+
+  .manifesto-content {
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: $color-muted;
+    margin-bottom: 3.5rem;
+
+    .manifesto-lead {
+      font-size: 1.35rem;
+      font-family: $font-editorial;
+      color: $color-primary;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+    }
+
+    strong {
+      color: $color-primary;
+      font-weight: 600;
+    }
+
+    em {
+      font-family: $font-editorial;
+      font-size: 1.25rem;
+      color: $color-terracotta;
+    }
+  }
+
+  .manifesto-callout {
+    background: radial-gradient(circle at center, #5C1D2E 0%, #380E1A 100%);
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    color: $color-white;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(197, 155, 99, 0.4);
+    box-shadow: 0 15px 35px rgba(56, 14, 26, 0.15);
+
+    .callout-symbol {
+      font-family: $font-editorial;
+      font-size: 4rem;
+      color: $color-accent;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+
+    .callout-text {
+      font-size: 1.85rem;
+      line-height: 1.4;
+      color: #FFFDF9;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.4rem;
+      }
+    }
+
+    .callout-footer {
+      font-family: $font-sans;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: $color-accent-light;
+      font-weight: 500;
+    }
+  }
+}
+
+// --- 3. O QUE É O MÉTODO ORIGEM ---
+.about-method-section {
+  padding: 6.5rem 0;
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.2fr;
+    gap: 4.5rem;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .origem-artistic-frame {
+    position: relative;
+    max-width: 440px;
+    margin: 0 auto;
+
+    .about-img {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: -15px 15px 0px $color-terracotta;
+      display: block;
+      border: 1px solid rgba(197, 155, 99, 0.3);
+    }
+
+    .artistic-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: $color-primary;
+      border: 2px solid $color-accent;
+      color: $color-white;
+      padding: 1.25rem 1.5rem;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+      .badge-num {
+        display: block;
+        font-family: $font-editorial;
+        font-size: 2.4rem;
+        font-weight: 600;
+        line-height: 1;
+        color: $color-accent;
+      }
+
+      .badge-text {
+        font-family: $font-sans;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        max-width: 130px;
+        display: block;
+        margin-top: 0.3rem;
+      }
+    }
+  }
+
+  .about-text-side {
+    .about-desc {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: $color-muted;
+      margin-bottom: 1.5rem;
+
+      strong {
+        color: $color-primary;
+      }
+    }
+
+    .identity-box {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+      background: $color-white;
+      border: 1px solid rgba(197, 155, 99, 0.35);
+      border-left: 4px solid $color-terracotta;
+      padding: 1.75rem 2rem;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 8px 25px rgba(92, 29, 46, 0.04);
+
+      .identity-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(168, 88, 62, 0.12);
+        color: $color-terracotta;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      h4 {
+        font-size: 1.4rem;
+        color: $color-primary;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 1.05rem;
+        color: $color-terracotta;
+        margin: 0;
+        font-style: italic;
+        font-family: $font-editorial;
+      }
+    }
+  }
+}
+
+// --- 4. PARA QUEM É O MÉTODO ORIGEM ---
+.audience-section {
+  padding: 6.5rem 0;
+  background: linear-gradient(180deg, #380E1A 0%, #2A0912 100%);
+  color: $color-white;
+  position: relative;
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+
+    @media (max-width: 1100px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  .audience-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(197, 155, 99, 0.25);
+    border-radius: 6px;
+    padding: 2.2rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: $color-accent;
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-step-num {
+      font-family: $font-editorial;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: $color-accent;
+      margin-bottom: 1.2rem;
+      line-height: 1;
+    }
+
+    .card-body p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.88);
+      margin: 0;
+    }
+  }
+
+  .audience-footer-banner {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    background: rgba(197, 155, 99, 0.12);
+    border: 1px solid rgba(197, 155, 99, 0.3);
+    border-radius: 8px;
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+      color: #FFFDF9;
+
+      strong {
+        color: $color-accent-light;
+      }
+    }
+
+    .origem-start-tag {
+      font-family: $font-sans;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: $color-accent;
+      font-weight: 600;
+    }
+  }
+}
+
+// --- 5. O CAMINHO ORIGEM (5 MOVIMENTOS) ---
+.movements-section {
+  padding: 6.5rem 0;
+  background-color: $color-white;
+
+  .movements-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 1100px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .movement-card {
+    background: $color-linen;
+    border: 1px solid rgba(197, 155, 99, 0.25);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(92, 29, 46, 0.1);
+      border-color: $color-accent;
+
+      .movement-img-box {
+        filter: saturate(1.1);
+      }
+    }
+
+    .movement-img-box {
+      height: 170px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      filter: saturate(0.85);
+      transition: filter 0.35s ease;
+
+      .movement-img-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 40%, rgba(92, 29, 46, 0.6) 100%);
+      }
+
+      .movement-step-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: $color-primary;
+        color: $color-accent;
+        font-family: $font-title;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 3px;
+        border: 1px solid rgba(197, 155, 99, 0.4);
+        z-index: 1;
+      }
+    }
+
+    .movement-content {
+      padding: 1.75rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .movement-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+
+        .movement-icon {
+          color: $color-terracotta;
+          font-size: 0.95rem;
+        }
+
+        .movement-sub {
+          font-family: $font-sans;
+          font-size: 0.72rem;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: $color-terracotta;
+          font-weight: 600;
+        }
+      }
+
+      .movement-name {
+        font-size: 1.5rem;
+        color: $color-primary;
+        margin-bottom: 0.85rem;
+        font-weight: 600;
+      }
+
+      .movement-desc {
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: $color-muted;
+        margin: 0;
+        flex: 1;
+      }
+    }
+  }
+}
+
+// --- 6. COMO FUNCIONA A JORNADA ---
+.how-it-works-section {
+  padding: 6.5rem 0;
+
+  .pillars-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .pillar-box {
+    background: $color-white;
+    border: 1px solid rgba(197, 155, 99, 0.25);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.35s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(92, 29, 46, 0.08);
+      border-color: $color-accent;
+    }
+
+    &.featured-pillar {
+      border: 2px solid $color-accent;
+      background: #FFFDF9;
+
+      .pillar-badge {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $color-terracotta;
+        color: $color-white;
+        font-family: $font-sans;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        text-transform: uppercase;
+      }
+    }
+
+    .pillar-icon-wrap {
+      width: 68px;
+      height: 68px;
+      background: rgba(92, 29, 46, 0.06);
+      border: 1px solid rgba(92, 29, 46, 0.12);
+      border-radius: 50%;
+      color: $color-primary;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+      transition: all 0.3s;
+    }
+
+    &:hover .pillar-icon-wrap {
+      background: $color-primary;
+      color: $color-accent;
+      border-color: $color-accent;
+    }
+
+    .pillar-title {
+      font-size: 1.45rem;
+      color: $color-primary;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .pillar-desc {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: $color-muted;
+      margin: 0;
+    }
+  }
+
+  .rhythm-tag-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    background: $color-white;
+    border: 1px solid rgba(168, 88, 62, 0.3);
+    border-radius: 40px;
+    padding: 1.1rem 2.2rem;
+    max-width: 780px;
+    margin: 0 auto;
+    box-shadow: 0 6px 20px rgba(92, 29, 46, 0.04);
+
+    i {
+      color: $color-terracotta;
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-family: $font-editorial;
+      font-size: 1.25rem;
+      color: $color-primary;
+      font-style: italic;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+    }
+  }
+}
+
+// --- 7. O PROCESSO DE TRANSFORMAÇÃO ---
+.process-section {
+  padding: 6.5rem 0;
+  background-color: $color-white;
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 850px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .process-card {
+    background: $color-linen;
+    border: 1px solid rgba(197, 155, 99, 0.25);
+    border-radius: 6px;
+    padding: 2.2rem 2rem;
+    position: relative;
+    transition: all 0.35s ease;
+
+    &:hover {
+      border-color: $color-accent;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(92, 29, 46, 0.06);
+    }
+
+    .process-number {
+      font-family: $font-editorial;
+      font-size: 1.6rem;
+      color: $color-accent;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .process-title {
+      font-size: 1.5rem;
+      color: $color-primary;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .process-desc {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: $color-muted;
+      margin: 0;
+    }
+  }
+}
+
+// --- 8. MENTORA WALESKA SILVEIRA ---
+.mentor-section {
+  padding: 6.5rem 0;
+
+  .mentor-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.25fr;
+    gap: 4.5rem;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+  }
+
+  .mentor-luxury-frame {
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto;
+
+    .frame-gold-back {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid $color-accent;
+      border-radius: 6px;
+      z-index: 0;
+    }
+
+    .mentor-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      box-shadow: 0 18px 40px rgba(56, 14, 26, 0.12);
+    }
+
+    .mentor-seal {
+      position: absolute;
+      bottom: -15px;
+      left: 20px;
+      right: 20px;
+      background: $color-white;
+      border: 1px solid rgba(197, 155, 99, 0.4);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+      i {
+        color: $color-accent;
+        font-size: 1.1rem;
+      }
+
+      span {
+        font-family: $font-sans;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: $color-primary;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .mentor-content-col {
+    .mentor-credentials {
+      font-family: $font-sans;
+      font-size: 0.85rem;
+      color: $color-terracotta;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 1.75rem;
+    }
+
+    .mentor-text {
+      p {
+        font-size: 1.08rem;
+        line-height: 1.85;
+        color: $color-muted;
+        margin-bottom: 1.25rem;
+      }
+
+      .mentor-quote {
+        margin: 2rem 0;
+        padding: 1.5rem 2rem;
+        background: $color-white;
+        border-left: 3px solid $color-accent;
+        font-size: 1.45rem;
+        color: $color-primary;
+        line-height: 1.6;
+        font-style: italic;
+        border-radius: 0 6px 6px 0;
+        box-shadow: 0 6px 20px rgba(92, 29, 46, 0.03);
+      }
+
+      .mentor-highlight-p strong {
+        color: $color-primary;
+      }
+    }
+
+    .mentor-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(197, 155, 99, 0.25);
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .stat-item {
+        .stat-num {
+          display: block;
+          font-family: $font-editorial;
+          font-size: 2.5rem;
+          font-weight: 600;
+          color: $color-primary;
+          line-height: 1;
+          margin-bottom: 0.4rem;
+        }
+
+        .stat-label {
+          font-size: 0.88rem;
+          color: $color-muted;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+// --- 9. SUA EXPERIÊNCIA INCLUI ---
+.experience-section {
+  padding: 6.5rem 0;
+  background: radial-gradient(circle at center, #5C1D2E 0%, #380E1A 100%);
+  color: $color-white;
+
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .deliverable-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(197, 155, 99, 0.25);
+    border-radius: 6px;
+    padding: 2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    transition: all 0.35s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: $color-accent;
+      transform: translateY(-4px);
+    }
+
+    .deliv-icon {
+      width: 54px;
+      height: 54px;
+      background: rgba(197, 155, 99, 0.15);
+      color: $color-accent-light;
+      border: 1px solid rgba(197, 155, 99, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .deliv-text {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 400;
+    }
+  }
+}
+
+// --- 10. E DEPOIS DO ORIGEM ---
+.reflection-section {
+  padding: 6.5rem 0;
+
+  .reflection-box {
+    background: $color-white;
+    border: 1px solid rgba(197, 155, 99, 0.35);
+    border-radius: 8px;
+    padding: 4rem 3.5rem;
+    box-shadow: 0 15px 40px rgba(92, 29, 46, 0.05);
+
+    @media (max-width: 768px) {
+      padding: 2.5rem 1.75rem;
+    }
+  }
+
+  .reflection-text {
+    .reflection-italic {
+      font-size: 1.6rem;
+      text-align: center;
+      line-height: 1.6;
+      color: $color-muted;
+      margin-bottom: 2.5rem;
+
+      strong {
+        color: $color-primary;
+        display: block;
+        font-size: 1.8rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .reflection-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto 3rem auto;
+      max-width: 520px;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.3rem;
+        color: $color-primary;
+        padding: 0.7rem 0;
+        border-bottom: 1px dashed rgba(197, 155, 99, 0.25);
+
+        i {
+          color: $color-accent;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .reflection-climax {
+      text-align: center;
+
+      .climax-main {
+        font-size: 1.5rem;
+        color: $color-primary;
+        margin-bottom: 1.5rem;
+
+        em {
+          color: $color-terracotta;
+          font-size: 1.8rem;
+          font-weight: 600;
+        }
+      }
+
+      .climax-banner {
+        background: rgba(168, 88, 62, 0.08);
+        border: 1px solid rgba(168, 88, 62, 0.25);
+        border-radius: 6px;
+        padding: 1.75rem 2rem;
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: $color-primary;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+// --- 11. INVESTIMENTO & DECISÃO ---
+.pricing-origem-section {
+  padding: 6.5rem 0;
+  background-color: $color-white;
+
+  .pricing-wrapper {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .luxury-price-card {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF6F0 100%);
+    border: 2px solid $color-accent;
+    border-radius: 12px;
+    padding: 3.5rem 3rem;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(56, 14, 26, 0.12);
+
+    @media (max-width: 600px) {
+      padding: 2.5rem 1.75rem;
+    }
+
+    .price-card-badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, $color-accent 0%, #D8AF79 100%);
+      color: #1A0D07;
+      font-family: $font-title;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 0.45rem 1.4rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(197, 155, 99, 0.35);
+    }
+
+    .product-title {
+      font-size: 2.4rem;
+      color: $color-primary;
+      font-weight: 600;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .product-tagline {
+      font-size: 1rem;
+      color: $color-muted;
+      margin-bottom: 2rem;
+      font-style: italic;
+      font-family: $font-editorial;
+      font-size: 1.25rem;
+    }
+
+    .price-numbers-box {
+      background: rgba(92, 29, 46, 0.04);
+      border: 1px solid rgba(92, 29, 46, 0.08);
+      border-radius: 8px;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
+
+      .installment-label {
+        font-family: $font-sans;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: $color-muted;
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .price-value {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        color: $color-primary;
+        margin-bottom: 0.4rem;
+
+        .currency {
+          font-size: 1.6rem;
+          font-weight: 600;
+          margin-right: 4px;
+        }
+
+        .amount {
+          font-size: 4.2rem;
+          font-weight: 600;
+          line-height: 1;
+        }
+
+        .cents {
+          font-size: 1.6rem;
+          font-weight: 600;
+        }
+      }
+
+      .cash-value {
+        display: block;
+        font-size: 1.05rem;
+        color: $color-terracotta;
+        font-weight: 600;
+      }
+    }
+
+    .price-benefits-list {
+      text-align: left;
+      margin-bottom: 2.5rem;
+
+      .benefit-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+        i {
+          color: $color-accent;
+          font-size: 1rem;
+          flex-shrink: 0;
+        }
+
+        span {
+          font-size: 0.98rem;
+          color: $color-text;
+        }
+      }
+    }
+
+    .btn-origem-submit {
+      width: 100%;
+      background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+      color: $color-white;
+      border: 1px solid $color-accent;
+      font-family: $font-title;
+      font-size: 0.92rem;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      padding: 1.25rem 2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      box-shadow: 0 12px 30px rgba(92, 29, 46, 0.3);
+      transition: all 0.35s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, $color-terracotta 0%, $color-terracotta-dark 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 16px 36px rgba(168, 88, 62, 0.4);
+      }
+    }
+
+    .support-link {
+      margin-top: 1.5rem;
+
+      a {
+        font-size: 0.95rem;
+        color: $color-terracotta;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $color-primary;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .security-badges {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(197, 155, 99, 0.2);
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      span {
+        font-size: 0.78rem;
+        color: $color-muted;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+
+        i {
+          color: $color-accent;
+        }
+      }
+    }
+  }
+}
+
+// --- 12. FAQ SECTION ---
+.faq-origem-section {
+  padding: 6.5rem 0;
+  background-color: $color-linen;
+}
+
+::ng-deep .origem-accordion {
+  .p-accordion-header-link {
+    background: $color-white !important;
+    color: $color-primary !important;
+    border: 1px solid rgba(197, 155, 99, 0.25) !important;
+    border-radius: 4px !important;
+    margin-bottom: 0.8rem;
+    font-family: $font-editorial;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1.4rem 1.8rem !important;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #FFFDF9 !important;
+      border-color: $color-accent !important;
+    }
+  }
+
+  .p-accordion-content {
+    background: #FFFDF9;
+    border: 1px solid rgba(197, 155, 99, 0.2) !important;
+    border-top: none !important;
+    padding: 1.5rem 2rem !important;
+    color: $color-muted;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-top: -0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 0 0 4px 4px;
+  }
+}
+
+// --- 13. BANNER FINAL CTA ---
+.final-cta-origem {
+  padding: 7rem 0;
+  background: radial-gradient(circle at center, #5C1D2E 0%, #2A0912 100%);
+  color: $color-white;
+  text-align: center;
+  position: relative;
+
+  .final-cta-content {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .final-cta-title {
+    font-size: 3.2rem;
+    color: $color-white;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  .final-cta-lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 1.5rem;
+  }
+
+  .final-cta-highlight {
+    font-family: $font-editorial;
+    font-size: 1.7rem;
+    color: $color-accent-light;
+    font-style: italic;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-origem-gold-cta {
+    background: linear-gradient(135deg, $color-accent 0%, #D8AF79 100%);
+    color: #1A0D07;
+    border: none;
+    font-family: $font-title;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1.2rem 2.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 12px 35px rgba(197, 155, 99, 0.4);
+    transition: all 0.35s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 45px rgba(197, 155, 99, 0.55);
+    }
+  }
+
+  .final-cta-signature {
+    display: block;
+    margin-top: 2.5rem;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.05em;
+  }
+}

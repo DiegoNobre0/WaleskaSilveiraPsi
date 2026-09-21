@@ -34,8 +34,8 @@
           <button class="btn-terracotta-luxury" (click)="whatsapp('Olá Waleska! Gostaria de agendar uma consulta.')">
             <i class="pi pi-whatsapp"></i> AGENDAR CONSULTA
           </button>
-          <button class="btn-outline-luxury" (click)="mentoria()">
-            CONHECER A MENTORIA
+          <button class="btn-outline-luxury" (click)="metodoOrigem()">
+            CONHECER O MÉTODO ORIGEM
           </button>
         </div>
 
@@ -117,7 +117,51 @@
 
       <div class="programs-grid">
 
-        <!-- Card 1: Psicanálise Clínica -->
+        <!-- Card 1: Método ORIGEM (Novo Lançamento) -->
+        <div class="luxury-program-card featured">
+          <div class="card-badge" style="background: var(--terracotta-color);">NOVO</div>
+          <div class="card-crest" style="background: rgba(168, 88, 62, 0.1); color: var(--terracotta-color);">
+            <i class="pi pi-sparkles"></i>
+          </div>
+          <span class="card-category" style="color: var(--terracotta-color);">METODOLOGIA DE VOLTAR A SI</span>
+          <h3 class="card-title font-editorial">Método ORIGEM</h3>
+          <p class="card-desc">
+            Uma jornada em 5 movimentos de transformação emocional para mulheres que desejam compreender sua história,
+            reconstruir sua relação consigo mesmas e viver com autenticidade.
+          </p>
+          <ul class="card-features">
+            <li><i class="pi pi-check"></i> 12 meses de acesso à plataforma</li>
+            <li><i class="pi pi-check"></i> Encontros ao vivo com Waleska</li>
+            <li><i class="pi pi-check"></i> Comunidade exclusiva de alunas</li>
+          </ul>
+          <button class="btn-card-action btn-featured-action" (click)="metodoOrigem()">
+            CONHECER O MÉTODO
+          </button>
+        </div>
+
+        <!-- Card 2: Mentoria Liberta -->
+        <div class="luxury-program-card featured">
+          <div class="card-badge">PROGRAMA</div>
+          <div class="card-crest">
+            <i class="pi pi-heart-fill"></i>
+          </div>
+          <span class="card-category">MENTORIA FEMININA</span>
+          <h3 class="card-title font-editorial">Mentoria Liberta</h3>
+          <p class="card-desc">
+            Um programa transformador de empoderamento e autonomia emocional para mulheres que desejam superar a
+            dependência afetiva, estabelecer limites e viver sua verdade sem culpa.
+          </p>
+          <ul class="card-features">
+            <li><i class="pi pi-check"></i> Encontros com ferramentas práticas</li>
+            <li><i class="pi pi-check"></i> Fortalecimento do amor-próprio</li>
+            <li><i class="pi pi-check"></i> Acompanhamento personalizado</li>
+          </ul>
+          <button class="btn-card-action" (click)="mentoria()">
+            CONHECER O PROGRAMA
+          </button>
+        </div>
+
+        <!-- Card 3: Psicanálise Clínica -->
         <div class="luxury-program-card">
           <div class="card-crest">
             <i class="pi pi-compass"></i>
@@ -138,29 +182,7 @@
           </button>
         </div>
 
-        <!-- Card 2: Mentoria Liberta (Destaque) -->
-        <div class="luxury-program-card featured">
-          <div class="card-badge">EXCLUSIVO</div>
-          <div class="card-crest">
-            <i class="pi pi-heart-fill"></i>
-          </div>
-          <span class="card-category">MENTORIA FEMININA</span>
-          <h3 class="card-title font-editorial">Mentoria Liberta</h3>
-          <p class="card-desc">
-            Um programa transformador de empoderamento e autonomia emocional para mulheres que desejam superar a
-            dependência afetiva, estabelecer limites e viver sua verdade sem culpa.
-          </p>
-          <ul class="card-features">
-            <li><i class="pi pi-check"></i> Encontros com ferramentas práticas</li>
-            <li><i class="pi pi-check"></i> Fortalecimento do amor-próprio</li>
-            <li><i class="pi pi-check"></i> Acompanhamento personalizado</li>
-          </ul>
-          <button class="btn-card-action btn-featured-action" (click)="mentoria()">
-            CONHECER O PROGRAMA
-          </button>
-        </div>
-
-        <!-- Card 3: Hipnoterapia & PNL -->
+        <!-- Card 4: Hipnoterapia & PNL -->
         <div class="luxury-program-card">
           <div class="card-crest">
             <i class="pi pi-sun"></i>
