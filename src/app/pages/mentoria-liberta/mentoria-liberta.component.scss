@@ -1,0 +1,810 @@
+// --- Variáveis de Marca & Editorial ---
+$color-primary: #5C1D2E; // Borgonha Profundo (Logo)
+$color-primary-dark: #380E1A; // Vinho Nobre
+$color-accent: #C59B63; // Dourado Champagne (Logo)
+$color-terracotta: #A8583E; // Terracota Quente (Logo)
+$color-light: #F9F6F0; // Linho Natural
+$color-white: #FFFFFF;
+$color-text: #2C2623;
+$color-muted: #6E675F;
+$font-cinzel: 'Cinzel', serif;
+$font-editorial: 'Cormorant Garamond', Georgia, serif;
+$font-body: 'Inter', sans-serif;
+
+// --- Configurações Gerais ---
+.landing-page {
+  background-color: $color-light;
+  color: $color-text;
+  font-family: $font-body;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  &.narrow {
+    max-width: 860px;
+  }
+
+  &.flex-row {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem;
+
+    @media(max-width: 992px) {
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+}
+
+.text-purple {
+  color: $color-primary;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+.bg-light {
+  background-color: $color-light;
+}
+
+.bg-purple {
+  background-color: $color-primary;
+}
+
+.section-title {
+  font-family: $font-editorial;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  color: $color-primary;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  @media(max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  &.text-white {
+    color: $color-white;
+  }
+
+  &.text-left {
+    text-align: left;
+
+    @media(max-width: 992px) {
+      text-align: center;
+    }
+  }
+}
+
+.header-line {
+  width: 60px;
+  height: 2px;
+  margin: 0 auto 3rem auto;
+  background-color: $color-primary;
+
+  &.gold-line {
+    background: linear-gradient(90deg, transparent, $color-accent, transparent);
+    height: 1.5px;
+    width: 90px;
+  }
+
+  &.left {
+    margin: 0 0 2rem 0;
+
+    @media(max-width: 992px) {
+      margin: 0 auto 2rem auto;
+    }
+  }
+
+  &.white {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+// --- 1. HERO ---
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  background-image: url('../../../assets/ws2.png');
+  background-size: cover;
+  background-position: center 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 120px 0 80px 0;
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(28, 8, 14, 0.82) 0%, rgba(56, 14, 26, 0.88) 60%, rgba(92, 29, 46, 0.92) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-text {
+    max-width: 920px;
+    margin: 0 auto;
+
+    .pre-headline {
+      color: $color-accent;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-family: $font-cinzel;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 6px 18px;
+      border: 1px solid rgba($color-accent, 0.4);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-family: $font-editorial;
+      font-size: 3.6rem;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: #FFFDF9;
+      font-weight: 400;
+
+      @media(max-width: 768px) {
+        font-size: 2.2rem;
+      }
+    }
+
+    .sub-headline {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  ::ng-deep .cta-button {
+    background: linear-gradient(135deg, $color-accent 0%, #D8AF79 100%) !important;
+    border: none !important;
+    color: #1A0D07 !important;
+    font-weight: 600;
+    padding: 1.1rem 2.8rem;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: $font-cinzel;
+    box-shadow: 0 12px 30px rgba(197, 155, 99, 0.35);
+    transition: all 0.4s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(197, 155, 99, 0.45);
+    }
+  }
+}
+
+// --- 2. PAIN (Dores) ---
+.pain-section {
+  padding: 6rem 0;
+  background: #FFFDF9;
+  border-bottom: 1px solid rgba($color-primary, 0.08);
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .pain-item {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: $color-light;
+    border: 1px solid rgba($color-accent, 0.25);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(92, 29, 46, 0.08);
+      border-color: $color-accent;
+    }
+
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      background: rgba($color-primary, 0.06);
+      color: $color-primary;
+      border: 1px solid rgba($color-primary, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin: 0 auto 1.5rem auto;
+      transition: all 0.3s;
+    }
+
+    &:hover .icon-circle {
+      background: $color-primary;
+      color: $color-accent;
+      border-color: $color-accent;
+    }
+
+    p {
+      color: $color-muted;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}
+
+.pain-conclusion-box {
+  background: rgba($color-terracotta, 0.08);
+  border-left: 3px solid $color-terracotta;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+
+  p {
+    color: $color-primary-dark;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0;
+
+    b {
+      color: $color-terracotta;
+      font-weight: 700;
+    }
+  }
+}
+
+// --- 3. PILARES ---
+.pillars-section {
+  padding: 6.5rem 0;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+
+  @media(max-width: 850px) {
+    grid-template-columns: 1fr;
+  }
+
+  .pillar-card {
+    background: #FFFDF9;
+    border: 1px solid rgba($color-accent, 0.2);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(56, 14, 26, 0.08);
+      border-color: $color-accent;
+    }
+
+    &.highlight {
+      border: 2px solid $color-accent;
+      background: #FFFFFF;
+      position: relative;
+
+      &::before {
+        content: 'DESTAQUE';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: $color-primary;
+        color: $color-accent;
+        font-family: $font-cinzel;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        z-index: 2;
+      }
+    }
+
+    .pillar-image {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      filter: saturate(0.85);
+      transition: filter 0.4s;
+    }
+
+    &:hover .pillar-image {
+      filter: saturate(1.1);
+    }
+
+    .pillar-content {
+      padding: 2.2rem 2rem;
+      text-align: center;
+
+      h3 {
+        font-family: $font-editorial;
+        color: $color-primary;
+        margin-bottom: 1rem;
+        font-size: 1.45rem;
+        font-weight: 600;
+      }
+
+      p {
+        color: $color-muted;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// --- 4. ENTREGÁVEIS ---
+.deliverables-section {
+  padding: 6.5rem 0;
+  background: #FFFDF9;
+  border-top: 1px solid rgba($color-accent, 0.15);
+  border-bottom: 1px solid rgba($color-accent, 0.15);
+}
+
+.deliverables-content {
+  flex: 1.2;
+}
+
+.deliverables-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .check-icon {
+      min-width: 42px;
+      height: 42px;
+      background: $color-primary;
+      color: $color-accent;
+      border: 1px solid $color-accent;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    strong {
+      display: block;
+      font-family: $font-cinzel;
+      font-size: 1.1rem;
+      color: $color-primary;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: $color-muted;
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+  }
+}
+
+.deliverables-image {
+  flex: 0.9;
+  position: relative;
+
+  img {
+    width: 100%;
+    display: block;
+    box-shadow: 18px 18px 0px $color-terracotta;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    filter: saturate(0.95);
+  }
+}
+
+// --- 5. BÔNUS ---
+.bonus-section {
+  padding: 6rem 0;
+  background-color: $color-primary-dark;
+  position: relative;
+
+  .section-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+
+    @media(max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+
+    .bonus-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba($color-accent, 0.25);
+      padding: 2.2rem 1.6rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: $color-accent;
+        transform: translateY(-5px);
+      }
+
+      .bonus-icon {
+        font-size: 2.2rem;
+        color: $color-accent;
+        margin-bottom: 1.2rem;
+      }
+
+      h3 {
+        font-family: $font-cinzel;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.8rem;
+        color: white;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.75);
+        margin: 0;
+        line-height: 1.6;
+        min-height: 56px;
+      }
+    }
+  }
+}
+
+// --- 6. BIO ---
+.bio-section {
+  padding: 6.5rem 0;
+  background: $color-light;
+}
+
+.bio-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  img {
+    width: 100%;
+    max-width: 440px;
+    box-shadow: -16px 16px 0px $color-accent;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+}
+
+.bio-text {
+  flex: 1.2;
+
+  .pre-title {
+    color: $color-terracotta;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    font-family: $font-cinzel;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .main-title {
+    font-family: $font-editorial;
+    font-size: 2.8rem;
+    color: $color-primary;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+  }
+
+  p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    color: $color-muted;
+    font-size: 1.05rem;
+
+    em {
+      font-family: $font-editorial;
+      font-size: 1.25rem;
+      color: $color-primary;
+      display: block;
+      line-height: 1.6;
+    }
+  }
+}
+
+// --- 7. DEPOIMENTOS ---
+.testimonials-section {
+  padding: 6.5rem 0;
+  background: #FFFDF9;
+}
+
+.testimonial-card {
+  text-align: center;
+  padding: 3.5rem 2.5rem;
+  background: $color-light;
+  border: 1px solid rgba($color-accent, 0.3);
+  max-width: 820px;
+  margin: 0 auto;
+
+  .quote-icon {
+    font-size: 2.2rem;
+    color: $color-accent;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .testimonial-text {
+    font-family: $font-editorial;
+    font-size: 1.45rem;
+    font-style: italic;
+    color: $color-primary-dark;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    font-family: $font-cinzel;
+    color: $color-primary;
+
+    strong {
+      display: block;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    span {
+      font-size: 0.85rem;
+      color: $color-terracotta;
+      font-family: $font-body;
+    }
+  }
+}
+
+// --- 8. PREÇOS ---
+.pricing-section {
+  padding: 6.5rem 0;
+  background: $color-light;
+}
+
+.pricing-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  align-items: stretch;
+
+  @media(max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.price-card {
+  background: #FFFDF9;
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba($color-accent, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease;
+
+  &.featured {
+    border: 2px solid $color-accent;
+    box-shadow: 0 20px 50px rgba(56, 14, 26, 0.12);
+    transform: scale(1.04);
+    z-index: 2;
+
+    @media(max-width: 850px) {
+      transform: none;
+    }
+
+    .badge {
+      background: linear-gradient(135deg, $color-accent 0%, #D8AF79 100%);
+      color: #1A0D07;
+      padding: 8px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      font-family: $font-cinzel;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+    }
+  }
+
+  h3 {
+    font-family: $font-cinzel;
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.4rem;
+    color: $color-primary;
+  }
+
+  .access-time {
+    color: $color-muted;
+    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .old-price {
+    color: #999;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    color: $color-primary;
+    margin-bottom: 0.4rem;
+
+    .currency {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    .value {
+      font-family: $font-editorial;
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: $color-primary;
+    }
+  }
+
+  .cash-price {
+    color: $color-terracotta;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .benefits {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    text-align: left;
+    flex-grow: 1;
+
+    li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: $color-text;
+      font-size: 0.95rem;
+
+      i {
+        color: $color-accent;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  ::ng-deep .cta-button {
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%) !important;
+    border: 1px solid $color-accent !important;
+    color: #FFFDF9 !important;
+    font-family: $font-cinzel;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    padding: 1rem !important;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $color-accent !important;
+      color: #1A0D07 !important;
+      border-color: $color-accent !important;
+    }
+  }
+
+  ::ng-deep .p-button-outlined {
+    border: 1px solid $color-primary !important;
+    color: $color-primary !important;
+    font-family: $font-cinzel;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    padding: 1rem !important;
+
+    &:hover {
+      background: $color-primary !important;
+      color: white !important;
+    }
+  }
+}
+
+// --- 9. FAQ ---
+.faq-section {
+  padding: 6.5rem 0;
+  background: #FFFDF9;
+  border-top: 1px solid rgba($color-accent, 0.2);
+}
+
+::ng-deep .custom-accordion {
+  .p-accordion-header-link {
+    background: $color-light !important;
+    color: $color-primary !important;
+    border: 1px solid rgba($color-accent, 0.25) !important;
+    margin-bottom: 0.8rem;
+    font-family: $font-cinzel;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    padding: 1.4rem 1.8rem !important;
+    transition: all 0.3s;
+
+    &:hover {
+      background: #FFFFFF !important;
+      border-color: $color-accent !important;
+    }
+  }
+
+  .p-accordion-content {
+    background: #FFFFFF;
+    border: 1px solid rgba($color-accent, 0.15);
+    border-top: none;
+    margin-top: -0.8rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem 2rem;
+    color: $color-muted;
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+}

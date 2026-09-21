@@ -1,4 +1,294 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   WALESKA SILVEIRA - PSICANALISTA CLÍNICA & HIPNOTERAPEUTA
+   Design System: Warm Luxury Editorial (Inspired by Ascend & Co.)
+   ========================================================================== */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* 1. DESIGN TOKENS (VARIÁVEIS GLOBAIS) */
+:root {
+  /* Cores da Nova Logo */
+  --primary-color: #5C1D2E;         /* Vinho Marsala Profundo */
+  --primary-dark: #3E101D;          /* Vinho Escuro */
+  --primary-light: #7D2840;         /* Vinho Suave */
+  --primary-soft: rgba(92, 29, 46, 0.08);
+
+  /* Dourado Nobre */
+  --gold-color: #C59B63;            /* Dourado Champagne da Logo */
+  --gold-dark: #A77E46;             /* Dourado Profundo */
+  --gold-light: #E4C89E;            /* Dourado Claro */
+  --gold-soft: rgba(197, 155, 99, 0.15);
+
+  /* Terracota (Inspiração Ascend & Co) */
+  --terracotta-color: #A8583E;      /* Terracota Queimado */
+  --terracotta-dark: #8C442E;       /* Terracota Escuro */
+  --terracotta-light: #C57359;      /* Terracota Claro */
+  --terracotta-soft: rgba(168, 88, 62, 0.12);
+
+  /* Superfícies & Fundos Neutros */
+  --bg-linen: #F9F6F0;              /* Fundo Linho Acolhedor */
+  --bg-warm: #F3ECE2;               /* Creme Aconchegante */
+  --bg-card: #FFFFFF;               /* Branco Puro */
+  --bg-input: #FCFAF7;              /* Fundo de Input Leve */
+  --border-delicate: #E8DFD3;       /* Borda Fina Nobre */
+  --border-focus: #C59B63;
+
+  /* Tipografia & Contrastes */
+  --text-main: #241D1A;             /* Espresso Nobre */
+  --text-muted: #6B6159;            /* Taupe Aveludado */
+  --text-light: #F9F6F0;            /* Branco Linho */
+
+  /* Fontes Editoriais */
+  --font-editorial: 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-title: 'Cinzel', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Sombras Sutis */
+  --shadow-subtle: 0 4px 20px rgba(92, 29, 46, 0.04);
+  --shadow-card: 0 10px 30px rgba(92, 29, 46, 0.06);
+  --shadow-hover: 0 18px 40px rgba(92, 29, 46, 0.10);
+  --shadow-gold: 0 8px 25px rgba(197, 155, 99, 0.25);
+
+  /* Transições Suaves */
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. RESET E BASE */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-main);
+  background-color: var(--bg-linen);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. TIPOGRAFIA EDITORIAL */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-top: 0;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Eyebrows (Rótulos elegantes de seção) */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-color);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.eyebrow-terracotta {
+  color: var(--terracotta-color);
+}
+
+.eyebrow-white {
+  color: var(--gold-light);
+}
+
+/* Linhas decorativas */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.25rem auto;
+
+  &::before, &::after {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background: var(--gold-color);
+    opacity: 0.6;
+  }
+
+  .ornament-icon {
+    color: var(--gold-color);
+    font-size: 0.85rem;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 4. COMPONENTES PRIMENG & FORMULÁRIOS CUSTOMIZADOS */
+.p-inputtext {
+  width: 100%;
+  padding: 0.95rem 1.2rem !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-delicate);
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+
+  &::placeholder {
+    color: #9C938B;
+    font-size: 0.9rem;
+  }
+
+  &:enabled:hover {
+    border-color: var(--gold-color);
+  }
+
+  &:enabled:focus {
+    border-color: var(--primary-color);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 2px var(--primary-soft);
+    outline: none;
+  }
+}
+
+p-inputmask {
+  display: block;
+  width: 100%;
+}
+
+textarea.p-inputtext {
+  resize: vertical;
+}
+
+/* Botões Customizados Globais */
+.btn-primary-luxury {
+  background: var(--primary-color) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--primary-color) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 2px !important;
+  transition: var(--transition-smooth) !important;
+  box-shadow: var(--shadow-subtle);
+
+  &:hover {
+    background: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+.btn-terracotta-luxury {
+  background: var(--terracotta-color) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--terracotta-color) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 2px !important;
+  transition: var(--transition-smooth) !important;
+  box-shadow: 0 6px 20px rgba(168, 88, 62, 0.25);
+
+  &:hover {
+    background: var(--terracotta-dark) !important;
+    border-color: var(--terracotta-dark) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(168, 88, 62, 0.35);
+  }
+}
+
+.btn-outline-luxury {
+  background: transparent !important;
+  color: var(--primary-color) !important;
+  border: 1px solid var(--primary-color) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  padding: 0.85rem 2.1rem !important;
+  border-radius: 2px !important;
+  transition: var(--transition-smooth) !important;
+
+  &:hover {
+    background: var(--primary-color) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-gold-luxury {
+  background: var(--gold-color) !important;
+  color: #FFFFFF !important;
+  border: 1px solid var(--gold-color) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  padding: 0.9rem 2.2rem !important;
+  border-radius: 2px !important;
+  transition: var(--transition-smooth) !important;
+  box-shadow: var(--shadow-gold);
+
+  &:hover {
+    background: var(--gold-dark) !important;
+    border-color: var(--gold-dark) !important;
+    transform: translateY(-2px);
+  }
+}
+
+/* Toast do PrimeNG */
+.p-toast {
+  font-family: var(--font-body);
+}
+
+/* Scrollbar Elegante */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-linen);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-color);
+}

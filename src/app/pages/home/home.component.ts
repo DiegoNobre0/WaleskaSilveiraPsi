@@ -1,82 +1,119 @@
-import { Component, HostListener, ElementRef, OnInit, OnDestroy, ApplicationRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BloggerService } from 'src/app/services/blogger.service';
-import { instagramService } from 'src/app/services/instagram.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
+
+  recentPosts: any[] = [];
+  loadingPosts: boolean = true;
+
+  testimonials = [
+    {
+      quote: "Antes da terapia, eu vivia no piloto automático. Nos encontros com a Waleska, fui me escutando e me acolhendo. Hoje faço escolhas com mais consciência, firmeza e amor próprio.",
+      author: "Fernanda S.",
+      detail: "Paciente de Psicanálise Online"
+    },
+    {
+      quote: "Sempre coloquei as vontades dos outros à frente das minhas. Com a Waleska, compreendi que me respeitar é um ato de amor e aprendi a dizer não sem culpa ou ansiedade.",
+      author: "Renata M.",
+      detail: "Mentoria Liberta"
+    },
+    {
+      quote: "A abordagem integrada de psicanálise e hipnose me trouxe alívio profundo para crises que me paralisavam há anos. Um espaço de acolhimento seguro, ético e transformador.",
+      author: "Juliana R.",
+      detail: "Atendimento Presencial no Divã"
+    }
+  ];
+
   constructor(
-    public dialog: MatDialog,
-    private route: ActivatedRoute,
-    private appRef: ApplicationRef,
     private router: Router,
-    private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer,
-    private bloggerService: BloggerService,
-    private instagramService: instagramService
-  ) {
-    this.matIconRegistry.addSvgIcon(
-      'whatsapp',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/whatsapp.svg')
-    );
+    private bloggerService: BloggerService
+  ) { }
+
+  ngOnInit() {
+    this.loadPosts();
   }
 
+  loadPosts() {
+    const cached = localStorage.getItem('bloggerPosts');
+    if (cached) {
+      try {
+        const posts = JSON.parse(cached);
+        if (Array.isArray(posts) && posts.length > 0) {
+          this.recentPosts = posts.slice(0, 3);
+          this.loadingPosts = false;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
 
-  instagramPosts: any[] = [];
-  bloggerPosts: any[] = [];
-
- 
-
-  ngOnInit(){   
-    this.getPosts()
-    this.getPostInstagram()
-  }
-
-  getPosts() {    
-    this.bloggerService.getAllPosts().subscribe((response: any) => {
-      // console.log(response)
-      localStorage.setItem('bloggerPosts', JSON.stringify(response.items));    
+    this.bloggerService.getAllPosts().subscribe({
+      next: (res: any) => {
+        if (res && res.items) {
+          localStorage.setItem('bloggerPosts', JSON.stringify(res.items));
+          this.recentPosts = res.items.slice(0, 3);
+        }
+        this.loadingPosts = false;
+      },
+      error: () => {
+        this.loadingPosts = false;
+      }
     });
-  }   
-
-  getPostInstagram() {    
-    this.instagramService.GetAll().subscribe((response: any) => {  
-      // console.log(response)
-      localStorage.setItem('instagramPosts', JSON.stringify(response.data));   
-    });
   }
 
-  about(): void{    
-    this.router.navigate(['/sobre'], { relativeTo: this.route });
-    //  this.closePanel();
+  about(): void {
+    this.router.navigate(['/sobre']);
   }
 
-  whatsapp(): void{    
+  servicos(): void {
+    this.router.navigate(['/servicos']);
+  }
+
+  mentoria(): void {
+    this.router.navigate(['/mentoria']);
+  }
+
+  contato(): void {
+    this.router.navigate(['/contato']);
+  }
+
+  openPost(id: string): void {
+    this.router.navigate(['/post', id]);
+  }
+
+  whatsapp(customMsg?: string): void {
     const phoneNumber = '71992117598';
-    const message = encodeURIComponent('Olá! Gostaria de agendar uma consulta.');
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappUrl, '_blank');
+    const message = encodeURIComponent(customMsg || 'Olá Waleska! Vi seu site e gostaria de agendar uma consulta.');
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   }
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(PopupComponent, {
-  //     panelClass: 'custom-dialog-container'
-  //   });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //    this.atendimento = localStorage.getItem('tipoAtendimento');
+  extractImageUrl(content: string): string {
+    if (!content) return 'assets/logo-nova.svg';
+    const match = content.match(/src="([^"]+)"/);
+    return match ? match[1] : 'assets/logo-nova.svg';
+  }
 
-  //    if(this.atendimento === "Adulto"){
-  //     this.imagem = true;
-  //    }else{
-  //     this.imagem = false;
-  //    }
-  //   });
-  // }
+  extractTitle(title: string): string {
+    if (!title) return '';
+    const clean = title.replace(/<[^>]+>/g, '').trim();
+    return clean.length > 55 ? clean.substring(0, 55) + '...' : clean;
+  }
+
+  extractSummary(content: string): string {
+    if (!content) return '';
+    const clean = content.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+    return clean.length > 115 ? clean.substring(0, 115) + '...' : clean;
+  }
+
+  formatDate(dateString: string): string {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
 }

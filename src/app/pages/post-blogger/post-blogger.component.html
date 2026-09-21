@@ -1,264 +1,245 @@
-<div class="div-body">
-    <!-- <div class="display-mobile">
-        <div style="width: 100%;">
-            <span>
-                <img class="image-container" src="../../../assets/Butterfly.jpg">
-            </span>
-        </div>
-    </div> -->
-    <!-- <div class="text-name" style="padding-top: 7rem;">
-        <div class="div-calculo-dose-2">
-            <span class="spam-flex-justify name-home">BLOG</span>
-            <hr class="style-hr">
-        </div>
-    </div> -->
+<div class="single-post-page" *ngIf="bloggerPost">
 
-    <div class="div-sobre div-curva">
-        <div class="text-container div-info" style="color: #744972;">
-            <div style="padding-bottom: 1rem; display: flex; flex-direction: column;">
-                <div style="display: flex;">
-                    <p style="margin-right: 0.5rem;font-size: 11px;">Inicio</p>
-                    <p style="margin-right: 0.5rem;font-size: 11px;">&gt;</p>
-                    <p style="margin-right: 0.5rem;font-size: 11px;"> Blog</p>
-                    <p style="margin-right: 0.5rem;font-size: 11px;">&gt;</p>
-                    <p style="font-size: 11px;">{{extractTitle(bloggerPost?.title) }}</p>
+    <header class="post-header-section">
+        <div class="header-container">
+
+            <nav class="breadcrumbs" aria-label="Navegação">
+                <span class="back-link" (click)="goBack()">
+                    <i class="pi pi-arrow-left"></i> Voltar ao Blog
+                </span>
+                <span class="separator">/</span>
+                <span (click)="goToHome()" class="crumb-link">Início</span>
+                <span class="separator">/</span>
+                <span class="current">Artigo</span>
+            </nav>
+
+            <h1 class="post-title">{{ extractTitle(bloggerPost.title) }}</h1>
+
+            <div class="post-meta">
+                <div class="meta-item">
+                    <i class="pi pi-user"></i>
+                    <span>Por <strong>{{ bloggerPost.author?.displayName || 'Waleska Silveira' }}</strong></span>
                 </div>
-                <div>
-                    <p class="name-home no-margin" style="font-size: 30px;">{{extractTitle(bloggerPost?.title) }}</p>
+                <div class="meta-item">
+                    <i class="pi pi-calendar"></i>
+                    <span>{{ formatDate(bloggerPost.published) }}</span>
                 </div>
-                <div class="div-flex-center" style="padding-bottom: 1.5rem;">
-                    <p class="div-calculo-dose-cards" style="font-size: 12px;">Por</p>
-                    <p class="div-calculo-dose-cards" style="font-size: 12px;margin-left: 5px"><b>{{
-                            bloggerPost.author.displayName}}</b></p>
-                    <p style="margin-left: 5px;font-size: 12px;"> - {{ formatDate(bloggerPost.published) }}</p>
-                </div>
-                <div class="image-container2">
-                    <img [src]="extractImageUrl(bloggerPost.content)">
-                </div>
-                <div class="div-flex-center" style="flex-direction: column;">
-                    <p class="div-calculo-dose-cards" style="flex-direction: column;"
-                        [innerHTML]="extractSummary(bloggerPost.content)"></p>
-                </div>
-                <div style="display: flex; padding-bottom: 1.5rem;">
-                    <div class="div-flex-center style-tag" style="margin-right: 0.4rem;">
-                        <p class="div-calculo-dose-cards"
-                            style="color: white; margin: 0; font-weight: 600; font-size: 12px;">TAGS</p>
-                    </div>
-                    <div *ngFor="let blogueTags of tags" class="div-flex-center style-tag-2"
-                        style="margin-right: 0.4rem;">
-                        <p class="div-calculo-dose-cards" style="margin: 0; font-weight: 600; font-size: 9px;">
-                            {{blogueTags}}</p>
-                    </div>
-                </div>
-                <hr class="style-hr-2">
+            </div>
+
+            <div class="post-tags" *ngIf="tags && tags.length > 0">
+                <span class="tag-label">TEMAS:</span>
+                <span *ngFor="let tag of tags" class="tag-pill">{{ tag }}</span>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="post-body-section">
+        <div class="content-container">
+
+            <div class="featured-image">
+                <img [src]="extractImageUrl(bloggerPost.content)" alt="Imagem em destaque do artigo"
+                    onerror="this.style.display='none'">
+            </div>
+
+            <article class="post-content" [innerHTML]="extractSummary(bloggerPost.content)"></article>
+
+            <div class="share-section">
+                <span class="share-label">Compartilhe esta reflexão:</span>
                 <div class="share-buttons">
+                    <a href="https://wa.me/?text=Confira este post: {{bloggerPost.url}}" target="_blank"
+                        class="share-btn whatsapp" title="Compartilhar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{bloggerPost.url}}" target="_blank"
-                        class="share-button facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://x.com/intent/tweet?url={{bloggerPost.url}}&text=Texto%20de%20compartilhamento"
-                        target="_blank" class="share-button x">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://pinterest.com/pin/create/button/?url={{bloggerPost.url}}&media={{extractImageUrl(bloggerPost.content)}}&description=Descrição"
-                        target="_blank" class="share-button pinterest">
-                        <i class="fab fa-pinterest"></i>
-                    </a>
-                    <a href="https://wa.me/?text=Texto%20de%20compartilhamento%20{{bloggerPost.url}}" target="_blank"
-                        class="share-button whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-                <hr class="style-hr-2">
-            </div>
-            <div *ngIf="blogPosts.length > 0"
-                style="display: flex; justify-content: space-between; padding-bottom: 2rem;">
-                <div style="display: flex; flex-direction: column; padding-right: 3rem;">
-                    <p *ngIf="titlePrevious" style="font-size: 11px;">Artigo anterior</p>
-                    <p (click)="PreviousPage()" class="text-button-next" style="font-size: 14px;">{{titlePrevious }}</p>
-                </div>
-
-                <div style="display: flex; flex-direction: column; padding-left: 3rem;">
-                    <p *ngIf="titleNext" style="font-size: 11px; text-align: end;">próximo artigo</p>
-                    <p (click)="nextPage()" class="text-button-next" style="font-size: 14px;text-align:end;">{{
-                        titleNext }}</p>
-                </div>
-            </div>
-            <div style="display: flex; padding: 2rem 1rem 1rem 2rem" class="demo-section">
-                <div class="img-info-blog">
-                    <img class="image-container-info-blog" src="../../../assets/foto6.jpeg">
-                </div>
-                <div class="text-info-blog">
-                    <p><b>Psicanalista Waleska Silveira</b></p>
-                    <p style="font-size: 12px; cursor: pointer;">
-                        <a href="https://waleskasilveirapsi.com.br" style="text-decoration: none; color: #744972;">https://waleskasilveirapsi.com.br</a>
-                      </p>
-                    <p style="font-size: 12px;">
-                        Sou Waleska Silveira, psicanalista e hipnoterapeuta, especialista em sexualidade e neurociência,
-                        com
-                        vasta experiência em atendimento clínico.
-                        Minha paixão é guiar pessoas em suas jornadas de autoconhecimento e transformação pessoal.
-                        Meu trabalho é focado em promover a saúde mental e o bem-estar emocional. Utilizo técnicas
-                        inovadoras e eficazes para tratar uma ampla gama de questões
-                        psicológicas e emocionais.
-                    </p>
-                    <p class="icon-info-blog ">
-                        <a href="https://www.facebook.com/waleska.vercosa"
-                            target="_blank" class="share-button " style="color: #744972;">
-                            <i class="fab fa-facebook" style="color: #744972;"></i>
-                        </a>
-                        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank"
-                            class="share-button">
-                            <i class="fab fa-instagram" style="color: #744972;"></i>
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div style="padding-top: 3rem; border-bottom: 3px solid #744972; width: 100%;">
-                <div class="div-flex-center style-tag" style="margin-right: 0.4rem; width: 11rem; height: 25px;">
-                    <p style="color: white; margin: 0; font-weight: 600; font-size: 12px;">ARTIGOS RELACIONADOS</p>
+                        class="share-btn facebook" title="Compartilhar no Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url={{bloggerPost.url}}" target="_blank"
+                        class="share-btn twitter" title="Compartilhar no Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com/pin/create/button/?url={{bloggerPost.url}}&media={{extractImageUrl(bloggerPost.content)}}"
+                        target="_blank" class="share-btn pinterest" title="Salvar no Pinterest"><i
+                            class="fab fa-pinterest"></i></a>
                 </div>
             </div>
 
-            <div class="grid-container">
-                <div class="card-1" *ngFor="let filteredPost of paginatedPosts"
-                    (click)="getPostBloggerId(filteredPost.id)">
-                    <div class="image-wrapper">
-                        <img class="image-container" [src]="extractImageUrl(filteredPost.content)">
+            <hr class="divider">
+
+            <nav class="post-navigation" aria-label="Navegação entre posts">
+                <div class="nav-item prev" *ngIf="titlePrevious" (click)="PreviousPage()">
+                    <span><i class="pi pi-arrow-left"></i> Artigo Anterior</span>
+                    <p>{{ titlePrevious }}</p>
+                </div>
+                <div class="nav-item next" *ngIf="titleNext" (click)="nextPage()">
+                    <span>Próximo Artigo <i class="pi pi-arrow-right"></i></span>
+                    <p>{{ titleNext }}</p>
+                </div>
+            </nav>
+
+            <section class="author-box">
+                <div class="author-img">
+                    <img src="assets/ws2.png" alt="Waleska Silveira - Psicanalista e Hipnoterapeuta">
+                </div>
+                <div class="author-info">
+                    <span class="author-eyebrow">Sobre a Autora</span>
+                    <h3>Waleska Silveira</h3>
+                    <p>Psicanalista Clínica, Hipnoterapeuta e Mentora de Desenvolvimento Emocional. Dedica-se a acolher
+                        mulheres e casais na reconstrução de vínculos afetivos e conquista da autonomia emocional.</p>
+                    <div class="author-social">
+                        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" title="Instagram"><i
+                                class="fab fa-instagram"></i> @waleskasilveirapsi</a>
+                        <a href="https://www.facebook.com/waleska.vercosa" target="_blank" title="Facebook"><i
+                                class="fab fa-facebook"></i> Facebook</a>
                     </div>
-                    <div style="display: flex; align-items: center;">
-                        <p class="name-home no-margin">
-                            <b class="font-size-card">{{ extractTitle(filteredPost?.title) }}</b>
-                        </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <section class="related-section" *ngIf="paginatedPosts && paginatedPosts.length > 0">
+        <div class="content-container">
+            <span class="section-eyebrow">Continue Lendo</span>
+            <h3 class="section-heading">ARTIGOS RELACIONADOS</h3>
+            <div class="header-line gold-line"></div>
+
+            <div class="related-grid">
+                <div class="related-card" *ngFor="let related of paginatedPosts" (click)="getPostBloggerId(related.id)">
+                    <div class="related-img">
+                        <img [src]="extractImageUrl(related.content)" alt="Artigo relacionado"
+                            onerror="this.src='assets/foto17.jpeg'">
+                    </div>
+                    <div class="related-title">
+                        {{ extractTitle(related.title) }}
                     </div>
                 </div>
             </div>
 
-            <div class="pagination">
-                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="pagination-button"
-                    style="margin-right: 1rem;">&lt;</button>
+            <div class="pagination-controls" *ngIf="filteredPosts && filteredPosts.length > postsPerPage">
+                <button (click)="prevPageBlog()" [disabled]="currentPage === 1" class="btn-nav" title="Anterior"><i
+                        class="pi pi-angle-left"></i></button>
                 <button (click)="nextPageBlog()" [disabled]="(currentPage * postsPerPage) >= filteredPosts.length"
-                    class="pagination-button">&gt;</button>
-            </div>
-
-            <div *ngIf="commentsPost.length > 0" style="padding-top: 3rem; border-bottom: 3px solid #744972; width: 100%;">
-                <div class="div-flex-center style-tag" style="margin-right: 0.4rem; width: 11rem; height: 25px;">
-                    <p style="color: white; margin: 0; font-weight: 600; font-size: 12px;">{{commentsPost.length}} COMENTÁRIO</p>
-                </div>
-            </div>
-
-            <div style="display: flex; flex-direction: column; padding-top: 1rem; width: 100%;">
-                <div class="card-2" style="display: flex; flex-direction: column;" *ngFor="let commentPost of commentsPost; let i = index">
-                    <div *ngIf="commentPost.status === 'approved'" style="display: flex;">
-                        <div class="image-wrapper-2">
-                            <img class="image-container-comments" src="./../../assets/unnamed.png">
-                        </div>
-                        <div>
-                            <div style="display: flex; align-items: center; margin-bottom: -6px;">
-                                <p class="div-calculo-dose-cards" style="font-size: 18px; margin-left: 5px"><b>{{ commentPost.name }}</b></p>
-                                <p style="margin-left: 5px; font-size: 13px;"> - {{ formatDate(commentPost.created_comment) }}</p>
-                            </div>
-                            <div style="display: flex; align-items: center;">
-                                <p class="div-calculo-dose-cards" style="font-size: 16px; margin-left: 5px">{{ commentPost.comment }}</p>
-                            </div>
-                            <div style="display: flex; align-items: center;">
-                                <p class="div-calculo-dose-cards" style="font-size: 14px; margin-left: 5px;cursor: pointer;" (click)="selectComment(i)">Responder</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="commentPost.status === 'pending'" style="display: flex;">
-                        <div class="image-wrapper-2">
-                            <img class="image-container-comments" src="./../../assets/unnamed.png">
-                        </div>
-                        <div>
-                            <div style="display: flex; align-items: center; margin-bottom: -6px;">
-                                <p style="font-size: 16px; margin-left: 5px">Comentário está aguardando aprovação.</p>                                
-                            </div> 
-                        </div>
-                    </div>
-                  
-                    <div *ngIf="commentPost.status === 'rejected'" style="display: none;">
-                        <!-- Comentário rejeitado, não exibe nada -->
-                    </div>
-                    <div class="card-2" style="display: flex; flex-direction: column; padding-left: 5.3rem;" *ngFor="let commentRepostPost of getRepliesForComment(commentPost.id)">
-                        <div style="display: flex;">
-                            <div class="image-wrapper-2">
-                                <img class="image-container-comments" src="./../../assets/unnamed.png">
-                            </div>
-                            <div style="width: 100%;">
-                                <div style="display: flex; align-items: center; margin-bottom: -6px;">
-                                    <p class="div-calculo-dose-cards" style="font-size: 18px; margin-left: 5px"><b>{{ commentRepostPost.name }}</b></p>
-                                    <p style="margin-left: 5px; font-size: 13px;"> - {{ formatDate(commentRepostPost.createdAt) }}</p>
-                                </div>
-                                <div style="display: flex; align-items: center;">
-                                    <p class="div-calculo-dose-cards" style="font-size: 16px; margin-left: 5px">{{ commentRepostPost.commentRepost }}</p>
-                                </div>
-                            </div>
-                        </div>                      
-                    </div>
-                    <div *ngIf="selectedCommentIndex === i" style="padding-bottom: 2rem;">
-                        <div style="margin-left: 5rem;">
-                            <div style="display: flex; align-items: center; margin-bottom: -6px;">
-                                <p class="div-calculo-dose-cards" style="font-size: 18px; margin-left: 5px"><b>Responda para {{ commentPost.name }}</b></p>
-                                <p style="margin-left: 5px; font-size: 13px; cursor: pointer;" (click)="cancelResponse()"> - Cancelar resposta</p>
-                            </div>                          
-                            <div class="form-container">
-                                <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment(commentPost.id)">
-                                    <textarea id="comment" formControlName="commentRepost" rows="8" placeholder="Comentário:"></textarea>
-                                    <div *ngIf="commentForm.get('comment')?.invalid && commentForm.get('comment')?.touched" style="padding-bottom: 0.5rem; margin-top: -1rem;">
-                                        <small class="error">Por favor, digite seu comentário!</small>
-                                    </div>
-            
-                                    <input type="text" id="name" formControlName="name" placeholder="Nome:">
-                                    <div style="padding-bottom: 0.5rem; margin-top: -1rem;" *ngIf="commentForm.get('name')?.invalid && commentForm.get('name')?.touched">
-                                        <small class="error">Por favor, digite seu nome!</small>
-                                    </div>
-            
-                                    <input type="email" id="email" formControlName="email" placeholder="E-mail:">
-                                    <div style="padding-bottom: 0.5rem; margin-top: -1rem;" *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">
-                                        <small class="error" *ngIf="commentForm.get('email')?.errors?.['required']">Por favor, digite seu endereço de e-mail!</small>
-                                        <small class="error" *ngIf="commentForm.get('email')?.errors?.['email']">Email inválido.</small>
-                                    </div>
-                                    <button class="button-comment" type="submit">Postar resposta</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-
-
-                <div *ngIf="!isComment" style="padding-top: 4rem;">
-                    <p><b>DEIXE UMA RESPOSTA</b></p>
-                    <div class="form-container">
-                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-                            <textarea id="comment" formControlName="comment" rows="8"
-                                placeholder="Comentário:"></textarea>
-                            <div *ngIf="contactForm.get('comment')?.invalid && contactForm.get('comment')?.touched"
-                                style="padding-bottom: 0.5rem;margin-top: -1rem;">
-                                <small class="error">Por favor, digite seu comentário!</small>
-                            </div>
-
-                            <input type="text" id="name" formControlName="name" placeholder="Nome:">
-                            <div style="padding-bottom: 0.5rem;margin-top: -1rem;"
-                                *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-                                <small class="error">Por favor, digite seu nome!</small>
-                            </div>
-
-                            <input type="email" id="email" formControlName="email" placeholder="E-mail:">
-                            <div style="padding-bottom: 0.5rem;margin-top: -1rem;"
-                                *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                                <small class="error" *ngIf="contactForm.get('email')?.errors?.['required']">Por favor,
-                                    digite seu endereço de e-mail!</small>
-                                <small class="error" *ngIf="contactForm.get('email')?.errors?.['email']">Email
-                                    inválido.</small>
-                            </div>
-                            <button class="button-comment" type="submit" [disabled]="contactForm.invalid">Postar
-                                comentário</button>
-                        </form>
-                    </div>
-                </div>
+                    class="btn-nav" title="Próximo"><i class="pi pi-angle-right"></i></button>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="comments-section">
+        <div class="content-container">
+
+            <span class="section-eyebrow">Comunidade</span>
+            <h3 class="section-heading">{{ commentsPost.length }} COMENTÁRIOS</h3>
+
+            <div class="header-line gold-line"></div>
+
+            <div class="comments-list" *ngIf="commentsPost.length > 0">
+                <div *ngFor="let comment of commentsPost; let i = index" class="comment-wrapper">
+
+                    <ng-container *ngIf="comment.status === 'approved'">
+
+                        <div class="comment-item">
+                            <div class="comment-avatar">
+                                <img src="assets/unnamed.png" alt="Avatar do leitor">
+                            </div>
+                            <div class="comment-body">
+                                <div class="comment-header">
+                                    <strong>{{ comment.name }}</strong>
+                                    <span class="date">• {{ formatDate(comment.created_comment) }}</span>
+                                    <span *ngIf="comment.status === 'pending'" class="badge-pending">(Aguardando
+                                        aprovação)</span>
+                                </div>
+                                <p class="comment-text">{{ comment.comment }}</p>
+                                <button class="btn-reply-link" (click)="selectComment(i)">Responder</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-replies" *ngIf="getRepliesForComment(comment.id).length > 0">
+                            <div class="reply-item" *ngFor="let reply of getRepliesForComment(comment.id)">
+                                <div class="comment-avatar small">
+                                    <img src="assets/unnamed.png" alt="Avatar">
+                                </div>
+                                <div class="comment-body">
+                                    <div class="comment-header">
+                                        <strong>{{ reply.name }}</strong>
+                                        <span class="date">• {{ formatDate(reply.createdAt) }}</span>
+                                    </div>
+                                    <p class="comment-text">{{ reply.commentRepost }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reply-form-container" *ngIf="selectedCommentIndex === i">
+                            <div class="reply-header-info">
+                                <span>Respondendo para: <b>{{ comment.name }}</b></span>
+                                <span class="cancel-reply" (click)="cancelResponse()"><i class="pi pi-times"></i>
+                                    Cancelar</span>
+                            </div>
+
+                            <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment(comment.id)"
+                                class="styled-form">
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <input type="text" formControlName="name" placeholder="Seu Nome *"
+                                            class="input-field">
+                                        <small class="error"
+                                            *ngIf="commentForm.get('name')?.invalid && commentForm.get('name')?.touched">Nome
+                                            obrigatório</small>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="email" formControlName="email" placeholder="Seu E-mail *"
+                                            class="input-field">
+                                        <small class="error"
+                                            *ngIf="commentForm.get('email')?.invalid && commentForm.get('email')?.touched">E-mail
+                                            inválido</small>
+                                    </div>
+                                </div>
+                                <textarea formControlName="commentRepost" rows="3" placeholder="Sua resposta..."
+                                    class="input-field"></textarea>
+                                <small class="error"
+                                    *ngIf="commentForm.get('commentRepost')?.invalid && commentForm.get('commentRepost')?.touched">Escreva
+                                    sua resposta</small>
+
+                                <button type="submit" class="btn-submit">ENVIAR RESPOSTA</button>
+                            </form>
+                        </div>
+
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="new-comment-area" *ngIf="!isComment">
+                <h3 class="sub-title">DEIXE SEU COMENTÁRIO</h3>
+                <p class="sub-desc">Compartilhe sua percepção, reflexão ou dúvida sobre este tema.</p>
+
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="styled-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <input type="text" formControlName="name" placeholder="Seu Nome Completo *"
+                                class="input-field">
+                            <small class="error"
+                                *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Nome
+                                obrigatório</small>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" formControlName="email" placeholder="Seu Melhor E-mail *"
+                                class="input-field">
+                            <small class="error"
+                                *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">E-mail
+                                inválido</small>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea formControlName="comment" rows="5" placeholder="Escreva seu comentário aqui..."
+                            class="input-field"></textarea>
+                        <small class="error"
+                            *ngIf="contactForm.get('comment')?.invalid && contactForm.get('comment')?.touched">Comentário
+                            obrigatório</small>
+                    </div>
+
+                    <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">PUBLICAR
+                        COMENTÁRIO</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+</div>

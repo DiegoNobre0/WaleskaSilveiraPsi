@@ -1,68 +1,62 @@
-<mat-toolbar class="mat-toolbar-mobile">
-    <!-- NavBar mobile -->
-    <mat-accordion class="display-mobile-accordion ">
-        <mat-expansion-panel
-         hideToggle
-         style="background: white; color: #744972;"
-         (opened)="panelOpenState = true"
-         (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-                <div class="div-logo display-mobile-menu">
-                    <img class="img-logo" src="../../../assets/logo-png-ws.png" (click)="home()">
-                </div>
-                <button mat-icon-button >
-                    <mat-icon style="color: #744972;">{{panelOpenState? "close" : "menu"}}</mat-icon>
-                </button>
-            </mat-panel-title>
-            <mat-panel-description style="display: contents;">
-               
-            </mat-panel-description>
-          </mat-expansion-panel-header >
-            <div style="display: grid;">
-                <button mat-button (click)="home()">
-                    <span class="span-toolbar" style="color: #744972;">HOME</span>
-                </button>  
-                <button mat-button (click)="about()">
-                    <span class="span-toolbar" style="color: #744972;">SOBRE</span>
-                </button> 
-                <button mat-button (click)="service()">
-                    <span class="span-toolbar" style="color: #744972;">SERVIÇOS</span>
-                </button> 
-                <button mat-button (click)="blog()">
-                    <span class="span-toolbar" style="color: #744972;">BLOG</span>
-                </button> 
-                <button mat-button (click)="contact()">
-                    <span class="span-toolbar" style="color: #744972;">CONTATO</span>
-                </button>    
-            </div>
-        </mat-expansion-panel>
-      </mat-accordion> 
-</mat-toolbar>
+<nav class="luxury-navbar" [ngClass]="{'scrolled': isScrolled, 'page-interior': !isHomePage}">
+  <div class="nav-container">
 
-<mat-toolbar id="nav" class="mat-toolbar-desktop">    
-    <div class="div-logo display-mobile-menu">
-        <img *ngIf="showWhiteLogo" class="img-logo" src="../../../assets/logo-wspsi-white.svg" (click)="home()">
-        <img *ngIf="showDefaultLogo" class="img-logo" src="../../../assets/logo-wspsi.svg" (click)="home()">
-      </div>
-    <span class="toolbar-spacer display-mobile-menu"></span>
-    <div class="display-mobile-menu">
-        <button mat-button (click)="home()">
-            <span class="span-toolbar">HOME</span>
-        </button>  
-        <button mat-button (click)="about()">
-            <span class="span-toolbar">SOBRE</span>
-        </button> 
-        <button mat-button (click)="service()">
-            <span class="span-toolbar">SERVIÇOS</span>
-        </button> 
-        <button mat-button (click)="blog()">
-            <span class="span-toolbar">BLOG</span>
-        </button> 
-        <button mat-button (click)="contact()">
-            <span class="span-toolbar">CONTATO</span>
-        </button>    
-     
+    <a routerLink="/" class="logo-link">
+      <img src="assets/logo-nova.svg" alt="Waleska Silveira - Psicanalista" class="brand-logo">
+    </a>
+
+    <div class="desktop-menu">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">HOME</a>
+      <a routerLink="/sobre" routerLinkActive="active" class="nav-link">SOBRE</a>
+      <a routerLink="/servicos" routerLinkActive="active" class="nav-link">SERVIÇOS</a>
+      <a routerLink="/mentoria" routerLinkActive="active" class="nav-link">MENTORIA</a>
+      <a routerLink="/blog" routerLinkActive="active" class="nav-link">BLOG</a>
+      <a routerLink="/contato" routerLinkActive="active" class="nav-link">CONTATO</a>
+
+      <button class="nav-cta-btn" (click)="whatsapp()">
+        AGENDAR SESSÃO
+      </button>
     </div>
-</mat-toolbar>
 
+    <div class="mobile-trigger">
+      <button (click)="sidebarVisible = true" class="mobile-toggle-btn" aria-label="Abrir Menu de Navegação">
+        <i class="pi pi-bars"></i>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<p-sidebar [(visible)]="sidebarVisible" position="right" [baseZIndex]="10000" styleClass="luxury-sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">
+      <img src="assets/logo-nova.svg" alt="Waleska Silveira" class="sidebar-logo">
+      <span class="sidebar-subtitle">PSICANALISTA CLÍNICA</span>
+    </div>
+
+    <div class="sidebar-links">
+      <a routerLink="/" (click)="sidebarVisible = false" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}" class="sidebar-item">HOME</a>
+      <a routerLink="/sobre" (click)="sidebarVisible = false" routerLinkActive="active" class="sidebar-item">SOBRE</a>
+      <a routerLink="/servicos" (click)="sidebarVisible = false" routerLinkActive="active"
+        class="sidebar-item">SERVIÇOS</a>
+      <a routerLink="/mentoria" (click)="sidebarVisible = false" routerLinkActive="active" class="sidebar-item">MENTORIA
+        LIBERTA</a>
+      <a routerLink="/blog" (click)="sidebarVisible = false" routerLinkActive="active" class="sidebar-item">BLOG &
+        ARTIGOS</a>
+      <a routerLink="/contato" (click)="sidebarVisible = false" routerLinkActive="active"
+        class="sidebar-item">CONTATO</a>
+    </div>
+
+    <div class="sidebar-action">
+      <button class="sidebar-cta-btn" (click)="whatsapp(); sidebarVisible = false">
+        <i class="pi pi-whatsapp"></i> AGENDAR SESSÃO
+      </button>
+      <div class="sidebar-social">
+        <a href="https://www.instagram.com/waleskasilveirapsi" target="_blank" rel="noopener noreferrer">
+          <i class="pi pi-instagram"></i> @waleskasilveirapsi
+        </a>
+      </div>
+    </div>
+  </div>
+</p-sidebar>
